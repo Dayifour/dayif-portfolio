@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import Link from "next/link";
 import { Code } from "./Code";
 import { Section } from "./Section";
@@ -21,7 +22,7 @@ export const Hero = () => {
         </p>
       </div>
       <div className="flex-[2] max-md:m-auto round ml-auto">
-        <img
+        <Image
           src="/dayif.png"
           className="w-full h-auto max-w-xs rounded-full  object-cover max-md:w-56"
           alt="Manager Dayif's picture"
