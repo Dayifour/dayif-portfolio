@@ -24,7 +24,11 @@ export const Hero = () => {
       <div className="flex-[2] max-md:m-auto round ml-auto">
         <Image
           src="/dayif.png"
-          className="w-full h-auto max-w-xs rounded-full  object-cover max-md:w-56"
+          width={300}
+          height={300}
+          priority
+          loading="eager"
+          className="w-full h-auto max-w-xs rounded-full object-cover max-md:w-56"
           alt="Manager Dayif's picture"
         />
       </div>
