@@ -110,6 +110,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
+        <meta
+          name="google-site-verification"
+          content="VOr7GsTMAtkoICeIvt9GK-19fHon1mt2ZPqO5Xl4RaY"
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
