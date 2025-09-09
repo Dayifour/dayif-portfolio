@@ -109,6 +109,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Sékou Dayifourou KEITA",
+              url: "https://managerdayif.netlify.app",
+              image: "https://managerdayif.netlify.app/dayif.png",
+              jobTitle: "Software Engineer",
+              sameAs: [
+                "https://github.com/Dayifour",
+                "https://linkedin.com/in/dayifour",
+                "https://twitter.com/Dayifour",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body
         className={cn(
           GeistSans.variable,

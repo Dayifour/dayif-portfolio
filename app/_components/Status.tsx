@@ -101,6 +101,9 @@ const SideProject = (props: SideProjectProps) => {
   return (
     <Link
       href={props.url}
+      aria-label={`Voir le projet ${props.title}`}
+      target={props.url.startsWith("http") ? "_blank" : undefined}
+      rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
       className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded"
     >
       <span className="bg-accent text-accent-foreground p-3 rounded-sm">
