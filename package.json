@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,6 +19,7 @@
     "lucide-react": "^0.438.0",
     "next": "^14.2.24",
     "next_course": "file:",
+    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",
