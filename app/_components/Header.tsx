@@ -43,7 +43,7 @@ export const Header = () => {
           </li>
           <li>
             <Link
-              href="https://linkedin.com/in/sekou-dayifourou-keita"
+              href="https://linkedin.com/in/dayifour"
               aria-label="LinkedIn Manager Dayif"
               title="LinkedIn"
               className={cn(

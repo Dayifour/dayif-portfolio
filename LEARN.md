@@ -37,7 +37,7 @@ Future improvements include:
 
 For any questions or collaboration opportunities, feel free to reach out:
 📧 **Email:** [sekoudayifourouk@gmail.com](mailto:sekoudayifourouk@gmail.com)
-🔗 **LinkedIn:** [Sekou Dayifourou Keita](https://www.linkedin.com/in/sekou-dayifourou-keita)
+🔗 **LinkedIn:** [Sekou Dayifourou Keita](https://www.linkedin.com/in/dayifour)
 
 ---
 
