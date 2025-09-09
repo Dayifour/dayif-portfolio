@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: [
+      "lh3.googleusercontent.com",
+      "th.bing.com",
+      "cdn-icons-png.flaticon.com",
+    ],
+  },
   async headers() {
     return [
       {
