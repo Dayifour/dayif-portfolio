@@ -1,0 +1,8 @@
+# *
+User-agent: *
+Allow: /
+
+
+
+# Sitemaps
+Sitemap: https://dayif-portfolio.vercel.app/sitemap.xml
