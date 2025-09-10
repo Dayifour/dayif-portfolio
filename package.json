@@ -23,6 +23,7 @@
     "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "sharp": "^0.34.3",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },
