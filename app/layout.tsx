@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Sékou Dayifourou KEITA (Manager Dayif)",
-      url: "https://managerdayif.netlify.app",
+      url: "https://dayif-portfolio.vercel.app",
     },
   ],
   creator: "Manager Dayif",
@@ -65,14 +65,14 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://managerdayif.netlify.app",
+    url: "https://dayif-portfolio.vercel.app",
     title: "Manager Dayif | Software Engineer Portfolio",
     description:
       "Discover the portfolio of Manager Dayif (Sékou Dayifourou KEITA), Software Engineer based in Bamako, Mali. Specialized in React, Next.js, Tailwind, Node.js, and TypeScript.",
     siteName: "Manager Dayif Portfolio",
     images: [
       {
-        url: "https://managerdayif.netlify.app/dayif.png",
+        url: "https://dayif-portfolio.vercel.app/dayif.png",
         width: 1200,
         height: 630,
         alt: "Manager Dayif Portfolio",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     title: "Manager Dayif | Software Engineer Portfolio",
     description:
       "Portfolio of Manager Dayif (Sékou Dayifourou KEITA), Full-Stack Developer from Bamako, Mali. Specialized in Next.js, React, Tailwind, and Node.js.",
-    images: ["https://managerdayif.netlify.app/dayif.png"],
+    images: ["https://dayif-portfolio.vercel.app/dayif.png"],
   },
 
   icons: {
@@ -96,9 +96,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  metadataBase: new URL("https://managerdayif.netlify.app"),
+  metadataBase: new URL("https://dayif-portfolio.vercel.app"),
   alternates: {
-    canonical: "https://managerdayif.netlify.app",
+    canonical: "https://dayif-portfolio.vercel.app",
   },
 };
 
@@ -122,8 +122,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Sékou Dayifourou KEITA",
-              url: "https://managerdayif.netlify.app",
-              image: "https://managerdayif.netlify.app/dayif.png",
+              url: "https://dayif-portfolio.vercel.app",
+              image: "https://dayif-portfolio.vercel.app/dayif.png",
               jobTitle: "Software Engineer",
               sameAs: [
                 "https://github.com/Dayifour",
