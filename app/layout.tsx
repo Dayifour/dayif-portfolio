@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Manager Dayif",
   },
   description:
-    "Portfolio of Manager Dayif (Sékou Dayifourou KEITA), a Full-Stack Software Engineer based in Bamako, Mali. Expert in TypeScript, React, Next.js, Node.js, Tailwind CSS. Développeur web, front-end et back-end.",
+    "Portfolio de Sékou Dayifourou KEITA, Full-Stack Software Engineer à Bamako. Expert en React, Next.js, Node.js et Tailwind CSS.",
   keywords: [
     // English keywords
     "Sekou Dayifourou Keita",
