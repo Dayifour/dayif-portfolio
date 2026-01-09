@@ -7,19 +7,22 @@ import { Spacing } from "./_components/Spacing";
 import { Status } from "./_components/Status";
 
 export default function Home() {
+  const components = [
+    { component: <Header /> },
+    { component: <Hero /> },
+    { component: <Status /> },
+    { component: <Skills /> },
+    { component: <Contact /> },
+    { component: <Footer /> },
+  ];
   return (
     <main>
-      <Header />
-      <Spacing size="md" />
-      <Hero />
-      <Spacing size="md" />
-      <Status />
-      <Spacing size="md" />
-      <Skills />
-      <Spacing size="md" />
-      <Contact />
-      <Spacing size="md" />
-      <Footer/>
+      {components.map(({ component }, idx) => (
+        <div key={idx}>
+          {component}
+          <Spacing />
+        </div>
+      ))}
     </main>
   );
 }

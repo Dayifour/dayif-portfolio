@@ -12,6 +12,6 @@ export const Spacing = ({ size = "md" }: SpacingProps) => {
         "h-16 lg:h-24": size === "md",
         "h-24 lg:h-32": size === "lg",
       })}
-    ></div>
+    />
   );
 };
