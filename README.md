@@ -44,7 +44,3 @@ If you'd like to connect or collaborate, feel free to reach out:
 
 📧 **Email:** [sekoudayifourouk@gmail.com](mailto:sekoudayifourouk@gmail.com)  
 🔗 **LinkedIn:** [Sekou Dayifourou Keita](https://www.linkedin.com/in/dayifour)
-
----
-
-Feel free to customize this README to better fit your portfolio! 🚀
