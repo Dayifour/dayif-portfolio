@@ -18,7 +18,7 @@
     "clsx": "^2.1.1",
     "geist": "^1.3.1",
     "lucide-react": "^0.438.0",
-    "next": "^14.2.24",
+    "next": "^16.1.7",
     "next_course": "file:",
     "next-sitemap": "^4.2.3",
     "react": "^18",
