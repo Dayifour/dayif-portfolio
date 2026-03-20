@@ -1,44 +1,35 @@
-# 📚 Learn More
+# Learn Notes
 
-This document provides additional insights into the development and structure of my personal portfolio.
+This file tracks architecture and implementation decisions for this portfolio.
 
-## 📖 Overview
+## Current Architecture
 
-This portfolio was built to showcase my projects, skills, and experience in web development. It is designed to be modern, responsive, and interactive.
+- Next.js App Router (`app/`)
+- Reusable sections under `app/_components/`
+- UI primitives under `components/ui/`
+- Utility helpers under `lib/`
 
-## 🏗️ Project Structure
+## Quality Baseline
 
-The project follows a clean and modular architecture:
+- ESLint 9 flat config (`eslint.config.mjs`)
+- TypeScript strict mode + `forceConsistentCasingInFileNames`
+- Security headers and CSP configured in `next.config.mjs`
+- Sitemap generation via `next-sitemap`
 
-- **components/** - Reusable UI components.
-- **pages/** - Application pages and routing.
-- **styles/** - Global and component-specific styles.
-- **public/** - Static assets such as images and icons.
-- **utils/** - Utility functions and helpers.
+## SEO Baseline
 
-## 🔍 Key Learnings
+- Rich metadata in `app/layout.tsx`
+- JSON-LD Person schema
+- `robots.txt` and generated sitemap
 
-While developing this portfolio, I focused on:
+## Product Direction
 
-- Efficient state management in Next.js.
-- Optimizing performance with lazy loading and caching.
-- Enhancing accessibility and user experience.
-- Implementing best practices in Tailwind CSS.
+- Keep the homepage focused on outcomes, not only technologies.
+- Prefer concise project cards with clear value and links.
+- Maintain accessible interactions and reduced-motion compatibility.
 
-## 🚀 Next Steps
+## Recommended Next Iterations
 
-Future improvements include:
-
-- Adding a backend to manage portfolio content dynamically.
-- Integrating analytics for better insights.
-- Enhancing animations for a smoother experience.
-
-## 📬 Contact
-
-For any questions or collaboration opportunities, feel free to reach out:
-📧 **Email:** [sekoudayifourouk@gmail.com](mailto:sekoudayifourouk@gmail.com)
-🔗 **LinkedIn:** [Sekou Dayifourou Keita](https://www.linkedin.com/in/dayifour)
-
----
-
-Happy coding! 🚀
+- Add dedicated case-study pages for top projects.
+- Add lightweight analytics dashboards for CTA clicks.
+- Add tests for critical UI sections and links.
