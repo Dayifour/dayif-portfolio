@@ -1,4 +1,4 @@
-# Manager Dayif Portfolio
+# Sekou Dayifourou KEITA Portfolio
 
 Personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS.
 
@@ -8,10 +8,11 @@ Production: https://dayif-portfolio.vercel.app/
 
 ## Highlights
 
-- Single-page portfolio with clear sections: About, Projects, Skills, Contact
+- Single-page portfolio with clear sections: About, Open Source Impact, Projects, Expertise, Skills, Contact
 - SEO metadata and structured data (JSON-LD)
 - Security headers configured in Next.js
 - Sitemap generation with next-sitemap
+- Startup-oriented positioning for systems and product engineering roles
 
 ## Tech Stack
 
@@ -50,3 +51,7 @@ Open http://localhost:3000.
 - Email: sekoudayifourouk@gmail.com
 - LinkedIn: https://www.linkedin.com/in/dayifour
 - GitHub: https://github.com/Dayifour
+
+## Hiring Notes
+
+- See [BASK-HEALTH-CHECKLIST.md](BASK-HEALTH-CHECKLIST.md) for the application checklist and proof-of-work links strategy.

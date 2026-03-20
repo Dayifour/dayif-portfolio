@@ -13,69 +13,48 @@ const AnekTelugu = Anek_Telugu({
 
 export const metadata: Metadata = {
   title: {
-    default: "Manager Dayif (Sékou Dayifourou KEITA) | Software Engineer",
-    template: "%s | Manager Dayif",
+    default: "Sekou Dayifourou KEITA | Full-Stack Software Engineer",
+    template: "%s | Sekou Dayifourou KEITA",
   },
   description:
-    "Portfolio de Sékou Dayifourou KEITA, Full-Stack Software Engineer à Bamako. Expert en React, Next.js, Node.js et Tailwind CSS.",
+    "Full-Stack Software Engineer specializing in TypeScript, Next.js, and distributed systems. Contributor to Cloudflare, npmx, and iii-hq.",
   keywords: [
-    // English keywords
     "Sekou Dayifourou Keita",
-    "Manager Dayif",
-    "dayifour",
     "Software Engineer",
-    "Full Stack Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "React Developer",
-    "Next.js Developer",
-    "Tailwind CSS",
-    "TypeScript Developer",
-    "Node.js Developer",
-    "Portfolio",
-
-    // French keywords
-    "Développeur Web",
-    "Développeur Front-End",
-    "Développeur Back-End",
-    "Développeur Full Stack",
-    "React",
-    "Next.js",
-    "Tailwind",
-    "JavaScript",
+    "Full-Stack Software Engineer",
     "TypeScript",
-    "Node.js",
-    "Portfolio développeur",
-
-    // Local SEO (Mali)
-    "Développeur Mali",
-    "Développeur Bamako",
-    "Software Engineer Mali",
-    "Full Stack Developer Bamako",
-    "Web Developer Mali",
+    "Next.js",
+    "Distributed Systems",
+    "Cloudflare Contributor",
+    "NestJS",
+    "AWS Lambda",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "Portfolio",
   ],
   authors: [
     {
-      name: "Sékou Dayifourou KEITA (Manager Dayif)",
+      name: "Sekou Dayifourou KEITA",
       url: "https://dayif-portfolio.vercel.app",
     },
   ],
-  creator: "Manager Dayif",
-  publisher: "Manager Dayif",
+  creator: "Sekou Dayifourou KEITA",
+  publisher: "Sekou Dayifourou KEITA",
 
   openGraph: {
     type: "website",
     url: "https://dayif-portfolio.vercel.app",
-    title: "Manager Dayif | Software Engineer Portfolio",
+    title: "Sekou Dayifourou KEITA | Software Engineer Portfolio",
     description:
-      "Discover the portfolio of Manager Dayif (Sékou Dayifourou KEITA), Software Engineer based in Bamako, Mali. Specialized in React, Next.js, Tailwind, Node.js, and TypeScript.",
-    siteName: "Manager Dayif Portfolio",
+      "Portfolio of a Full-Stack Software Engineer specializing in TypeScript, Next.js, and distributed systems.",
+    siteName: "Sekou Dayifourou KEITA Portfolio",
     images: [
       {
         url: "https://dayif-portfolio.vercel.app/dayif.png",
         width: 1200,
         height: 630,
-        alt: "Manager Dayif Portfolio",
+        alt: "Sekou Dayifourou KEITA Portfolio",
       },
     ],
     locale: "en_US",
@@ -85,9 +64,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@dayifour", // ajout pour correspondre aux guidelines
     creator: "@dayifour",
-    title: "Manager Dayif | Software Engineer Portfolio",
+    title: "Sekou Dayifourou KEITA | Software Engineer Portfolio",
     description:
-      "Portfolio of Manager Dayif (Sékou Dayifourou KEITA), Full-Stack Developer from Bamako, Mali. Specialized in Next.js, React, Tailwind, and Node.js.",
+      "Contributor to Cloudflare, npmx, and iii-hq. Building type-safe, high-performance software architectures.",
     images: ["https://dayif-portfolio.vercel.app/dayif.png"],
   },
 
@@ -127,24 +106,20 @@ export default function RootLayout({
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Sékou Dayifourou KEITA",
-    alternateName: "Manager Dayif",
+    name: "Sekou Dayifourou KEITA",
     url: "https://dayif-portfolio.vercel.app",
     image: "https://dayif-portfolio.vercel.app/dayif.png",
     jobTitle: "Software Engineer",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Bamako",
-      addressCountry: "Mali",
-    },
     knowsAbout: [
-      "React",
-      "Next.js",
       "TypeScript",
+      "Next.js",
+      "Distributed Systems",
       "Node.js",
-      "Tailwind CSS",
-      "Web Performance",
-      "Accessibility",
+      "NestJS",
+      "Cloudflare",
+      "AWS Lambda",
+      "PostgreSQL",
+      "Redis",
     ],
     sameAs: [
       "https://github.com/Dayifour",

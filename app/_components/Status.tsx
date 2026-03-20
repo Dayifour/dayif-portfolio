@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { LucideIcon, Rss, StickyNote, Video } from "lucide-react";
+import { LucideIcon, Layers3, ShieldCheck, Video } from "lucide-react";
 import Link from "next/link";
 import { Section } from "./Section";
 
@@ -9,7 +9,7 @@ export const Status = () => {
     <Section id="projects" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Projects</Badge>
       <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        Selected work
+        High-impact product engineering
       </h2>
       <div className="grid w-full gap-4 md:grid-cols-2">
         {SIDE_PROJECTS.map((project) => (
@@ -24,25 +24,31 @@ export const Status = () => {
 
 const SIDE_PROJECTS: SideProjectProps[] = [
   {
-    Logo: Rss,
-    title: "E-learning",
+    Logo: Layers3,
+    title: "SUGUBA Marketplace",
     description:
-      "Modern e-learning platform for course management, student progress tracking, and interactive assessments.",
-    url: "https://github.com/Dayifour/e-learning",
+      "A high-concurrency multi-tenant marketplace built with Next.js, NestJS microservices, PostgreSQL, Redis, and Docker.",
+    impact:
+      "Designed a scalable database schema to handle thousands of concurrent product listings.",
+    url: "https://github.com/Dayifour",
   },
   {
     Logo: Video,
     title: "Video_downloader",
     description:
-      "Next.js application to fetch downloadable YouTube streams by URL and quality through a clear, fast UI.",
+      "Performance-oriented download tooling using yt-dlp integration, stream handling, and resilient error flows.",
+    impact:
+      "Improved download reliability and response consistency across multiple video quality paths.",
     url: "https://github.com/Dayifour/video_downloader",
   },
   {
-    Logo: StickyNote,
-    title: "My-next-blog",
+    Logo: ShieldCheck,
+    title: "ITAK Management Platform",
     description:
-      "Personal Next.js blog with dynamic content and a clean editorial experience.",
-    url: "https://github.com/Dayifour/my-next-blog",
+      "Resource management platform with analytics dashboards, secure authentication, and operational workflows.",
+    impact:
+      "Reduced manual tracking overhead through centralized visibility and role-based access flows.",
+    url: "https://github.com/Dayifour",
   },
 ];
 
@@ -50,6 +56,7 @@ type SideProjectProps = {
   Logo: LucideIcon;
   title: string;
   description: string;
+  impact: string;
   url: string;
 };
 
@@ -68,6 +75,7 @@ const SideProject = (props: SideProjectProps) => {
       <div>
         <p className="text-lg font-semibold">{props.title}</p>
         <p className="text-sm text-muted-foreground">{props.description}</p>
+        <p className="mt-2 text-xs text-primary/90">Impact: {props.impact}</p>
       </div>
     </Link>
   );

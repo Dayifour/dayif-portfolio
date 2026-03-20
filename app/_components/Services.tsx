@@ -5,31 +5,43 @@ import { Section } from "./Section";
 
 const SERVICES = [
   {
-    title: "Landing Pages & Websites",
+    title: "Systems Architecture",
     description:
-      "Fast, responsive websites designed to convert visitors into clients.",
-    points: ["SEO-ready", "Accessible", "Performance-focused"],
+      "Event-driven microservices, resilient API contracts, and database optimization for scale.",
+    points: [
+      "NestJS microservices",
+      "REST/GraphQL APIs",
+      "Indexing and caching strategy",
+    ],
   },
   {
-    title: "Full-Stack Web Apps",
+    title: "Product Engineering",
     description:
-      "Custom Next.js applications with robust backend logic and clean architecture.",
-    points: ["Scalable codebase", "API integration", "Production deployment"],
+      "Building 0-to-1 products with Next.js and TypeScript, focused on performance and SEO outcomes.",
+    points: [
+      "Next.js App Router",
+      "Core Web Vitals (Lighthouse 95+)",
+      "Type-safe architecture",
+    ],
   },
   {
-    title: "Frontend Modernization",
+    title: "Cloud and DevOps",
     description:
-      "Upgrade existing interfaces for speed, clarity, and better UX.",
-    points: ["UI refactor", "Design system", "Core Web Vitals"],
+      "Production pipelines, serverless execution, and infrastructure reliability.",
+    points: [
+      "Docker and Linux VPS",
+      "GitHub Actions CI/CD",
+      "AWS Lambda and SST",
+    ],
   },
 ];
 
-export const Services = () => {
+export const Expertise = () => {
   return (
-    <Section id="services" className="flex flex-col items-start gap-4">
-      <Badge variant="outline">Services</Badge>
+    <Section id="expertise" className="flex flex-col items-start gap-4">
+      <Badge variant="outline">Expertise</Badge>
       <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        How I can help
+        Engineering systems that scale
       </h2>
       <div className="grid w-full gap-4 md:grid-cols-3">
         {SERVICES.map((service) => (
