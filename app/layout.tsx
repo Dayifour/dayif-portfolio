@@ -100,6 +100,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://dayif-portfolio.vercel.app",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "43GrJqZ_dVhqyrNqDoRFfFKVXk63ZXQL761ChPELXh4",
+    other: {
+      "msvalidate.01": "02A41F4B595E5D347D01F647DF226596",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -107,30 +124,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Sékou Dayifourou KEITA",
+    alternateName: "Manager Dayif",
+    url: "https://dayif-portfolio.vercel.app",
+    image: "https://dayif-portfolio.vercel.app/dayif.png",
+    jobTitle: "Software Engineer",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bamako",
+      addressCountry: "Mali",
+    },
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Tailwind CSS",
+      "Web Performance",
+      "Accessibility",
+    ],
+    sameAs: [
+      "https://github.com/Dayifour",
+      "https://linkedin.com/in/dayifour",
+      "https://twitter.com/Dayifour",
+    ],
+  };
+
   return (
     <html lang="en" className="h-full">
       <head>
-        <meta
-          name="google-site-verification"
-          content="43GrJqZ_dVhqyrNqDoRFfFKVXk63ZXQL761ChPELXh4"
-        />
-        <meta name="msvalidate.01" content="02A41F4B595E5D347D01F647DF226596" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Sékou Dayifourou KEITA",
-              url: "https://dayif-portfolio.vercel.app",
-              image: "https://dayif-portfolio.vercel.app/dayif.png",
-              jobTitle: "Software Engineer",
-              sameAs: [
-                "https://github.com/Dayifour",
-                "https://linkedin.com/in/dayifour",
-                "https://twitter.com/Dayifour",
-              ],
-            }),
+            __html: JSON.stringify(personJsonLd),
           }}
         />
       </head>
@@ -139,8 +168,7 @@ export default function RootLayout({
           GeistSans.variable,
           GeistMono.variable,
           AnekTelugu.variable,
-          "font-sans",
-          "font-sans h-full bg-background text-foreground"
+          "font-sans h-full bg-background text-foreground",
         )}
       >
         {children}

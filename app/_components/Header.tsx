@@ -5,7 +5,7 @@ import { Icons } from "./icons/Icons";
 import { Section } from "./Section";
 
 export const Header = () => {
-  const links = [
+  const socialLinks = [
     {
       title: "GitHub",
       href: "https://github.com/Dayifour",
@@ -32,20 +32,47 @@ export const Header = () => {
       logo: Icons.TelegramIcon({ size: 20, className: "text-foreground" }),
     },
   ];
+
+  const navLinks = [
+    { title: "About", href: "#about" },
+    { title: "Projects", href: "#projects" },
+    { title: "Services", href: "#services" },
+    { title: "Skills", href: "#skills" },
+    { title: "Contact", href: "#contact" },
+  ];
+
   return (
-    <header className="top-0 py-4">
-      <Section className="flex items-baseline">
-        <h1 className="text-lg font-bold text-primary">Manager Dayif</h1>
-        <div className="flex-1" />
-        <ul className="flex items-center gap-2">
-          {links.map((props, idx) => (
+    <header className="top-0 py-4" role="banner">
+      <Section className="flex flex-wrap items-center gap-3">
+        <p className="text-lg font-bold text-primary">Manager Dayif</p>
+        <nav aria-label="Primary" className="mr-auto ml-2">
+          <ul className="flex items-center gap-2">
+            {navLinks.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "sm" }),
+                    "text-xs",
+                  )}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <ul className="flex items-center gap-2" aria-label="Social links">
+          {socialLinks.map((props, idx) => (
             <li key={idx}>
               <Link
                 className={cn(
                   buttonVariants({ variant: "outline" }),
-                  "size-6 p-0"
+                  "size-6 p-0",
                 )}
                 aria-label={`${props.title} Manager Dayif`}
+                target="_blank"
+                rel="noopener noreferrer"
                 {...props}
               >
                 {props.logo}
