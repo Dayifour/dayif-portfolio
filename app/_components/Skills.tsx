@@ -1,44 +1,58 @@
 import { Badge } from "@/components/ui/badge";
-import { Code } from "./Code";
+import { Card } from "@/components/ui/card";
 import { Section } from "./Section";
-import { Icons } from "./icons/Icons";
+
+const SKILL_GROUPS = [
+  {
+    title: "Languages",
+    items: ["TypeScript (Expert)", "JavaScript", "SQL", "Go"],
+  },
+  {
+    title: "Frontend",
+    items: [
+      "Next.js (App Router)",
+      "React",
+      "Tailwind CSS",
+      "TanStack Query",
+      "Radix UI (A11y)",
+    ],
+  },
+  {
+    title: "Backend",
+    items: ["Node.js", "NestJS", "SST", "Drizzle ORM", "Prisma"],
+  },
+  {
+    title: "Infra",
+    items: [
+      "AWS (Lambda, SQS, EventBridge)",
+      "Docker",
+      "PostgreSQL",
+      "Redis",
+      "Cloudflare",
+    ],
+  },
+];
 
 export const Skills = () => {
   return (
-    <Section className="flex flex-col items-start gap-4">
+    <Section id="skills" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Skills</Badge>
       <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        I love working on
+        Stack optimized for product startups
       </h2>
-      <div className="flex max-md:flex-col gap-4">
-        <div className="flex flex-col gap-2 flex-1">
-          {Icons.ReactLogo({
-            size: 42,
-            className: "animate-spin",
-            style: {
-              animationDuration: "10s",
-            },
-          })}
-          <h3 className="text-2xl font-semibold tracking-tight">React</h3>
-          <p className="text-sm text-muted-foreground">
-            My main framwork is <Code>React</Code>
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 flex-1">
-          {Icons.TailwindLogo({ size: 42 })}
-          <h3 className="text-2xl font-semibold tracking-tight">Tailwind</h3>
-          <p className="text-sm text-muted-foreground">
-            I can create a <u>beautiful</u> application <i>in seconds</i> using{" "}
-            <Code>TailwindCSS</Code>
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 flex-1">
-          {Icons.NextLogo({ size: 42 })}
-          <h3 className="text-2xl font-semibold tracking-tight">Next</h3>
-          <p className="text-sm text-muted-foreground">
-            I love creating a backendusing <Code>Nextjs</Code>.
-          </p>
-        </div>
+      <div className="grid w-full gap-4 md:grid-cols-2">
+        {SKILL_GROUPS.map((group) => (
+          <Card key={group.title} className="h-full border-border/60 bg-card/50 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
+            <h3 className="text-xl font-semibold">{group.title}</h3>
+            <ul className="mt-3 space-y-2">
+              {group.items.map((item) => (
+                <li key={item} className="text-sm text-muted-foreground leading-relaxed">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Card>
+        ))}
       </div>
     </Section>
   );

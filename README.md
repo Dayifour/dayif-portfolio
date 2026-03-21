@@ -1,46 +1,57 @@
-# 🚀 My Portfolio
+# Sekou Dayifourou KEITA Portfolio
 
-This repository contains the source code for my personal portfolio, showcasing my work, skills, and experience in web development.
+Personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS.
 
-## 🖥️ Live Demo
+## Live
 
-Check out the live version here: [My Portfolio](https://dayif-portfolio.vercel.app/)
+Production: https://dayif-portfolio.vercel.app/
 
-## 📌 Features
+## Highlights
 
-- ✅ Modern and responsive design
-- ✅ Projects showcase
-- ✅ Smooth animations
-- ✅ Dark/Light mode
-- ✅ Contact section
+- Single-page portfolio with clear sections: About, Open Source Impact, Projects, Expertise, Skills, Contact
+- SEO metadata and structured data (JSON-LD)
+- Security headers configured in Next.js
+- Sitemap generation with next-sitemap
+- Startup-oriented positioning for systems and product engineering roles
 
-## 🛠️ Technologies Used
+## Tech Stack
 
-- **Frontend:** Next.js, React, Tailwind CSS
-- **Backend (Upcoming):** Node.js, Prisma, MySQL/MongoDB
-- **Deployment:** Vercel
+- Next.js 16 (App Router)
+- React 18
+- TypeScript
+- Tailwind CSS + shadcn/ui utilities
+- ESLint 9 (flat config)
 
-## 📂 Installation & Setup
-
-To run this project locally, follow these steps:
+## Local Development
 
 ```sh
-# Clone the repository
-git clone https://github.com/your-username/your-portfolio.git
-cd your-portfolio
-
-# Install dependencies
 npm install
-
-# Run the development server
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+Open http://localhost:3000.
 
-## 📬 Contact
+## Available Scripts
 
-If you'd like to connect or collaborate, feel free to reach out:
+- `npm run dev` - start development server
+- `npm run build` - production build
+- `npm run start` - run production build locally
+- `npm run lint` - run ESLint
+- `npm run typecheck` - run TypeScript checks
 
-📧 **Email:** [sekoudayifourouk@gmail.com](mailto:sekoudayifourouk@gmail.com)  
-🔗 **LinkedIn:** [Sekou Dayifourou Keita](https://www.linkedin.com/in/dayifour)
+## Project Structure
+
+- `app/` - page, layout, and section components
+- `components/ui/` - reusable UI primitives
+- `lib/` - shared utilities
+- `public/` - static assets
+
+## Contact
+
+- Email: sekoudayifourouk@gmail.com
+- LinkedIn: https://www.linkedin.com/in/dayifour
+- GitHub: https://github.com/Dayifour
+
+## Hiring Notes
+
+- See [BASK-HEALTH-CHECKLIST.md](BASK-HEALTH-CHECKLIST.md) for the application checklist and proof-of-work links strategy.

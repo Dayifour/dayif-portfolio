@@ -1,53 +1,22 @@
-/* eslint-disable @next/next/no-img-element */
+import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Code, LucideIcon, Rss, StickyNote } from "lucide-react";
+import { Layers3, LucideIcon, ShieldCheck, Video } from "lucide-react";
 import Link from "next/link";
-import { ContactCard } from "./ContactCard";
 import { Section } from "./Section";
 
 export const Status = () => {
   return (
-    <Section className="flex max-md:flex-col items-start gap-4">
-      <div className="flex-[3] w-full">
-        <Card className="flex-[3] w-full p-4 flex flex-col gap-2">
-          <p className="text-lg text-muted-foreground">Side, fun project.</p>
-          <div className="flex flex-col gap-4">
-            {SIDE_PROJECTS.map((project, index) => (
-              <SideProject
-                key={index}
-                Logo={project.Logo}
-                title={project.title}
-                description={project.description}
-                url="/"
-              />
-            ))}
-          </div>
-        </Card>
-      </div>
-      <div className="flex-[2] w-full flex flex-col gap-4 h-full">
-        <Card className="p-4 flex-1">
-          <p className="text-lg text-muted-foreground">Work</p>
-          <p className="text-lg text-muted-foreground">
-            I love working on projects
-          </p>
-        </Card>
-        <Card className="flex flex-col p-4 flex-1 gap-2">
-          <p className="text-lg text-muted-foreground">Contact me</p>
-          <ContactCard
-            url="mailto:sekoudayifourouk@gmail.com"
-            name="Sékou Dayifour"
-            image="https://lh3.googleusercontent.com/a/ACg8ocLGIqhX10Of3b-3BJvCZ4GpVyHYKuD_YKaZn_gfQnRBZaskXMQ=s360-c-no"
-            mediumImage="https://cdn-icons-png.flaticon.com/128/5968/5968534.png"
-            description="contact me"
-          />
-          <ContactCard
-            url="https://wa.me/22379994640?text=Salut!"
-            name="Sékou Dayifour"
-            image="https://th.bing.com/th/id/OIP.I3QqeH2JKSF72phdrza7LQAAAA?rs=1&pid=ImgDetMain&w=180&h=180&c=7&dpr=1.3"
-            mediumImage="https://cdn-icons-png.flaticon.com/128/15713/15713434.png"
-            description="contact me"
-          />
-        </Card>
+    <Section id="projects" className="flex flex-col items-start gap-4">
+      <Badge variant="outline">Projects</Badge>
+      <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+        High-impact product engineering
+      </h2>
+      <div className="grid w-full gap-4 md:grid-cols-2">
+        {SIDE_PROJECTS.map((project) => (
+          <Card key={project.title} className="h-full border-border/60 bg-card/50 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
+            <SideProject {...project} />
+          </Card>
+        ))}
       </div>
     </Section>
   );
@@ -55,64 +24,110 @@ export const Status = () => {
 
 const SIDE_PROJECTS: SideProjectProps[] = [
   {
-    Logo: Rss, // Remplacez par le chemin vers l'icône de calendrier
-    title: "E-learning",
+    Logo: Layers3,
+    title: "SUGUBA Marketplace",
     description:
-      "About Interactive Learning Hub – A modern e-learning platform for seamless course management, student progress tracking, interactive discussions, and assessments. 🚀📚",
-    url: "https://github.com/Dayifour/e-learning",
+      "A high-concurrency multi-tenant marketplace built with Next.js, NestJS microservices, PostgreSQL, Redis, and Docker.",
+    impact:
+      "Designed a scalable database schema to handle thousands of concurrent product listings.",
+    caseStudy: {
+      challenge:
+        "Support high write/read traffic across tenant-isolated product catalogs without latency spikes.",
+      architecture:
+        "Introduced modular service boundaries, indexed query paths, and Redis-backed hot-path caching for listing and search requests.",
+      result:
+        "Improved catalog responsiveness under concurrent load and reduced query pressure on core tables.",
+    },
+    url: "https://github.com/Dayifour",
   },
   {
-    Logo: Code, // Remplacez par le chemin vers l'icône de plume
+    Logo: Video,
     title: "Video_downloader",
     description:
-      "Next.js web application for downloading YouTube videos by specifying the URL and desired quality, using yt-dlp to fetch download links through an intuitive interface.",
+      "Performance-oriented download tooling using yt-dlp integration, stream handling, and resilient error flows.",
+    impact:
+      "Improved download reliability and response consistency across multiple video quality paths.",
+    caseStudy: {
+      challenge:
+        "Handle unstable upstream media responses while keeping UX simple and resilient.",
+      architecture:
+        "Used yt-dlp orchestration with controlled stream handling and defensive fallback flows for unsupported formats.",
+      result:
+        "Raised successful completion rates and reduced user-facing failures in edge cases.",
+    },
     url: "https://github.com/Dayifour/video_downloader",
   },
   {
-    Logo: StickyNote, // Remplacez par le chemin vers l'icône de casserole
-    title: "My-next-blog",
+    Logo: ShieldCheck,
+    title: "ITAK Management Platform",
     description:
-      "Personal blog built with Next.js, featuring dynamic content, sleek design, and modern web development practices. Follow along as I share my journey, insights, and projects!",
-    url: "https://github.com/Dayifour/my-next-blog",
+      "Resource management platform with analytics dashboards, secure authentication, and operational workflows.",
+    impact:
+      "Reduced manual tracking overhead through centralized visibility and role-based access flows.",
+    caseStudy: {
+      challenge:
+        "Unify fragmented operations and enforce secure access for different user roles.",
+      architecture:
+        "Implemented RBAC-aware modules, dashboard aggregation pipelines, and clear workflow boundaries per actor.",
+      result:
+        "Lowered operational friction and improved decision-making through centralized analytics visibility.",
+    },
+    url: "https://github.com/Dayifour",
   },
-
-  // {
-  //   Logo: MessageCircle, // Remplacez par le chemin vers l'icône de liste de choses à faire
-  //   title: "Chat2Code",
-  //   description: "Un outil simple pour organiser vos tâches et vos projets.",
-  //   url: "/",
-  // },
-  // {
-  //   Logo: Weight, // Remplacez par le chemin vers l'icône de liste de choses à faire
-  //   title: "LinkedLeads",
-  //   description: "Un outil simple pour organiser vos tâches et vos projets.",
-  //   url: "/",
-  // },
 ];
 
 type SideProjectProps = {
   Logo: LucideIcon;
   title: string;
   description: string;
+  impact: string;
+  caseStudy: {
+    challenge: string;
+    architecture: string;
+    result: string;
+  };
   url: string;
 };
 
 const SideProject = (props: SideProjectProps) => {
   return (
-    <Link
-      href={props.url}
-      aria-label={`Voir le projet ${props.title}`}
-      target={props.url.startsWith("http") ? "_blank" : undefined}
-      rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded"
-    >
+    <div className="inline-flex flex-col items-start gap-3 rounded-md p-1">
+      <Link
+        href={props.url}
+        aria-label={`Voir le projet ${props.title}`}
+        target={props.url.startsWith("http") ? "_blank" : undefined}
+        rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="inline-flex items-start gap-4 rounded-md transition-colors hover:bg-accent/20"
+      >
       <span className="bg-accent text-accent-foreground p-3 rounded-sm">
         <props.Logo size={16} />
       </span>
       <div>
         <p className="text-lg font-semibold">{props.title}</p>
         <p className="text-sm text-muted-foreground">{props.description}</p>
+        <p className="mt-2 text-xs text-primary/90">Impact: {props.impact}</p>
       </div>
-    </Link>
+      </Link>
+
+      <details className="w-full rounded-md border border-border/60 bg-background/40 p-3 text-sm">
+        <summary className="cursor-pointer select-none font-medium text-primary">
+          View case study
+        </summary>
+        <div className="mt-3 space-y-2 text-muted-foreground">
+          <p>
+            <span className="font-medium text-foreground">Challenge:</span>{" "}
+            {props.caseStudy.challenge}
+          </p>
+          <p>
+            <span className="font-medium text-foreground">Architecture:</span>{" "}
+            {props.caseStudy.architecture}
+          </p>
+          <p>
+            <span className="font-medium text-foreground">Result:</span>{" "}
+            {props.caseStudy.result}
+          </p>
+        </div>
+      </details>
+    </div>
   );
 };

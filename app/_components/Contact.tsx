@@ -5,41 +5,62 @@ import { Section } from "./Section";
 export const Contact = () => {
   const contactCardDetails = [
     {
-      className: "flex-1",
+      className: "h-full",
       url: "mailto:sekoudayifourouk@gmail.com",
-      name: "me@gmail.com",
-      image:
-        "https://lh3.googleusercontent.com/a/ACg8ocLGIqhX10Of3b-3BJvCZ4GpVyHYKuD_YKaZn_gfQnRBZaskXMQ=s360-c-no",
+      name: "Email",
+      description: "sekoudayifourouk@gmail.com",
+      image: "/dayif.png",
       mediumImage: "https://cdn-icons-png.flaticon.com/128/5968/5968534.png",
-      description: "contact me",
     },
     {
-      className: "flex-1",
+      className: "h-full",
       url: "https://wa.me/22379994640?text=Salut!",
-      name: "Manager",
-      image:
-        "https://th.bing.com/th/id/OIP.I3QqeH2JKSF72phdrza7LQAAAA?rs=1&pid=ImgDetMain&w=180&h=180&c=7&dpr=1.3",
+      name: "WhatsApp",
+      description: "Fast responses for project discussions",
+      image: "/dayif.png",
       mediumImage: "https://cdn-icons-png.flaticon.com/128/15713/15713434.png",
-      description: "contact me",
     },
     {
-      className: "flex-1",
+      className: "h-full",
       url: "https://telegram.me/managerdayif?text=Salut!",
-      name: "@managerdayif",
-      image:
-        "https://th.bing.com/th/id/OIP.OyF4mXsxEUGfDqTEBlq6SAAAAA?pid=ImgDet&w=180&h=180&c=7&dpr=1.3",
+      name: "Telegram",
+      description: "@managerdayif",
+      image: "/dayif.png",
       mediumImage: "https://cdn-icons-png.flaticon.com/128/5968/5968804.png",
-      description: "contact me",
+    },
+    {
+      className: "h-full",
+      url: "https://linkedin.com/in/dayifour",
+      name: "LinkedIn",
+      description: "Professional profile and experience",
+      image: "/dayif.png",
+      mediumImage: "https://cdn-icons-png.flaticon.com/128/3536/3536505.png",
+    },
+    {
+      className: "h-full",
+      url: "https://github.com/Dayifour",
+      name: "GitHub",
+      description: "Code, open-source work, and experiments",
+      image: "/dayif.png",
+      mediumImage: "/logos/github.svg",
+    },
+    {
+      className: "h-full",
+      url: "https://twitter.com/dayifour",
+      name: "X / Twitter",
+      description: "Technical insights and updates",
+      image: "/dayif.png",
+      mediumImage: "/logos/x.svg",
     },
   ];
+
   return (
-    <Section className="flex flex-col items-start gap-4">
+    <Section id="contact" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Contact</Badge>
       <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        I will be happy to work with you.
+        Let&apos;s build your next product milestone
       </h2>
-      <div className="flex max-md:flex-col gap-4 w-full"></div>
-      <div className="flex max-md:flex-col gap-4">
+      <div className="grid w-full gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
         {contactCardDetails.map((props, idx) => (
           <ContactCard key={idx} {...props} />
         ))}
