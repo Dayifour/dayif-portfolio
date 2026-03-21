@@ -1,6 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { ArrowUpRight, Layers3, LucideIcon, ShieldCheck, Video } from "lucide-react";
+import {
+  ArrowUpRight,
+  Layers3,
+  LucideIcon,
+  ShieldCheck,
+  Video,
+} from "lucide-react";
 import Link from "next/link";
 import { Section } from "./Section";
 
@@ -72,7 +78,9 @@ export const Status = () => {
               <Link
                 href={featuredProject.url}
                 aria-label={`View project ${featuredProject.title}`}
-                target={featuredProject.url.startsWith("http") ? "_blank" : undefined}
+                target={
+                  featuredProject.url.startsWith("http") ? "_blank" : undefined
+                }
                 rel={
                   featuredProject.url.startsWith("http")
                     ? "noopener noreferrer"
@@ -103,11 +111,15 @@ export const Status = () => {
                 </summary>
                 <div className="mt-3 space-y-2.5 text-muted-foreground">
                   <p>
-                    <span className="font-medium text-foreground">Challenge:</span>{" "}
+                    <span className="font-medium text-foreground">
+                      Challenge:
+                    </span>{" "}
                     {featuredProject.caseStudy.challenge}
                   </p>
                   <p>
-                    <span className="font-medium text-foreground">Architecture:</span>{" "}
+                    <span className="font-medium text-foreground">
+                      Architecture:
+                    </span>{" "}
                     {featuredProject.caseStudy.architecture}
                   </p>
                   <p>
@@ -123,8 +135,15 @@ export const Status = () => {
 
       <div className="section-grid md:grid-cols-2">
         {otherProjects.map((project, index) => (
-          <Card key={project.title} className="surface-card h-full border-border/70 p-6">
-            <SideProject accent={PROJECT_ACCENT} index={index + 2} {...project} />
+          <Card
+            key={project.title}
+            className="surface-card h-full border-border/70 p-6"
+          >
+            <SideProject
+              accent={PROJECT_ACCENT}
+              index={index + 2}
+              {...project}
+            />
           </Card>
         ))}
       </div>
@@ -217,7 +236,9 @@ const SideProject = ({
 }) => {
   return (
     <div className="flex h-full w-full flex-col gap-4">
-      <div className={`h-px w-full bg-gradient-to-r from-transparent ${accent.topLine} to-transparent`} />
+      <div
+        className={`h-px w-full bg-gradient-to-r from-transparent ${accent.topLine} to-transparent`}
+      />
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
@@ -230,12 +251,16 @@ const SideProject = ({
             {props.role}
           </p>
         </div>
-        <span className={`rounded-lg border bg-background/30 p-2.5 ${accent.icon}`}>
+        <span
+          className={`rounded-lg border bg-background/30 p-2.5 ${accent.icon}`}
+        >
           <props.Logo size={15} />
         </span>
       </div>
 
-      <p className="text-sm leading-relaxed text-muted-foreground">{props.description}</p>
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        {props.description}
+      </p>
 
       <div>
         <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
@@ -275,7 +300,9 @@ const SideProject = ({
         </Link>
       </div>
 
-      <details className={`w-full rounded-xl border px-4 py-3 text-sm ${accent.details}`}>
+      <details
+        className={`w-full rounded-xl border px-4 py-3 text-sm ${accent.details}`}
+      >
         <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
           View case study
         </summary>

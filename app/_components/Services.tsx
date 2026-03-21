@@ -10,7 +10,8 @@ const SERVICES = [
     title: "Systems Architecture",
     description:
       "Event-driven microservices, resilient API contracts, and database optimization for scale.",
-    outcome: "Reliable foundations for high-throughput, multi-service products.",
+    outcome:
+      "Reliable foundations for high-throughput, multi-service products.",
     points: [
       "NestJS microservices",
       "REST/GraphQL APIs",
@@ -23,7 +24,8 @@ const SERVICES = [
     title: "Product Engineering",
     description:
       "Building 0-to-1 products with Next.js and TypeScript, focused on performance and SEO outcomes.",
-    outcome: "Faster iteration cycles with measurable web performance improvements.",
+    outcome:
+      "Faster iteration cycles with measurable web performance improvements.",
     points: [
       "Next.js App Router",
       "Core Web Vitals (Lighthouse 95+)",
@@ -36,7 +38,8 @@ const SERVICES = [
     title: "Cloud and DevOps",
     description:
       "Production pipelines, serverless execution, and infrastructure reliability.",
-    outcome: "Stable delivery flow from code to production with fewer release risks.",
+    outcome:
+      "Stable delivery flow from code to production with fewer release risks.",
     points: [
       "Docker and Linux VPS",
       "GitHub Actions CI/CD",
@@ -103,7 +106,10 @@ export const Expertise = () => {
                       key={point}
                       className="flex items-start gap-2 text-sm text-foreground/90"
                     >
-                      <Check size={14} className="mt-[2px] shrink-0 text-primary" />
+                      <Check
+                        size={14}
+                        className="mt-[2px] shrink-0 text-primary"
+                      />
                       <span>{point}</span>
                     </li>
                   ))}
