@@ -30,6 +30,7 @@ export const Hero = () => {
           <span className="chip">Performance-focused</span>
           <span className="chip">Cloud-native</span>
         </div>
+
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="https://github.com/Dayifour"

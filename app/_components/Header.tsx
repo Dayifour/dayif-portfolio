@@ -83,7 +83,7 @@ export const Header = () => {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-border/50 bg-background/80 py-3 backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-border/50 bg-background/82 py-3 backdrop-blur-xl"
       role="banner"
     >
       <Section className="!max-w-6xl flex items-center justify-between gap-3">
@@ -91,7 +91,7 @@ export const Header = () => {
           <p className="text-lg font-bold tracking-tight text-foreground">
             Sekou Dayifourou KEITA
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
             Full-Stack Software Engineer
           </p>
         </div>
@@ -108,7 +108,7 @@ export const Header = () => {
                   }
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "sm" }),
-                    "whitespace-nowrap text-xs text-muted-foreground hover:text-primary",
+                    "whitespace-nowrap rounded-md text-xs text-muted-foreground hover:text-primary",
                     activeSection === item.href.slice(1) &&
                       "bg-primary/15 text-primary",
                   )}
@@ -164,7 +164,7 @@ export const Header = () => {
                   }
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "sm" }),
-                    "w-full justify-start text-sm text-muted-foreground hover:text-primary",
+                    "w-full justify-start rounded-md text-sm text-muted-foreground hover:text-primary",
                     activeSection === item.href.slice(1) &&
                       "bg-primary/15 text-primary",
                   )}

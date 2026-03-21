@@ -22,6 +22,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "ghchart.rshah.org",
       },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+      },
     ],
   },
   async headers() {

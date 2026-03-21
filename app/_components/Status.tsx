@@ -11,12 +11,11 @@ import Link from "next/link";
 import { Section } from "./Section";
 
 const PROJECT_ACCENT = {
-  topLine: "via-primary/45",
-  icon: "border-primary/30 bg-primary/10 text-primary",
-  chip: "border-primary/30 bg-primary/10 text-foreground/90",
-  impact: "border-primary/40 bg-primary/5",
-  details: "border-primary/25 bg-primary/5",
-  link: "hover:text-primary",
+  icon: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.16),hsl(var(--accent)/0.1))] text-foreground/95",
+  chip: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.14),hsl(var(--accent)/0.08))] text-foreground/90",
+  impact: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),hsl(var(--accent)/0.06))]",
+  details: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.08),hsl(var(--accent)/0.05))]",
+  link: "hover:text-accent",
 } as const;
 
 export const Status = () => {
@@ -34,10 +33,8 @@ export const Status = () => {
 
       {featuredProject && (
         <Card className="surface-card relative w-full overflow-hidden border-border/70 bg-card/70 p-0">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_8%,hsl(var(--primary)/0.14),transparent_44%),radial-gradient(circle_at_92%_12%,hsl(var(--accent)/0.12),transparent_42%)]" />
-          <div
-            className={`h-px w-full bg-gradient-to-r from-transparent ${featuredAccent.topLine} to-transparent`}
-          />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_8%,hsl(var(--primary)/0.1),transparent_44%),radial-gradient(circle_at_92%_12%,hsl(var(--accent)/0.08),transparent_42%)]" />
+          <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
           <div className="grid lg:grid-cols-[1.3fr_0.9fr]">
             <div className="space-y-5 p-6 sm:p-8">
               <div className="flex items-center gap-3">
@@ -236,9 +233,7 @@ const SideProject = ({
 }) => {
   return (
     <div className="flex h-full w-full flex-col gap-4">
-      <div
-        className={`h-px w-full bg-gradient-to-r from-transparent ${accent.topLine} to-transparent`}
-      />
+      <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
@@ -282,7 +277,7 @@ const SideProject = ({
         <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
           Impact
         </p>
-        <p className="mt-1.5 border-l border-foreground/25 pl-3 text-sm leading-relaxed text-foreground/88">
+        <p className="mt-1.5 border-l border-accent/40 pl-3 text-sm leading-relaxed text-foreground/88">
           {props.impact}
         </p>
       </div>

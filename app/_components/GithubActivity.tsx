@@ -62,8 +62,10 @@ export const GithubActivity = () => {
       <p className="section-lead">
         Real contribution history, styled to match the product visual language.
       </p>
+
       <div className="w-full animate-enter">
         <div className="surface-card mx-auto w-full max-w-5xl overflow-hidden rounded-2xl">
+          <div className="bi-tone-line" />
           <div className="bg-gradient-to-br from-primary/5 to-accent/5 px-3 py-4 sm:px-5 sm:py-5">
             <div
               ref={containerRef}

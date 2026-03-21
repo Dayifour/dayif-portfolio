@@ -1,0 +1,14 @@
+<svg width="160" height="140" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgLinkedin" x1="0" y1="0" x2="160" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A3556"/>
+      <stop offset="1" stop-color="#1F2C43"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="140" rx="16" fill="url(#bgLinkedin)"/>
+  <rect x="20" y="34" width="120" height="72" rx="10" fill="#0B1627" fill-opacity="0.55" stroke="#93C5FD" stroke-opacity="0.4"/>
+  <rect x="35" y="58" width="10" height="30" rx="2" fill="#93C5FD"/>
+  <circle cx="40" cy="50" r="5" fill="#93C5FD"/>
+  <path d="M58 88V58H68V62.2C71.2 58.6 75.4 57 80.6 57C91.4 57 98 64.4 98 76.6V88H88V78.8C88 72.4 84.6 68.8 79 68.8C72.8 68.8 68 73 68 79.8V88H58Z" fill="#93C5FD"/>
+  <text x="20" y="123" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="12" letter-spacing="1.2">LINKEDIN PROFILE</text>
+</svg>
