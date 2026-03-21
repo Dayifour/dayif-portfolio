@@ -25,7 +25,7 @@ export const ContactCard = (props: ContactCardProps) => {
       rel={isExternal ? "noopener noreferrer" : undefined}
       className={cn("w-full h-full", props.className)}
     >
-      <Card className="h-full min-h-28 p-3 bg-accent/10 hover:bg-accent/30 transition-colors group flex items-center gap-3">
+      <Card className="group flex h-full min-h-32 items-center gap-3 border-border/60 bg-card/50 p-3 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
         <div className="relative w-10 h-10 shrink-0">
           <Image
             src={props.image}
@@ -44,9 +44,9 @@ export const ContactCard = (props: ContactCardProps) => {
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <p className="text-lg font-semibold">{props.name}</p>
+            <p className="text-base font-semibold">{props.name}</p>
           </div>
-          <p className="text-xs text-muted-foreground">{props.description}</p>
+          <p className="text-xs leading-relaxed text-muted-foreground">{props.description}</p>
         </div>
         <ArrowUpRight
           size={16}

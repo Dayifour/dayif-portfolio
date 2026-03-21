@@ -42,7 +42,7 @@ export const Contact = () => {
       name: "GitHub",
       description: "Code, open-source work, and experiments",
       image: "/dayif.png",
-      mediumImage: "https://cdn-icons-png.flaticon.com/128/25/25231.png",
+      mediumImage: "/logos/github.svg",
     },
     {
       className: "h-full",
@@ -50,7 +50,7 @@ export const Contact = () => {
       name: "X / Twitter",
       description: "Technical insights and updates",
       image: "/dayif.png",
-      mediumImage: "https://cdn-icons-png.flaticon.com/128/5968/5968830.png",
+      mediumImage: "/logos/x.svg",
     },
   ];
 

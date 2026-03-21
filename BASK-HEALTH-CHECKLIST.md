@@ -11,7 +11,7 @@
 
 Use a short message that references their stack and your direct relevance:
 
-"I am a Full-Stack Software Engineer focused on TypeScript/Next.js systems and distributed architecture. I have contributed to open-source projects with production constraints, including Cloudflare-related work and a11y-heavy platform refactors. Your SST + Next.js stack aligns directly with how I build and ship product systems." 
+"I am a Full-Stack Software Engineer focused on TypeScript/Next.js systems and distributed architecture. I have contributed to open-source projects with production constraints, including Cloudflare-related work and a11y-heavy platform refactors. Your SST + Next.js stack aligns directly with how I build and ship product systems."
 
 ## Proof to Send
 

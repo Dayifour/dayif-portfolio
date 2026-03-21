@@ -18,10 +18,12 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card" role="contentinfo">
-      <Section className="py-10 grid w-full gap-8 md:grid-cols-3">
+    <footer className="mt-4 border-t border-border/60 bg-card/40" role="contentinfo">
+      <Section className="grid w-full gap-8 py-10 md:grid-cols-3">
         <div className="space-y-2">
-          <p className="text-lg font-semibold text-primary">Sekou Dayifourou KEITA</p>
+          <p className="text-lg font-semibold text-primary">
+            Sekou Dayifourou KEITA
+          </p>
           <p className="text-sm text-muted-foreground">
             Full-Stack Software Engineer building high-performance, type-safe
             systems for product startups.
@@ -34,7 +36,10 @@ export const Footer = () => {
           <ul className="space-y-1">
             {quickLinks.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-sm text-muted-foreground hover:text-primary">
+                <Link
+                  href={item.href}
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
                   {item.label}
                 </Link>
               </li>
@@ -51,7 +56,7 @@ export const Footer = () => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
                   {item.label}
                 </Link>

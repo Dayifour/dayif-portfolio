@@ -1,27 +1,27 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { Code } from "./Code";
+import { ContributedLogos } from "./ContributedLogos";
 import { Section } from "./Section";
 
 export const Hero = () => {
   return (
-    <Section id="about" className="flex max-md:flex-col items-start gap-6">
-      <div className="flex-[3] w-full flex flex-col gap-2">
-        <h1 className="font-caption font-bold text-5xl text-primary">
+    <Section id="about" className="flex flex-col items-start gap-6">
+      <div className="w-full rounded-2xl border border-border/60 bg-card/40 p-6 shadow-sm backdrop-blur-sm">
+        <h1 className="font-caption font-bold text-5xl text-primary leading-tight">
           Sekou Dayifourou KEITA
         </h1>
-        <h2 className="text-2xl font-caption leading-snug">
+        <h2 className="mt-2 text-2xl font-caption leading-snug">
           Full-Stack Software Engineer specializing in TypeScript, Next.js, and
           Distributed Systems.
         </h2>
-        <p className="text-base leading-relaxed">
+        <p className="mt-3 max-w-3xl text-base leading-relaxed">
           Contributor to <Code>Cloudflare</Code>, <Code>npmx</Code>, and
           <Code>iii-hq</Code>. Building high-performance, type-safe
           architectures from 0 to 1.
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
+        <div className="mt-5 flex flex-wrap gap-3">
           <Link
             href="#contact"
             className={buttonVariants({ variant: "default" })}
@@ -35,17 +35,12 @@ export const Hero = () => {
             View Open Source Impact
           </Link>
         </div>
-      </div>
-      <div className="flex-[2] max-md:m-auto round ml-auto">
-        <Image
-          src="/dayif.png"
-          width={300}
-          height={300}
-          priority
-          loading="eager"
-          className="w-full h-auto max-w-xs rounded-full object-cover max-md:w-56"
-          alt="Sekou Dayifourou Keita portrait"
-        />
+        <div className="mt-5">
+          <p className="mb-2 text-xs uppercase tracking-wider text-muted-foreground">
+            Contributed Companies
+          </p>
+          <ContributedLogos />
+        </div>
       </div>
     </Section>
   );

@@ -27,11 +27,55 @@
   }
 }
 
+@layer components {
+  .surface-card {
+    @apply border border-border/60 bg-card/55 shadow-sm backdrop-blur-sm transition-all duration-300;
+  }
+
+  .motion-lift {
+    @apply hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_16px_40px_hsl(var(--primary)/0.12)];
+  }
+
+  .animate-enter {
+    animation: enter-up 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-enter {
+    animation: none;
+  }
+
+  .motion-lift {
+    transform: none;
+  }
+}
+
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at 15% 20%, hsl(216 30% 24% / 0.3), transparent 35%),
+      radial-gradient(circle at 85% 0%, hsl(219 30% 26% / 0.25), transparent 30%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: hsl(var(--foreground));
   }
 }

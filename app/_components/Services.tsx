@@ -45,7 +45,7 @@ export const Expertise = () => {
       </h2>
       <div className="grid w-full gap-4 md:grid-cols-3">
         {SERVICES.map((service) => (
-          <Card key={service.title} className="p-4">
+          <Card key={service.title} className="h-full border-border/60 bg-card/50 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
             <h3 className="text-lg font-semibold">{service.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               {service.description}

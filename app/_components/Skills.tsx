@@ -42,11 +42,11 @@ export const Skills = () => {
       </h2>
       <div className="grid w-full gap-4 md:grid-cols-2">
         {SKILL_GROUPS.map((group) => (
-          <Card key={group.title} className="p-4">
+          <Card key={group.title} className="h-full border-border/60 bg-card/50 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
             <h3 className="text-xl font-semibold">{group.title}</h3>
             <ul className="mt-3 space-y-2">
               {group.items.map((item) => (
-                <li key={item} className="text-sm text-muted-foreground">
+                <li key={item} className="text-sm text-muted-foreground leading-relaxed">
                   {item}
                 </li>
               ))}
