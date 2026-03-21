@@ -42,13 +42,13 @@ export const Expertise = () => {
   return (
     <Section id="expertise" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Expertise</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl">
+      <h2 className="section-title">
         Engineering systems that scale
       </h2>
-      <p className="max-w-2xl text-base text-muted-foreground">
+      <p className="section-lead">
         End-to-end ownership from architecture choices to production delivery.
       </p>
-      <div className="grid w-full gap-4 md:grid-cols-3">
+      <div className="section-grid md:grid-cols-2 xl:grid-cols-3">
         {SERVICES.map((service) => (
           <Card
             key={service.title}
@@ -63,10 +63,10 @@ export const Expertise = () => {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {service.description}
             </p>
-            <ul className="mt-5 space-y-2 border-t border-border/60 pt-4">
+            <ul className="mt-5 divide-y divide-border/45 rounded-md border border-border/45 bg-background/30">
               {service.points.map((point) => (
-                <li key={point} className="text-sm text-foreground/90">
-                  • {point}
+                <li key={point} className="px-3 py-2 text-sm text-foreground/90">
+                  {point}
                 </li>
               ))}
             </ul>

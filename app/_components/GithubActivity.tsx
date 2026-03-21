@@ -10,10 +10,10 @@ export const GithubActivity = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [calendarConfig, setCalendarConfig] = useState({
-    blockSize: 10,
-    blockMargin: 3,
+    blockSize: 9,
+    blockMargin: 2,
     fontSize: 11,
-    showWeekdayLabels: true as boolean,
+    showWeekdayLabels: false as boolean,
   });
 
   useEffect(() => {
@@ -24,20 +24,19 @@ export const GithubActivity = () => {
       const width = container.clientWidth;
       if (!width) return;
 
-      const small = width < 560;
-      const blockMargin = small ? 2 : 3;
-      const sideLabelsWidth = small ? 0 : 28;
-      const usable = Math.max(200, width - sideLabelsWidth - 10);
+      const compact = width < 560;
+      const blockMargin = compact ? 1 : 2;
+      const usable = Math.max(190, width - 2);
 
       // 53 weeks + 52 margins for a full-year heatmap
       const computedBlock = Math.floor((usable - 52 * blockMargin) / 53);
-      const blockSize = Math.max(5, Math.min(computedBlock, 13));
+      const blockSize = Math.max(4, Math.min(computedBlock, 22));
 
       setCalendarConfig({
         blockSize,
         blockMargin,
-        fontSize: small ? 10 : 11,
-        showWeekdayLabels: !small,
+        fontSize: compact ? 9 : 10,
+        showWeekdayLabels: false,
       });
     };
 
@@ -59,19 +58,21 @@ export const GithubActivity = () => {
   return (
     <Section id="github-activity" className="flex flex-col items-start gap-4">
       <Badge variant="outline">GitHub Activity</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl">
+      <h2 className="section-title">
         Daily contribution signal
       </h2>
-      <p className="max-w-2xl text-base text-muted-foreground">
+      <p className="section-lead">
         Real contribution history, styled to match the product visual language.
       </p>
       <div className="w-full animate-enter">
-        <div
-          ref={containerRef}
-          className="surface-card w-full overflow-hidden rounded-2xl p-4 sm:p-5"
-        >
-          <div className="[&_article]:w-full [&_article]:max-w-full [&_article_svg]:w-full [&_rect]:rounded-[3px]">
+        <div className="surface-card mx-auto w-full max-w-5xl overflow-hidden rounded-2xl">
+          <div className="bg-gradient-to-br from-primary/5 to-accent/5 px-3 py-4 sm:px-5 sm:py-5">
+            <div
+              ref={containerRef}
+              className="w-full [&_article]:w-full [&_article]:max-w-none [&_article_svg]:h-auto [&_article_svg]:w-full [&_article_text]:fill-muted-foreground [&_rect]:rounded-[4px] [&_rect]:stroke-background [&_rect]:stroke-[0.4]"
+            >
             <GitHubCalendar
+              className="github-calendar"
               username="Dayifour"
               showColorLegend={false}
               showMonthLabels
@@ -89,6 +90,7 @@ export const GithubActivity = () => {
                 totalCount: "{{count}} contributions in the last year",
               }}
             />
+            </div>
           </div>
         </div>
         <p className="mt-3 text-sm text-muted-foreground">

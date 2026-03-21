@@ -7,7 +7,7 @@
     --background: 220 17% 12%;
     --foreground: 219 30% 88%;
     --muted: 216 12% 19%;
-    --muted-foreground: 218 20% 72%;
+    --muted-foreground: 218 18% 76%;
     --popover: 220 18% 10%;
     --popover-foreground: 219 18% 81%;
     --card: 220 16% 14%;
@@ -61,6 +61,34 @@
 
   .section-kicker {
     @apply text-xs font-semibold uppercase tracking-[0.18em] text-primary/80;
+  }
+
+  .section-title {
+    @apply pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl lg:text-[2.55rem] lg:leading-[1.08];
+  }
+
+  .section-lead {
+    @apply max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg;
+  }
+
+  .section-grid {
+    @apply grid w-full gap-5;
+  }
+
+  .github-calendar .react-activity-calendar__scroll-container {
+    overflow-x: hidden !important;
+    padding-top: 0 !important;
+  }
+
+  .github-calendar svg {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .github-calendar text {
+    fill: hsl(var(--muted-foreground));
+    font-weight: 500;
   }
 }
 

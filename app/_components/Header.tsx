@@ -4,7 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Section } from "./Section";
 
 const navLinks = [
@@ -24,18 +24,25 @@ export const Header = () => {
     navSectionIds[0] ?? "about",
   );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const manualSelectionUntilRef = useRef(0);
 
   useEffect(() => {
     const getCurrentSection = () => {
       const headerOffset = 120;
-      const scrollY = window.scrollY + headerOffset;
+      const scrollY = window.scrollY;
 
       let current = navSectionIds[0] ?? "about";
+
+      if (
+        window.innerHeight + Math.ceil(scrollY) >=
+        document.documentElement.scrollHeight
+      ) {
+        return navSectionIds[navSectionIds.length - 1] ?? current;
+      }
+
       for (const id of navSectionIds) {
         const el = document.getElementById(id);
         if (!el) continue;
-        if (el.offsetTop <= scrollY) {
+        if (el.offsetTop - headerOffset <= scrollY) {
           current = id;
         }
       }
@@ -48,10 +55,6 @@ export const Header = () => {
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(() => {
-        if (Date.now() < manualSelectionUntilRef.current) {
-          ticking = false;
-          return;
-        }
         const next = getCurrentSection();
         setActiveSection((prev) => (prev === next ? prev : next));
         ticking = false;
@@ -99,10 +102,7 @@ export const Header = () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  onClick={() => {
-                    manualSelectionUntilRef.current = Date.now() + 1200;
-                    setActiveSection(item.href.slice(1));
-                  }}
+                  onClick={() => setActiveSection(item.href.slice(1))}
                   aria-current={
                     activeSection === item.href.slice(1) ? "page" : undefined
                   }
@@ -156,7 +156,6 @@ export const Header = () => {
                 <Link
                   href={item.href}
                   onClick={() => {
-                    manualSelectionUntilRef.current = Date.now() + 1200;
                     setActiveSection(item.href.slice(1));
                     setIsMobileMenuOpen(false);
                   }}

@@ -37,13 +37,13 @@ export const Skills = () => {
   return (
     <Section id="skills" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Skills</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl">
+      <h2 className="section-title">
         Stack optimized for product startups
       </h2>
-      <p className="max-w-2xl text-base text-muted-foreground">
+      <p className="section-lead">
         Practical tools used in production, not a keyword list.
       </p>
-      <div className="grid w-full gap-4 md:grid-cols-2">
+      <div className="section-grid md:grid-cols-2">
         {SKILL_GROUPS.map((group) => (
           <Card
             key={group.title}
@@ -57,10 +57,10 @@ export const Skills = () => {
                 {group.items.length} tools
               </span>
             </div>
-            <ul className="mt-4 grid gap-2 border-t border-border/60 pt-4">
+            <ul className="mt-4 divide-y divide-border/40 rounded-md border border-border/45 bg-background/25">
               {group.items.map((item) => (
-                <li key={item} className="text-sm text-foreground/90">
-                  • {item}
+                <li key={item} className="px-3 py-2 text-sm text-foreground/90">
+                  {item}
                 </li>
               ))}
             </ul>

@@ -8,16 +8,17 @@ export const Status = () => {
   return (
     <Section id="projects" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Projects</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl">
-        High-impact product engineering
-      </h2>
-      <div className="grid w-full gap-5 md:grid-cols-2">
-        {SIDE_PROJECTS.map((project) => (
+      <h2 className="section-title">Selected product work</h2>
+      <p className="section-lead">
+        A concise selection of products with clear architecture choices and practical outcomes.
+      </p>
+      <div className="section-grid md:grid-cols-2 xl:grid-cols-3">
+        {SIDE_PROJECTS.map((project, index) => (
           <Card
             key={project.title}
-            className="surface-card motion-lift h-full p-6"
+            className="surface-card group relative h-full overflow-hidden border-border/70 bg-card/65 p-0"
           >
-            <SideProject {...project} />
+            <SideProject index={index + 1} {...project} />
           </Card>
         ))}
       </div>
@@ -100,56 +101,84 @@ type SideProjectProps = {
   url: string;
 };
 
-const SideProject = (props: SideProjectProps) => {
+const SideProject = ({ index, ...props }: SideProjectProps & { index: number }) => {
   return (
-    <div className="inline-flex flex-col items-start gap-5 rounded-md">
-      <Link
-        href={props.url}
-        aria-label={`Voir le projet ${props.title}`}
-        target={props.url.startsWith("http") ? "_blank" : undefined}
-        rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
-        className="inline-flex w-full items-start gap-4 rounded-lg border border-border/60 bg-background/30 p-4 transition-colors hover:bg-background/45"
-      >
-        <span className="rounded-md bg-secondary/70 p-3 text-primary">
-          <props.Logo size={16} />
-        </span>
-        <div className="w-full space-y-2">
-          <p className="text-xl font-semibold tracking-tight text-foreground">
+    <div className="flex h-full w-full flex-col">
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/45 to-transparent" />
+
+      <div className="flex h-full flex-col gap-5 p-6">
+        <div className="flex w-full items-start justify-between gap-3">
+          <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-full border border-border/70 bg-background/50 px-2 text-xs font-semibold tracking-[0.08em] text-foreground/70">
+            {index.toString().padStart(2, "0")}
+          </span>
+          <span className="rounded-lg border border-border/60 bg-background/35 p-2.5 text-foreground/80 transition-colors duration-300 group-hover:text-foreground">
+            <props.Logo size={15} />
+          </span>
+        </div>
+
+        <div className="space-y-2">
+          <p className="text-[1.1rem] font-semibold tracking-tight text-foreground sm:text-xl">
             {props.title}
           </p>
-          <p className="text-sm text-muted-foreground">{props.role}</p>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className="text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
+            {props.role}
+          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground/95">
             {props.description}
           </p>
-          <p className="text-xs text-foreground/85">
-            <span className="font-medium">Stack:</span> {props.stack}
-          </p>
-          <p className="text-sm text-foreground/90">
-            <span className="font-medium text-primary">Impact:</span>{" "}
-            {props.impact}
-          </p>
         </div>
-      </Link>
 
-      <details className="w-full rounded-lg border border-border/60 bg-background/35 p-4 text-sm">
-        <summary className="cursor-pointer select-none font-medium text-primary hover:text-foreground">
-          View case study
-        </summary>
-        <div className="mt-3 space-y-2 text-muted-foreground">
-          <p>
-            <span className="font-medium text-foreground">Challenge:</span>{" "}
-            {props.caseStudy.challenge}
-          </p>
-          <p>
-            <span className="font-medium text-foreground">Architecture:</span>{" "}
-            {props.caseStudy.architecture}
-          </p>
-          <p>
-            <span className="font-medium text-foreground">Result:</span>{" "}
-            {props.caseStudy.result}
-          </p>
+        <dl className="space-y-3 rounded-lg border border-border/60 bg-background/20 p-4">
+          <div>
+            <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              Stack
+            </dt>
+            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">{props.stack}</dd>
+          </div>
+          <div className="h-px w-full bg-border/60" />
+          <div>
+            <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              Impact
+            </dt>
+            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">{props.impact}</dd>
+          </div>
+        </dl>
+
+        <div className="mt-auto flex w-full items-center justify-between gap-3 border-t border-border/50 pt-4">
+          <Link
+            href={props.url}
+            aria-label={`View project ${props.title}`}
+            target={props.url.startsWith("http") ? "_blank" : undefined}
+            rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:text-primary hover:underline"
+          >
+            Open project repository
+          </Link>
+          <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            Case notes below
+          </span>
         </div>
-      </details>
+
+        <details className="w-full rounded-xl border border-border/60 bg-background/15 px-4 py-3 text-sm">
+          <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
+            View case study
+          </summary>
+          <div className="mt-3 space-y-2.5 text-muted-foreground">
+            <p>
+              <span className="font-medium text-foreground">Challenge:</span>{" "}
+              {props.caseStudy.challenge}
+            </p>
+            <p>
+              <span className="font-medium text-foreground">Architecture:</span>{" "}
+              {props.caseStudy.architecture}
+            </p>
+            <p>
+              <span className="font-medium text-foreground">Result:</span>{" "}
+              {props.caseStudy.result}
+            </p>
+          </div>
+        </details>
+      </div>
     </div>
   );
 };

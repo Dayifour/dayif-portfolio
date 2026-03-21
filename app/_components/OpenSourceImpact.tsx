@@ -32,10 +32,10 @@ export const OpenSourceImpact = () => {
   return (
     <Section id="open-source" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Open Source Impact</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl">
+      <h2 className="section-title">
         Proven contributions on production-grade codebases
       </h2>
-      <div className="grid w-full gap-4 md:grid-cols-3">
+      <div className="section-grid md:grid-cols-3">
         {CONTRIBUTIONS.map((item) => (
           <Card
             key={item.title}
