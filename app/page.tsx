@@ -1,6 +1,6 @@
 import { Contact } from "./_components/Contact";
-import { FeaturedIn } from "./_components/FeaturedIn";
 import { Footer } from "./_components/Footer";
+import { GithubActivity } from "./_components/GithubActivity";
 import { Header } from "./_components/Header";
 import { Hero } from "./_components/Hero";
 import { OpenSourceImpact } from "./_components/OpenSourceImpact";
@@ -18,13 +18,13 @@ export default function Home() {
       <Spacing />
       <OpenSourceImpact />
       <Spacing />
+      <GithubActivity />
+      <Spacing />
       <Status />
       <Spacing />
       <Expertise />
       <Spacing />
       <Skills />
-      <Spacing />
-      <FeaturedIn />
       <Spacing />
       <Contact />
       <Spacing />

@@ -3,13 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
-import { Anek_Telugu } from "next/font/google";
 import "./globals.css";
-
-const AnekTelugu = Anek_Telugu({
-  subsets: ["latin"],
-  variable: "--font-caption",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -71,8 +65,8 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/dayif.png",
+    apple: "/dayif.png",
   },
 
   metadataBase: new URL("https://dayif-portfolio.vercel.app"),
@@ -142,12 +136,11 @@ export default function RootLayout({
         className={cn(
           GeistSans.variable,
           GeistMono.variable,
-          AnekTelugu.variable,
-          "font-sans h-full bg-background text-foreground",
+          "h-full bg-background font-sans text-foreground [--font-caption:var(--font-geist-sans)]",
         )}
       >
         {children}
-        <Analytics />
+        {process.env.NODE_ENV === "production" ? <Analytics /> : null}
       </body>
     </html>
   );

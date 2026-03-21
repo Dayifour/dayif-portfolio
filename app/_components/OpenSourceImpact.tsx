@@ -16,7 +16,7 @@ const CONTRIBUTIONS = [
     title: "npmx.dev",
     description:
       "Led a full accessibility (A11y) refactor. Implemented WAI-ARIA patterns, roving tabindex, and complex keyboard navigation for the registry browser.",
-    logo: "/logos/npmx.svg",
+    logo: "/logos/npmx.png",
     href: "https://github.com/search?q=npmx-dev%2Fnpmx.dev+author%3ADayifour+is%3Apr&type=pullrequests",
   },
   {
@@ -32,21 +32,24 @@ export const OpenSourceImpact = () => {
   return (
     <Section id="open-source" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Open Source Impact</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+      <h2 className="pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl">
         Proven contributions on production-grade codebases
       </h2>
       <div className="grid w-full gap-4 md:grid-cols-3">
         {CONTRIBUTIONS.map((item) => (
-          <Card key={item.title} className="surface-card motion-lift group h-full p-4 animate-enter">
+          <Card
+            key={item.title}
+            className="surface-card motion-lift group h-full p-5 animate-enter"
+          >
             <Image
               src={item.logo}
               alt={`${item.title} logo`}
               width={22}
               height={22}
-              className="h-[22px] w-[22px] grayscale brightness-125"
+              className="h-[24px] w-[24px] rounded-sm"
             />
-            <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <h3 className="mt-3 text-lg font-semibold text-foreground">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {item.description}
             </p>
             <Link

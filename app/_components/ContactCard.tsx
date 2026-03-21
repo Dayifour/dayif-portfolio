@@ -23,30 +23,32 @@ export const ContactCard = (props: ContactCardProps) => {
       aria-label={`Contact via ${props.name}`}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={cn("w-full h-full", props.className)}
+      className={cn("h-full w-full", props.className)}
     >
-      <Card className="group flex h-full min-h-32 items-center gap-3 border-border/60 bg-card/50 p-3 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
-        <div className="relative w-10 h-10 shrink-0">
+      <Card className="surface-card motion-lift group flex h-full min-h-36 items-center gap-4 p-4">
+        <div className="relative h-11 w-11 shrink-0">
           <Image
             src={props.image}
             alt={`Profile image of ${props.name}`}
             width={40}
             height={40}
-            className="w-full h-full rounded-full object-cover"
+            className="h-full w-full rounded-full object-cover"
           />
           <Image
             src={props.mediumImage}
             alt={`${props.name} platform icon`}
             width={16}
             height={16}
-            className="w-4 h-4 absolute -bottom-1 -right-1 rounded-full object-contain"
+            className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full object-contain"
           />
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <p className="text-base font-semibold">{props.name}</p>
+            <p className="text-lg font-semibold text-foreground">{props.name}</p>
           </div>
-          <p className="text-xs leading-relaxed text-muted-foreground">{props.description}</p>
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            {props.description}
+          </p>
         </div>
         <ArrowUpRight
           size={16}

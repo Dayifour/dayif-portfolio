@@ -24,7 +24,7 @@ const SKILL_GROUPS = [
   {
     title: "Infra",
     items: [
-      "AWS (Lambda, SQS, EventBridge)",
+      "AWS (Lambda, EventBridge, SQS)",
       "Docker",
       "PostgreSQL",
       "Redis",
@@ -37,17 +37,31 @@ export const Skills = () => {
   return (
     <Section id="skills" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Skills</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+      <h2 className="pb-2 text-3xl font-semibold tracking-tight text-foreground first:mt-0 sm:text-4xl">
         Stack optimized for product startups
       </h2>
+      <p className="max-w-2xl text-base text-muted-foreground">
+        Practical tools used in production, not a keyword list.
+      </p>
       <div className="grid w-full gap-4 md:grid-cols-2">
         {SKILL_GROUPS.map((group) => (
-          <Card key={group.title} className="h-full border-border/60 bg-card/50 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
-            <h3 className="text-xl font-semibold">{group.title}</h3>
-            <ul className="mt-3 space-y-2">
+          <Card
+            key={group.title}
+            className="surface-card motion-lift h-full p-6"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-xl font-semibold tracking-tight text-foreground">{group.title}</h3>
+              <span className="text-xs uppercase tracking-[0.14em] text-primary/80">
+                {group.items.length} tools
+              </span>
+            </div>
+            <ul className="mt-4 grid gap-2 border-t border-border/60 pt-4">
               {group.items.map((item) => (
-                <li key={item} className="text-sm text-muted-foreground leading-relaxed">
-                  {item}
+                <li
+                  key={item}
+                  className="text-sm text-foreground/90"
+                >
+                  • {item}
                 </li>
               ))}
             </ul>
