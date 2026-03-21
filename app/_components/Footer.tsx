@@ -35,7 +35,9 @@ export const Footer = () => {
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary/90">Navigate</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary/90">
+            Navigate
+          </p>
           <ul className="space-y-1">
             {quickLinks.map((item) => (
               <li key={item.href}>
@@ -51,7 +53,9 @@ export const Footer = () => {
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary/90">Connect</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary/90">
+            Connect
+          </p>
           <ul className="space-y-1">
             {socialLinks.map((item) => (
               <li key={item.href}>

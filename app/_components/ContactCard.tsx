@@ -44,7 +44,9 @@ export const ContactCard = (props: ContactCardProps) => {
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <p className="text-lg font-semibold text-foreground">{props.name}</p>
+            <p className="text-lg font-semibold text-foreground">
+              {props.name}
+            </p>
           </div>
           <p className="text-xs leading-relaxed text-muted-foreground">
             {props.description}

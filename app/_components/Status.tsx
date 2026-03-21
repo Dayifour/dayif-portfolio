@@ -114,14 +114,19 @@ const SideProject = (props: SideProjectProps) => {
           <props.Logo size={16} />
         </span>
         <div className="w-full space-y-2">
-          <p className="text-xl font-semibold tracking-tight text-foreground">{props.title}</p>
+          <p className="text-xl font-semibold tracking-tight text-foreground">
+            {props.title}
+          </p>
           <p className="text-sm text-muted-foreground">{props.role}</p>
-          <p className="text-sm leading-relaxed text-muted-foreground">{props.description}</p>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {props.description}
+          </p>
           <p className="text-xs text-foreground/85">
             <span className="font-medium">Stack:</span> {props.stack}
           </p>
           <p className="text-sm text-foreground/90">
-            <span className="font-medium text-primary">Impact:</span> {props.impact}
+            <span className="font-medium text-primary">Impact:</span>{" "}
+            {props.impact}
           </p>
         </div>
       </Link>

@@ -57,16 +57,15 @@ export const Expertise = () => {
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary/75">
               {service.domain}
             </p>
-            <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground">{service.title}</h3>
+            <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground">
+              {service.title}
+            </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {service.description}
             </p>
             <ul className="mt-5 space-y-2 border-t border-border/60 pt-4">
               {service.points.map((point) => (
-                <li
-                  key={point}
-                  className="text-sm text-foreground/90"
-                >
+                <li key={point} className="text-sm text-foreground/90">
                   • {point}
                 </li>
               ))}

@@ -43,8 +43,16 @@
   .hero-surface {
     @apply relative overflow-hidden rounded-3xl border border-border/70 bg-card/75;
     background-image:
-      radial-gradient(circle at 12% 8%, hsl(var(--primary) / 0.2), transparent 42%),
-      radial-gradient(circle at 85% 12%, hsl(var(--accent) / 0.15), transparent 40%);
+      radial-gradient(
+        circle at 12% 8%,
+        hsl(var(--primary) / 0.2),
+        transparent 42%
+      ),
+      radial-gradient(
+        circle at 85% 12%,
+        hsl(var(--accent) / 0.15),
+        transparent 40%
+      );
   }
 
   .chip {

@@ -50,17 +50,16 @@ export const Skills = () => {
             className="surface-card motion-lift h-full p-6"
           >
             <div className="flex items-center justify-between gap-3">
-              <h3 className="text-xl font-semibold tracking-tight text-foreground">{group.title}</h3>
+              <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                {group.title}
+              </h3>
               <span className="text-xs uppercase tracking-[0.14em] text-primary/80">
                 {group.items.length} tools
               </span>
             </div>
             <ul className="mt-4 grid gap-2 border-t border-border/60 pt-4">
               {group.items.map((item) => (
-                <li
-                  key={item}
-                  className="text-sm text-foreground/90"
-                >
+                <li key={item} className="text-sm text-foreground/90">
                   • {item}
                 </li>
               ))}

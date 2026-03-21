@@ -48,7 +48,9 @@ export const OpenSourceImpact = () => {
               height={22}
               className="h-[24px] w-[24px] rounded-sm"
             />
-            <h3 className="mt-3 text-lg font-semibold text-foreground">{item.title}</h3>
+            <h3 className="mt-3 text-lg font-semibold text-foreground">
+              {item.title}
+            </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {item.description}
             </p>

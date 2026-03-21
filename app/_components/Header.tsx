@@ -20,7 +20,9 @@ const navLinks = [
 const navSectionIds = navLinks.map((item) => item.href.slice(1));
 
 export const Header = () => {
-  const [activeSection, setActiveSection] = useState(navSectionIds[0] ?? "about");
+  const [activeSection, setActiveSection] = useState(
+    navSectionIds[0] ?? "about",
+  );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const manualSelectionUntilRef = useRef(0);
 
@@ -177,7 +179,10 @@ export const Header = () => {
                 href="https://github.com/Dayifour"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "default", size: "sm" }), "w-full")}
+                className={cn(
+                  buttonVariants({ variant: "default", size: "sm" }),
+                  "w-full",
+                )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Explore Code

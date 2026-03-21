@@ -18,10 +18,11 @@ export const Hero = () => {
           Distributed Systems.
         </h2>
         <p className="mt-4 max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Software Engineer focusing on TypeScript systems and scalable architectures.
-          I build full-stack products where performance and type-safety are non-negotiable.
-          Recent work includes contributions to <Code>Cloudflare vinext</Code> and
-          architecture of multi-tenant systems like <Code>SUGUBA</Code>.
+          Software Engineer focusing on TypeScript systems and scalable
+          architectures. I build full-stack products where performance and
+          type-safety are non-negotiable. Recent work includes contributions to{" "}
+          <Code>Cloudflare vinext</Code> and architecture of multi-tenant
+          systems like <Code>SUGUBA</Code>.
         </p>
         <div className="mt-5 flex flex-wrap gap-2.5">
           <span className="chip">TypeScript-first</span>

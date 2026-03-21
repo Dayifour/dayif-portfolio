@@ -66,7 +66,10 @@ export const GithubActivity = () => {
         Real contribution history, styled to match the product visual language.
       </p>
       <div className="w-full animate-enter">
-        <div ref={containerRef} className="surface-card w-full overflow-hidden rounded-2xl p-4 sm:p-5">
+        <div
+          ref={containerRef}
+          className="surface-card w-full overflow-hidden rounded-2xl p-4 sm:p-5"
+        >
           <div className="[&_article]:w-full [&_article]:max-w-full [&_article_svg]:w-full [&_rect]:rounded-[3px]">
             <GitHubCalendar
               username="Dayifour"
