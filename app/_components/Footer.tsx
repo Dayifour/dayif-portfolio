@@ -48,7 +48,7 @@ export const Footer = () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex rounded-md border border-transparent px-2 py-1 text-sm text-muted-foreground transition-colors hover:border-border/60 hover:bg-background/20 hover:text-accent"
+                  className="inline-flex rounded-md border border-transparent px-2 py-1 text-sm text-muted-foreground transition-colors hover:border-border/60 hover:bg-background/20 hover:text-primary"
                 >
                   {item.label}
                 </Link>
@@ -68,7 +68,7 @@ export const Footer = () => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex rounded-md border border-transparent px-2 py-1 text-sm text-muted-foreground transition-colors hover:border-border/60 hover:bg-background/20 hover:text-accent"
+                  className="inline-flex rounded-md border border-transparent px-2 py-1 text-sm text-muted-foreground transition-colors hover:border-border/60 hover:bg-background/20 hover:text-primary"
                 >
                   {item.label}
                 </Link>
@@ -78,10 +78,7 @@ export const Footer = () => {
         </div>
 
         <div className="md:col-span-3 border-t border-border/70 pt-5">
-          <p
-            className="text-sm text-muted-foreground"
-            aria-label="Copyright"
-          >
+          <p className="text-sm text-muted-foreground" aria-label="Copyright">
             &copy; {year} Sekou Dayifourou KEITA. All rights reserved.
           </p>
         </div>

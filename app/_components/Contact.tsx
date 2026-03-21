@@ -11,9 +11,9 @@ export const Contact = () => {
       name: "Email",
       description: "sekoudayifourouk@gmail.com",
       hint: "Preferred for direct opportunities",
-      image: "/img/gmail_profile.png",
       mediumImage: "/logos/email.svg",
-      mediumBadgeClassName: "bg-[linear-gradient(135deg,hsl(var(--primary)/0.22),hsl(var(--primary)/0.12))]",
+      mediumBadgeClassName:
+        "bg-[linear-gradient(135deg,hsl(var(--primary)/0.22),hsl(var(--primary)/0.12))]",
     },
     {
       className: "h-full",
@@ -21,9 +21,9 @@ export const Contact = () => {
       name: "LinkedIn",
       description: "Professional profile and experience",
       hint: "Best for networking and profile details",
-      image: "/img/linkedin_profile.jpg",
       mediumImage: "/logos/linkedin.svg",
-      mediumBadgeClassName: "bg-[linear-gradient(135deg,hsl(var(--accent)/0.22),hsl(var(--accent)/0.12))]",
+      mediumBadgeClassName:
+        "bg-[linear-gradient(135deg,hsl(var(--accent)/0.22),hsl(var(--accent)/0.12))]",
     },
   ];
 
@@ -44,8 +44,8 @@ export const Contact = () => {
               Collaboration
             </p>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              I partner with teams that value robust architecture, clean delivery,
-              and long-term product quality.
+              I partner with teams that value robust architecture, clean
+              delivery, and long-term product quality.
             </p>
           </div>
           <div className="rounded-lg border border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.12),hsl(var(--accent)/0.08))] px-4 py-3">

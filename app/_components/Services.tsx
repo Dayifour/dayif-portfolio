@@ -6,7 +6,8 @@ import { Section } from "./Section";
 const EXPERTISE_ACCENT = {
   icon: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.16),hsl(var(--accent)/0.1))] text-foreground/95",
   marker: "bg-accent/75",
-  outcome: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),hsl(var(--accent)/0.06))]",
+  outcome:
+    "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),hsl(var(--accent)/0.06))]",
 } as const;
 
 const SERVICES = [
@@ -101,13 +102,17 @@ export const Expertise = () => {
                       key={point}
                       className="flex items-start gap-2.5 text-sm text-foreground/90"
                     >
-                      <span className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${accent.marker}`} />
+                      <span
+                        className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${accent.marker}`}
+                      />
                       <span>{point}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className={`mt-auto rounded-lg border px-4 py-3 ${accent.outcome}`}>
+                <div
+                  className={`mt-auto rounded-lg border px-4 py-3 ${accent.outcome}`}
+                >
                   <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
                     Typical outcome
                   </p>

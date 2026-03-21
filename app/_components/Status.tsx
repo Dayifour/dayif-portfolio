@@ -13,9 +13,11 @@ import { Section } from "./Section";
 const PROJECT_ACCENT = {
   icon: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.16),hsl(var(--accent)/0.1))] text-foreground/95",
   chip: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.14),hsl(var(--accent)/0.08))] text-foreground/90",
-  impact: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),hsl(var(--accent)/0.06))]",
-  details: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.08),hsl(var(--accent)/0.05))]",
-  link: "hover:text-accent",
+  impact:
+    "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),hsl(var(--accent)/0.06))]",
+  details:
+    "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.08),hsl(var(--accent)/0.05))]",
+  link: "hover:text-primary",
 } as const;
 
 export const Status = () => {
@@ -155,9 +157,10 @@ const SIDE_PROJECTS: SideProjectProps[] = [
     role: "Lead Full-Stack Engineer",
     stack: "Next.js, NestJS, PostgreSQL, Redis, Docker",
     description:
-      "Multi-tenant marketplace built with Next.js, NestJS, PostgreSQL, Redis, and Docker.",
+      "Multi-tenant marketplace currently in active development with Next.js, NestJS, PostgreSQL, Redis, and Docker.",
     impact:
       "Scaled product listing workloads with tenant-safe data design and caching.",
+    visibility: "private",
     caseStudy: {
       challenge:
         "Support high write/read traffic across tenant-isolated product catalogs without latency spikes.",
@@ -166,7 +169,7 @@ const SIDE_PROJECTS: SideProjectProps[] = [
       result:
         "Improved catalog responsiveness under concurrent load and reduced query pressure on core tables.",
     },
-    url: "https://github.com/Dayifour",
+    url: "#",
   },
   {
     Logo: Video,
@@ -189,7 +192,7 @@ const SIDE_PROJECTS: SideProjectProps[] = [
   },
   {
     Logo: ShieldCheck,
-    title: "ITAK Management Platform",
+    title: "Smart School",
     role: "Application Architect",
     stack: "RBAC, Analytics, Workflow Automation",
     description:
@@ -204,7 +207,7 @@ const SIDE_PROJECTS: SideProjectProps[] = [
       result:
         "Lowered operational friction and improved decision-making through centralized analytics visibility.",
     },
-    url: "https://github.com/Dayifour",
+    url: "https://github.com/Dayifour/smartSchool",
   },
 ];
 
@@ -215,6 +218,7 @@ type SideProjectProps = {
   stack: string;
   description: string;
   impact: string;
+  visibility?: "public" | "private";
   caseStudy: {
     challenge: string;
     architecture: string;
@@ -283,16 +287,22 @@ const SideProject = ({
       </div>
 
       <div className="mt-auto flex items-center justify-between gap-3 border-t border-border/50 pt-4">
-        <Link
-          href={props.url}
-          aria-label={`View project ${props.title}`}
-          target={props.url.startsWith("http") ? "_blank" : undefined}
-          rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
-          className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${accent.link}`}
-        >
-          Open project repository
-          <ArrowUpRight size={14} />
-        </Link>
+        {props.visibility === "private" ? (
+          <p className="text-sm font-medium text-muted-foreground">
+            Repository private - public link coming soon
+          </p>
+        ) : (
+          <Link
+            href={props.url}
+            aria-label={`View project ${props.title}`}
+            target={props.url.startsWith("http") ? "_blank" : undefined}
+            rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
+            className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${accent.link}`}
+          >
+            Open project repository
+            <ArrowUpRight size={14} />
+          </Link>
+        )}
       </div>
 
       <details

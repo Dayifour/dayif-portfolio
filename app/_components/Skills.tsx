@@ -43,7 +43,10 @@ const SKILL_GROUPS = [
 ];
 
 export const Skills = () => {
-  const totalTools = SKILL_GROUPS.reduce((acc, group) => acc + group.items.length, 0);
+  const totalTools = SKILL_GROUPS.reduce(
+    (acc, group) => acc + group.items.length,
+    0,
+  );
 
   return (
     <Section id="skills" className="flex flex-col items-start gap-4">
@@ -62,8 +65,9 @@ export const Skills = () => {
               Capability snapshot
             </p>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Balanced front-end and back-end execution with infrastructure fluency,
-              focused on shipping maintainable products and measurable outcomes.
+              Balanced front-end and back-end execution with infrastructure
+              fluency, focused on shipping maintainable products and measurable
+              outcomes.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3">

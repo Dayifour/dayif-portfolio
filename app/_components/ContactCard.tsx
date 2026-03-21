@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 type ContactCardProps = {
-  image: string;
   mediumImage: string;
   mediumBadgeClassName?: string;
   name: string;
@@ -31,28 +30,19 @@ export const ContactCard = (props: ContactCardProps) => {
         <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
         <div className="flex h-full flex-col gap-4 p-5">
           <div className="flex items-center justify-between">
-            <div className="relative h-14 w-14 shrink-0">
+            <div
+              className={cn(
+                "inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/70 bg-[linear-gradient(135deg,hsl(var(--primary)/0.15),hsl(var(--accent)/0.1))]",
+                props.mediumBadgeClassName,
+              )}
+            >
               <Image
-                src={props.image}
-                alt={`${props.name} contact visual`}
-                width={56}
-                height={56}
-                className="h-full w-full rounded-full object-cover"
+                src={props.mediumImage}
+                alt={`${props.name} platform icon`}
+                width={22}
+                height={22}
+                className="h-[22px] w-[22px] object-contain"
               />
-              <span
-                className={cn(
-                  "absolute -bottom-1.5 -right-1.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border/70 bg-[linear-gradient(135deg,hsl(var(--primary)/0.15),hsl(var(--accent)/0.1))]",
-                  props.mediumBadgeClassName,
-                )}
-              >
-                <Image
-                  src={props.mediumImage}
-                  alt={`${props.name} platform icon`}
-                  width={13}
-                  height={13}
-                  className="h-[13px] w-[13px] object-contain"
-                />
-              </span>
             </div>
             <ArrowUpRight
               size={16}
