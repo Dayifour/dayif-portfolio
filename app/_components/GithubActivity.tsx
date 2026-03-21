@@ -58,9 +58,7 @@ export const GithubActivity = () => {
   return (
     <Section id="github-activity" className="flex flex-col items-start gap-4">
       <Badge variant="outline">GitHub Activity</Badge>
-      <h2 className="section-title">
-        Daily contribution signal
-      </h2>
+      <h2 className="section-title">Daily contribution signal</h2>
       <p className="section-lead">
         Real contribution history, styled to match the product visual language.
       </p>
@@ -71,25 +69,25 @@ export const GithubActivity = () => {
               ref={containerRef}
               className="w-full [&_article]:w-full [&_article]:max-w-none [&_article_svg]:h-auto [&_article_svg]:w-full [&_article_text]:fill-muted-foreground [&_rect]:rounded-[4px] [&_rect]:stroke-background [&_rect]:stroke-[0.4]"
             >
-            <GitHubCalendar
-              className="github-calendar"
-              username="Dayifour"
-              showColorLegend={false}
-              showMonthLabels
-              showTotalCount={false}
-              showWeekdayLabels={calendarConfig.showWeekdayLabels}
-              blockSize={calendarConfig.blockSize}
-              blockMargin={calendarConfig.blockMargin}
-              blockRadius={3}
-              fontSize={calendarConfig.fontSize}
-              colorScheme="dark"
-              theme={{
-                dark: ["#0A0F0B", "#0E2A18", "#1C5A36", "#2F9A5D", "#74E59F"],
-              }}
-              labels={{
-                totalCount: "{{count}} contributions in the last year",
-              }}
-            />
+              <GitHubCalendar
+                className="github-calendar"
+                username="Dayifour"
+                showColorLegend={false}
+                showMonthLabels
+                showTotalCount={false}
+                showWeekdayLabels={calendarConfig.showWeekdayLabels}
+                blockSize={calendarConfig.blockSize}
+                blockMargin={calendarConfig.blockMargin}
+                blockRadius={3}
+                fontSize={calendarConfig.fontSize}
+                colorScheme="dark"
+                theme={{
+                  dark: ["#0A0F0B", "#0E2A18", "#1C5A36", "#2F9A5D", "#74E59F"],
+                }}
+                labels={{
+                  totalCount: "{{count}} contributions in the last year",
+                }}
+              />
             </div>
           </div>
         </div>

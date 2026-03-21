@@ -10,7 +10,8 @@ export const Status = () => {
       <Badge variant="outline">Projects</Badge>
       <h2 className="section-title">Selected product work</h2>
       <p className="section-lead">
-        A concise selection of products with clear architecture choices and practical outcomes.
+        A concise selection of products with clear architecture choices and
+        practical outcomes.
       </p>
       <div className="section-grid md:grid-cols-2 xl:grid-cols-3">
         {SIDE_PROJECTS.map((project, index) => (
@@ -101,7 +102,10 @@ type SideProjectProps = {
   url: string;
 };
 
-const SideProject = ({ index, ...props }: SideProjectProps & { index: number }) => {
+const SideProject = ({
+  index,
+  ...props
+}: SideProjectProps & { index: number }) => {
   return (
     <div className="flex h-full w-full flex-col">
       <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/45 to-transparent" />
@@ -133,14 +137,18 @@ const SideProject = ({ index, ...props }: SideProjectProps & { index: number }) 
             <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
               Stack
             </dt>
-            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">{props.stack}</dd>
+            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">
+              {props.stack}
+            </dd>
           </div>
           <div className="h-px w-full bg-border/60" />
           <div>
             <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
               Impact
             </dt>
-            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">{props.impact}</dd>
+            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">
+              {props.impact}
+            </dd>
           </div>
         </dl>
 
@@ -149,7 +157,9 @@ const SideProject = ({ index, ...props }: SideProjectProps & { index: number }) 
             href={props.url}
             aria-label={`View project ${props.title}`}
             target={props.url.startsWith("http") ? "_blank" : undefined}
-            rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
+            rel={
+              props.url.startsWith("http") ? "noopener noreferrer" : undefined
+            }
             className="text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:text-primary hover:underline"
           >
             Open project repository

@@ -42,9 +42,7 @@ export const Expertise = () => {
   return (
     <Section id="expertise" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Expertise</Badge>
-      <h2 className="section-title">
-        Engineering systems that scale
-      </h2>
+      <h2 className="section-title">Engineering systems that scale</h2>
       <p className="section-lead">
         End-to-end ownership from architecture choices to production delivery.
       </p>
@@ -65,7 +63,10 @@ export const Expertise = () => {
             </p>
             <ul className="mt-5 divide-y divide-border/45 rounded-md border border-border/45 bg-background/30">
               {service.points.map((point) => (
-                <li key={point} className="px-3 py-2 text-sm text-foreground/90">
+                <li
+                  key={point}
+                  className="px-3 py-2 text-sm text-foreground/90"
+                >
                   {point}
                 </li>
               ))}

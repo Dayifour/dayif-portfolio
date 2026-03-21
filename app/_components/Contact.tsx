@@ -25,9 +25,7 @@ export const Contact = () => {
   return (
     <Section id="contact" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Contact</Badge>
-      <h2 className="section-title">
-        Direct contact
-      </h2>
+      <h2 className="section-title">Direct contact</h2>
       <p className="section-lead">
         Open to full-time engineering roles and high-impact product challenges.
       </p>

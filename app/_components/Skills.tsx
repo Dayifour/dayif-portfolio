@@ -37,9 +37,7 @@ export const Skills = () => {
   return (
     <Section id="skills" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Skills</Badge>
-      <h2 className="section-title">
-        Stack optimized for product startups
-      </h2>
+      <h2 className="section-title">Stack optimized for product startups</h2>
       <p className="section-lead">
         Practical tools used in production, not a keyword list.
       </p>
