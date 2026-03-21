@@ -1,10 +1,22 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Layers3, LucideIcon, ShieldCheck, Video } from "lucide-react";
+import { ArrowUpRight, Layers3, LucideIcon, ShieldCheck, Video } from "lucide-react";
 import Link from "next/link";
 import { Section } from "./Section";
 
+const PROJECT_ACCENT = {
+  topLine: "via-primary/45",
+  icon: "border-primary/30 bg-primary/10 text-primary",
+  chip: "border-primary/30 bg-primary/10 text-foreground/90",
+  impact: "border-primary/40 bg-primary/5",
+  details: "border-primary/25 bg-primary/5",
+  link: "hover:text-primary",
+} as const;
+
 export const Status = () => {
+  const [featuredProject, ...otherProjects] = SIDE_PROJECTS;
+  const featuredAccent = PROJECT_ACCENT;
+
   return (
     <Section id="projects" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Projects</Badge>
@@ -13,13 +25,106 @@ export const Status = () => {
         A concise selection of products with clear architecture choices and
         practical outcomes.
       </p>
-      <div className="section-grid md:grid-cols-2 xl:grid-cols-3">
-        {SIDE_PROJECTS.map((project, index) => (
-          <Card
-            key={project.title}
-            className="surface-card group relative h-full overflow-hidden border-border/70 bg-card/65 p-0"
-          >
-            <SideProject index={index + 1} {...project} />
+
+      {featuredProject && (
+        <Card className="surface-card relative w-full overflow-hidden border-border/70 bg-card/70 p-0">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_8%,hsl(var(--primary)/0.14),transparent_44%),radial-gradient(circle_at_92%_12%,hsl(var(--accent)/0.12),transparent_42%)]" />
+          <div
+            className={`h-px w-full bg-gradient-to-r from-transparent ${featuredAccent.topLine} to-transparent`}
+          />
+          <div className="grid lg:grid-cols-[1.3fr_0.9fr]">
+            <div className="space-y-5 p-6 sm:p-8">
+              <div className="flex items-center gap-3">
+                <span
+                  className={`rounded-lg border bg-background/35 p-2.5 ${featuredAccent.icon}`}
+                >
+                  <featuredProject.Logo size={16} />
+                </span>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/70">
+                  Featured project
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-[1.75rem]">
+                  {featuredProject.title}
+                </h3>
+                <p className="text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
+                  {featuredProject.role}
+                </p>
+              </div>
+
+              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                {featuredProject.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {featuredProject.stack.split(",").map((tech) => (
+                  <span
+                    key={tech}
+                    className={`rounded-full border bg-background/25 px-2.5 py-1 text-xs font-medium ${featuredAccent.chip}`}
+                  >
+                    {tech.trim()}
+                  </span>
+                ))}
+              </div>
+
+              <Link
+                href={featuredProject.url}
+                aria-label={`View project ${featuredProject.title}`}
+                target={featuredProject.url.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  featuredProject.url.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${featuredAccent.link}`}
+              >
+                Open project repository
+                <ArrowUpRight size={14} />
+              </Link>
+            </div>
+
+            <div className="border-t border-border/60 bg-background/20 p-6 sm:p-8 lg:border-l lg:border-t-0">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/75">
+                Impact
+              </p>
+              <p
+                className={`mt-2 rounded-lg border-l-2 px-3 py-2 text-sm leading-relaxed text-foreground/92 ${featuredAccent.impact}`}
+              >
+                {featuredProject.impact}
+              </p>
+
+              <details
+                className={`mt-5 rounded-xl border px-4 py-3 text-sm ${featuredAccent.details}`}
+              >
+                <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
+                  View case study
+                </summary>
+                <div className="mt-3 space-y-2.5 text-muted-foreground">
+                  <p>
+                    <span className="font-medium text-foreground">Challenge:</span>{" "}
+                    {featuredProject.caseStudy.challenge}
+                  </p>
+                  <p>
+                    <span className="font-medium text-foreground">Architecture:</span>{" "}
+                    {featuredProject.caseStudy.architecture}
+                  </p>
+                  <p>
+                    <span className="font-medium text-foreground">Result:</span>{" "}
+                    {featuredProject.caseStudy.result}
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </Card>
+      )}
+
+      <div className="section-grid md:grid-cols-2">
+        {otherProjects.map((project, index) => (
+          <Card key={project.title} className="surface-card h-full border-border/70 p-6">
+            <SideProject accent={PROJECT_ACCENT} index={index + 2} {...project} />
           </Card>
         ))}
       </div>
@@ -103,92 +208,92 @@ type SideProjectProps = {
 };
 
 const SideProject = ({
+  accent,
   index,
   ...props
-}: SideProjectProps & { index: number }) => {
+}: SideProjectProps & {
+  index: number;
+  accent: typeof PROJECT_ACCENT;
+}) => {
   return (
-    <div className="flex h-full w-full flex-col">
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/45 to-transparent" />
-
-      <div className="flex h-full flex-col gap-5 p-6">
-        <div className="flex w-full items-start justify-between gap-3">
-          <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-full border border-border/70 bg-background/50 px-2 text-xs font-semibold tracking-[0.08em] text-foreground/70">
-            {index.toString().padStart(2, "0")}
-          </span>
-          <span className="rounded-lg border border-border/60 bg-background/35 p-2.5 text-foreground/80 transition-colors duration-300 group-hover:text-foreground">
-            <props.Logo size={15} />
-          </span>
-        </div>
-
-        <div className="space-y-2">
-          <p className="text-[1.1rem] font-semibold tracking-tight text-foreground sm:text-xl">
-            {props.title}
+    <div className="flex h-full w-full flex-col gap-4">
+      <div className={`h-px w-full bg-gradient-to-r from-transparent ${accent.topLine} to-transparent`} />
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Project {index.toString().padStart(2, "0")}
           </p>
-          <p className="text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
+          <h3 className="mt-1 text-xl font-semibold tracking-tight text-foreground">
+            {props.title}
+          </h3>
+          <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
             {props.role}
           </p>
-          <p className="text-sm leading-relaxed text-muted-foreground/95">
-            {props.description}
+        </div>
+        <span className={`rounded-lg border bg-background/30 p-2.5 ${accent.icon}`}>
+          <props.Logo size={15} />
+        </span>
+      </div>
+
+      <p className="text-sm leading-relaxed text-muted-foreground">{props.description}</p>
+
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          Stack
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {props.stack.split(",").map((tech) => (
+            <span
+              key={tech}
+              className={`rounded-full border bg-background/25 px-2.5 py-1 text-xs font-medium ${accent.chip}`}
+            >
+              {tech.trim()}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className={`rounded-lg border p-4 ${accent.impact}`}>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          Impact
+        </p>
+        <p className="mt-1.5 border-l border-foreground/25 pl-3 text-sm leading-relaxed text-foreground/88">
+          {props.impact}
+        </p>
+      </div>
+
+      <div className="mt-auto flex items-center justify-between gap-3 border-t border-border/50 pt-4">
+        <Link
+          href={props.url}
+          aria-label={`View project ${props.title}`}
+          target={props.url.startsWith("http") ? "_blank" : undefined}
+          rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
+          className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${accent.link}`}
+        >
+          Open project repository
+          <ArrowUpRight size={14} />
+        </Link>
+      </div>
+
+      <details className={`w-full rounded-xl border px-4 py-3 text-sm ${accent.details}`}>
+        <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
+          View case study
+        </summary>
+        <div className="mt-3 space-y-2.5 text-muted-foreground">
+          <p>
+            <span className="font-medium text-foreground">Challenge:</span>{" "}
+            {props.caseStudy.challenge}
+          </p>
+          <p>
+            <span className="font-medium text-foreground">Architecture:</span>{" "}
+            {props.caseStudy.architecture}
+          </p>
+          <p>
+            <span className="font-medium text-foreground">Result:</span>{" "}
+            {props.caseStudy.result}
           </p>
         </div>
-
-        <dl className="space-y-3 rounded-lg border border-border/60 bg-background/20 p-4">
-          <div>
-            <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Stack
-            </dt>
-            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">
-              {props.stack}
-            </dd>
-          </div>
-          <div className="h-px w-full bg-border/60" />
-          <div>
-            <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Impact
-            </dt>
-            <dd className="mt-1 text-sm leading-relaxed text-foreground/88">
-              {props.impact}
-            </dd>
-          </div>
-        </dl>
-
-        <div className="mt-auto flex w-full items-center justify-between gap-3 border-t border-border/50 pt-4">
-          <Link
-            href={props.url}
-            aria-label={`View project ${props.title}`}
-            target={props.url.startsWith("http") ? "_blank" : undefined}
-            rel={
-              props.url.startsWith("http") ? "noopener noreferrer" : undefined
-            }
-            className="text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:text-primary hover:underline"
-          >
-            Open project repository
-          </Link>
-          <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-            Case notes below
-          </span>
-        </div>
-
-        <details className="w-full rounded-xl border border-border/60 bg-background/15 px-4 py-3 text-sm">
-          <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
-            View case study
-          </summary>
-          <div className="mt-3 space-y-2.5 text-muted-foreground">
-            <p>
-              <span className="font-medium text-foreground">Challenge:</span>{" "}
-              {props.caseStudy.challenge}
-            </p>
-            <p>
-              <span className="font-medium text-foreground">Architecture:</span>{" "}
-              {props.caseStudy.architecture}
-            </p>
-            <p>
-              <span className="font-medium text-foreground">Result:</span>{" "}
-              {props.caseStudy.result}
-            </p>
-          </div>
-        </details>
-      </div>
+      </details>
     </div>
   );
 };
