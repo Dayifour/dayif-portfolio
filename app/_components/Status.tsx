@@ -8,15 +8,14 @@ import {
   Video,
 } from "lucide-react";
 import Link from "next/link";
+import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
 const PROJECT_ACCENT = {
-  icon: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.16),hsl(var(--accent)/0.1))] text-foreground/95",
-  chip: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.14),hsl(var(--accent)/0.08))] text-foreground/90",
-  impact:
-    "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),hsl(var(--accent)/0.06))]",
-  details:
-    "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.08),hsl(var(--accent)/0.05))]",
+  icon: "border-border/60 bg-primary/12 text-foreground/95",
+  chip: "border-border/60 bg-primary/10 text-foreground/90",
+  impact: "border-border/60 bg-primary/8",
+  details: "border-border/60 bg-primary/6",
   link: "hover:text-primary",
 } as const;
 
@@ -34,116 +33,116 @@ export const Status = () => {
       </p>
 
       {featuredProject && (
-        <Card className="surface-card relative w-full overflow-hidden border-border/70 bg-card/70 p-0">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_8%,hsl(var(--primary)/0.1),transparent_44%),radial-gradient(circle_at_92%_12%,hsl(var(--accent)/0.08),transparent_42%)]" />
-          <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
-          <div className="grid lg:grid-cols-[1.3fr_0.9fr]">
-            <div className="space-y-5 p-6 sm:p-8">
-              <div className="flex items-center gap-3">
-                <span
-                  className={`rounded-lg border bg-background/35 p-2.5 ${featuredAccent.icon}`}
-                >
-                  <featuredProject.Logo size={16} />
-                </span>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/70">
-                  Featured project
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-[1.75rem]">
-                  {featuredProject.title}
-                </h3>
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
-                  {featuredProject.role}
-                </p>
-              </div>
-
-              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                {featuredProject.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {featuredProject.stack.split(",").map((tech) => (
+        <Reveal>
+          <Card className="surface-card motion-lift relative w-full overflow-hidden border-border/70 bg-card/70 p-0">
+            <div className="h-px w-full bg-primary/35" />
+            <div className="grid lg:grid-cols-[1.3fr_0.9fr]">
+              <div className="space-y-5 p-6 sm:p-8">
+                <div className="flex items-center gap-3">
                   <span
-                    key={tech}
-                    className={`rounded-full border bg-background/25 px-2.5 py-1 text-xs font-medium ${featuredAccent.chip}`}
+                    className={`rounded-lg border bg-background/35 p-2.5 ${featuredAccent.icon}`}
                   >
-                    {tech.trim()}
+                    <featuredProject.Logo size={16} />
                   </span>
-                ))}
-              </div>
-
-              <Link
-                href={featuredProject.url}
-                aria-label={`View project ${featuredProject.title}`}
-                target={
-                  featuredProject.url.startsWith("http") ? "_blank" : undefined
-                }
-                rel={
-                  featuredProject.url.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${featuredAccent.link}`}
-              >
-                Open project repository
-                <ArrowUpRight size={14} />
-              </Link>
-            </div>
-
-            <div className="border-t border-border/60 bg-background/20 p-6 sm:p-8 lg:border-l lg:border-t-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/75">
-                Impact
-              </p>
-              <p
-                className={`mt-2 rounded-lg border-l-2 px-3 py-2 text-sm leading-relaxed text-foreground/92 ${featuredAccent.impact}`}
-              >
-                {featuredProject.impact}
-              </p>
-
-              <details
-                className={`mt-5 rounded-xl border px-4 py-3 text-sm ${featuredAccent.details}`}
-              >
-                <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
-                  View case study
-                </summary>
-                <div className="mt-3 space-y-2.5 text-muted-foreground">
-                  <p>
-                    <span className="font-medium text-foreground">
-                      Challenge:
-                    </span>{" "}
-                    {featuredProject.caseStudy.challenge}
-                  </p>
-                  <p>
-                    <span className="font-medium text-foreground">
-                      Architecture:
-                    </span>{" "}
-                    {featuredProject.caseStudy.architecture}
-                  </p>
-                  <p>
-                    <span className="font-medium text-foreground">Result:</span>{" "}
-                    {featuredProject.caseStudy.result}
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/70">
+                    Featured project
                   </p>
                 </div>
-              </details>
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-[1.75rem]">
+                    {featuredProject.title}
+                  </h3>
+                  <p className="text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
+                    {featuredProject.role}
+                  </p>
+                </div>
+
+                <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  {featuredProject.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {featuredProject.stack.split(",").map((tech) => (
+                    <span
+                      key={tech}
+                      className={`rounded-full border bg-background/25 px-2.5 py-1 text-xs font-medium ${featuredAccent.chip}`}
+                    >
+                      {tech.trim()}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={featuredProject.url}
+                  aria-label={`View project ${featuredProject.title}`}
+                  target={
+                    featuredProject.url.startsWith("http") ? "_blank" : undefined
+                  }
+                  rel={
+                    featuredProject.url.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${featuredAccent.link}`}
+                >
+                  Open project repository
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+
+              <div className="border-t border-border/60 bg-background/20 p-6 sm:p-8 lg:border-l lg:border-t-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/75">
+                  Impact
+                </p>
+                <p
+                  className={`mt-2 rounded-lg border-l-2 px-3 py-2 text-sm leading-relaxed text-foreground/92 ${featuredAccent.impact}`}
+                >
+                  {featuredProject.impact}
+                </p>
+
+                <details
+                  className={`mt-5 rounded-xl border px-4 py-3 text-sm ${featuredAccent.details}`}
+                >
+                  <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
+                    View case study
+                  </summary>
+                  <div className="mt-3 space-y-2.5 text-muted-foreground">
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Challenge:
+                      </span>{" "}
+                      {featuredProject.caseStudy.challenge}
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Architecture:
+                      </span>{" "}
+                      {featuredProject.caseStudy.architecture}
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">Result:</span>{" "}
+                      {featuredProject.caseStudy.result}
+                    </p>
+                  </div>
+                </details>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </Reveal>
       )}
 
       <div className="section-grid md:grid-cols-2">
         {otherProjects.map((project, index) => (
-          <Card
-            key={project.title}
-            className="surface-card h-full border-border/70 p-6"
-          >
-            <SideProject
-              accent={PROJECT_ACCENT}
-              index={index + 2}
-              {...project}
-            />
-          </Card>
+          <Reveal key={project.title} delayMs={index * 70}>
+            <Card className="surface-card motion-lift h-full border-border/70 p-6">
+              <SideProject
+                accent={PROJECT_ACCENT}
+                index={index + 2}
+                {...project}
+              />
+            </Card>
+          </Reveal>
         ))}
       </div>
     </Section>
@@ -237,7 +236,7 @@ const SideProject = ({
 }) => {
   return (
     <div className="flex h-full w-full flex-col gap-4">
-      <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
+      <div className="h-px w-full bg-primary/35" />
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
@@ -281,7 +280,7 @@ const SideProject = ({
         <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
           Impact
         </p>
-        <p className="mt-1.5 border-l border-accent/40 pl-3 text-sm leading-relaxed text-foreground/88">
+        <p className="mt-1.5 border-l border-primary/40 pl-3 text-sm leading-relaxed text-foreground/88">
           {props.impact}
         </p>
       </div>
@@ -296,7 +295,9 @@ const SideProject = ({
             href={props.url}
             aria-label={`View project ${props.title}`}
             target={props.url.startsWith("http") ? "_blank" : undefined}
-            rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
+            rel={
+              props.url.startsWith("http") ? "noopener noreferrer" : undefined
+            }
             className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${accent.link}`}
           >
             Open project repository

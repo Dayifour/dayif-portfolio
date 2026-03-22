@@ -26,13 +26,13 @@ export const ContactCard = (props: ContactCardProps) => {
       rel={isExternal ? "noopener noreferrer" : undefined}
       className={cn("h-full w-full", props.className)}
     >
-      <Card className="surface-card group relative flex h-full min-h-44 flex-col overflow-hidden border-border/70 bg-card/70 p-0">
-        <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
+      <Card className="surface-card motion-lift group relative flex h-full min-h-44 flex-col overflow-hidden border-border/70 bg-card/70 p-0">
+        <div className="h-px w-full bg-primary/35" />
         <div className="flex h-full flex-col gap-4 p-5">
           <div className="flex items-center justify-between">
             <div
               className={cn(
-                "inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/70 bg-[linear-gradient(135deg,hsl(var(--primary)/0.15),hsl(var(--accent)/0.1))]",
+                "inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/70 bg-primary/12",
                 props.mediumBadgeClassName,
               )}
             >

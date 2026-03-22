@@ -20,7 +20,7 @@ Use a short message that references their stack and your direct relevance:
 
 ## Submission Pack
 
-- Portfolio URL
+- Portfolio URL: https://www.dayifour.dev/
 - GitHub profile URL
 - 1 direct PR link
 - 2-line personalized interest message

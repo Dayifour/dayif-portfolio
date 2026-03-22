@@ -22,8 +22,7 @@ export const Footer = () => {
       className="relative mt-10 overflow-hidden border-t border-border/60 bg-card/60"
       role="contentinfo"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_10%,hsl(var(--primary)/0.1),transparent_42%),radial-gradient(circle_at_90%_12%,hsl(var(--accent)/0.08),transparent_40%)]" />
-      <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
+      <div className="h-px w-full bg-primary/35" />
 
       <Section className="grid w-full gap-8 py-12 md:grid-cols-3">
         <div className="space-y-3">

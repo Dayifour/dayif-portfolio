@@ -4,22 +4,22 @@
 
 @layer base {
   :root {
-    --background: 220 17% 12%;
-    --foreground: 219 30% 88%;
-    --muted: 216 12% 19%;
-    --muted-foreground: 218 18% 76%;
-    --popover: 220 18% 10%;
-    --popover-foreground: 219 18% 81%;
-    --card: 220 16% 14%;
-    --card-foreground: 219 24% 86%;
-    --border: 218 19% 24%;
-    --input: 216 3% 23%;
+    --background: 210 6% 10%;
+    --foreground: 210 18% 90%;
+    --muted: 210 5% 17%;
+    --muted-foreground: 210 10% 72%;
+    --popover: 210 6% 9%;
+    --popover-foreground: 210 14% 84%;
+    --card: 210 6% 12%;
+    --card-foreground: 210 16% 86%;
+    --border: 210 5% 24%;
+    --input: 210 5% 23%;
     --primary: 154 65% 58%;
     --primary-foreground: 156 35% 12%;
-    --secondary: 216 16% 24%;
-    --secondary-foreground: 219 8% 85%;
-    --accent: 200 72% 48%;
-    --accent-foreground: 210 100% 96%;
+    --secondary: 210 5% 21%;
+    --secondary-foreground: 210 10% 85%;
+    --accent: 154 46% 34%;
+    --accent-foreground: 210 18% 94%;
     --destructive: 3 95% 48%;
     --destructive-foreground: 0 0% 100%;
     --ring: 154 65% 58%;
@@ -40,19 +40,88 @@
     animation: enter-up 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+    transition:
+      opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
   .hero-surface {
     @apply relative overflow-hidden rounded-3xl border border-border/70 bg-card/75;
     background-image:
+      linear-gradient(155deg, hsl(var(--foreground) / 0.03), transparent 42%),
       radial-gradient(
-        circle at 12% 8%,
-        hsl(var(--primary) / 0.2),
-        transparent 42%
+        860px 290px at 8% -10%,
+        hsl(var(--primary) / 0.16),
+        transparent 62%
       ),
       radial-gradient(
-        circle at 85% 12%,
-        hsl(var(--accent) / 0.15),
-        transparent 40%
+        520px 220px at 92% 0%,
+        hsl(var(--primary) / 0.09),
+        transparent 68%
       );
+    box-shadow:
+      inset 0 1px 0 hsl(var(--foreground) / 0.06),
+      0 22px 48px hsl(210 20% 4% / 0.24);
+  }
+
+  .hero-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        hsl(var(--foreground) / 0.02) 0,
+        hsl(var(--foreground) / 0.02) 1px,
+        transparent 1px,
+        transparent 28px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        hsl(var(--foreground) / 0.014) 0,
+        hsl(var(--foreground) / 0.014) 1px,
+        transparent 1px,
+        transparent 28px
+      );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.34),
+      transparent 64%
+    );
+  }
+
+  .hero-surface::after {
+    content: "";
+    position: absolute;
+    left: -18%;
+    top: -38%;
+    width: 56%;
+    height: 72%;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      hsl(var(--primary) / 0.22) 0%,
+      transparent 72%
+    );
+    filter: blur(8px);
+    opacity: 0.5;
+  }
+
+  .hero-surface > * {
+    position: relative;
+    z-index: 1;
   }
 
   .chip {
@@ -76,16 +145,11 @@
   }
 
   .bi-tone-line {
-    @apply h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30;
+    @apply h-px w-full bg-primary/35;
   }
 
   .bi-tone-surface {
-    @apply border border-border/60;
-    background-image: linear-gradient(
-      135deg,
-      hsl(var(--primary) / 0.12),
-      hsl(var(--accent) / 0.08)
-    );
+    @apply border border-border/60 bg-primary/10;
   }
 
   .meta-label {
@@ -121,6 +185,13 @@
   .motion-lift {
     transform: none;
   }
+
+  .reveal-item,
+  .reveal-item.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @keyframes enter-up {
@@ -148,22 +219,17 @@
     @apply bg-background text-foreground;
     background-image:
       radial-gradient(
-        1200px 520px at 12% -8%,
-        hsl(156 78% 52% / 0.12),
-        transparent 55%
-      ),
-      radial-gradient(
-        1000px 420px at 92% 0%,
-        hsl(202 86% 54% / 0.1),
-        transparent 55%
+        900px 420px at 12% -14%,
+        hsl(154 65% 58% / 0.06),
+        transparent 62%
       ),
       linear-gradient(
         180deg,
-        hsl(222 28% 10%) 0%,
-        hsl(220 20% 12%) 38%,
-        hsl(220 17% 12%) 100%
+        hsl(210 6% 9%) 0%,
+        hsl(210 6% 10%) 45%,
+        hsl(210 6% 11%) 100%
       );
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 
   ::selection {

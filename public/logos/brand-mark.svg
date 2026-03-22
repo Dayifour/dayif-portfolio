@@ -1,0 +1,14 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Professional brand mark">
+  <defs>
+    <linearGradient id="core" x1="44" y1="36" x2="212" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8CF2B8" />
+      <stop offset="1" stop-color="#2F9A5D" />
+    </linearGradient>
+  </defs>
+
+  <rect x="18" y="18" width="220" height="220" rx="48" fill="#121518" />
+  <rect x="18" y="18" width="220" height="220" rx="48" fill="none" stroke="#2A3138" stroke-width="4" />
+
+  <path d="M66 80h60c38 0 62 25 62 58s-24 58-62 58h-20v-22h20c25 0 40-14 40-36s-15-36-40-36H88v96H66V80z" fill="url(#core)" />
+  <path d="M160 174h30v22h-30z" fill="#7BE9A9" opacity="0.95" />
+</svg>

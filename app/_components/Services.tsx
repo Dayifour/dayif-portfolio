@@ -1,13 +1,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { CloudCog, Rocket, Waypoints } from "lucide-react";
+import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
 const EXPERTISE_ACCENT = {
-  icon: "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.16),hsl(var(--accent)/0.1))] text-foreground/95",
-  marker: "bg-accent/75",
-  outcome:
-    "border-border/60 bg-[linear-gradient(135deg,hsl(var(--primary)/0.1),hsl(var(--accent)/0.06))]",
+  icon: "border-border/60 bg-primary/12 text-foreground/95",
+  marker: "bg-primary/70",
+  outcome: "border-border/60 bg-primary/8",
 } as const;
 
 const SERVICES = [
@@ -69,59 +69,58 @@ export const Expertise = () => {
           const accent = EXPERTISE_ACCENT;
 
           return (
-            <Card
-              key={service.title}
-              className="surface-card relative h-full overflow-hidden border-border/70 bg-card/70 p-0"
-            >
-              <div className="h-px w-full bg-gradient-to-r from-primary/45 via-accent/45 to-primary/30" />
-              <div className="flex h-full flex-col gap-5 p-6">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-muted-foreground">
-                      Expertise {index + 1}
+            <Reveal key={service.title} delayMs={index * 70}>
+              <Card className="surface-card motion-lift relative h-full overflow-hidden border-border/70 bg-card/70 p-0">
+                <div className="h-px w-full bg-primary/35" />
+                <div className="flex h-full flex-col gap-5 p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-muted-foreground">
+                        Expertise {index + 1}
+                      </p>
+                      <h3 className="mt-1 text-xl font-semibold tracking-tight text-foreground">
+                        {service.title}
+                      </h3>
+                      <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-foreground/70">
+                        {service.domain}
+                      </p>
+                    </div>
+                    <span className={`rounded-lg border p-2.5 ${accent.icon}`}>
+                      <service.Icon size={15} />
+                    </span>
+                  </div>
+
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
+
+                  <ul className="space-y-2">
+                    {service.points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2.5 text-sm text-foreground/90"
+                      >
+                        <span
+                          className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${accent.marker}`}
+                        />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div
+                    className={`mt-auto rounded-lg border px-4 py-3 ${accent.outcome}`}
+                  >
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
+                      Typical outcome
                     </p>
-                    <h3 className="mt-1 text-xl font-semibold tracking-tight text-foreground">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-foreground/70">
-                      {service.domain}
+                    <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">
+                      {service.outcome}
                     </p>
                   </div>
-                  <span className={`rounded-lg border p-2.5 ${accent.icon}`}>
-                    <service.Icon size={15} />
-                  </span>
                 </div>
-
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {service.description}
-                </p>
-
-                <ul className="space-y-2">
-                  {service.points.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-start gap-2.5 text-sm text-foreground/90"
-                    >
-                      <span
-                        className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${accent.marker}`}
-                      />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div
-                  className={`mt-auto rounded-lg border px-4 py-3 ${accent.outcome}`}
-                >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
-                    Typical outcome
-                  </p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">
-                    {service.outcome}
-                  </p>
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </Reveal>
           );
         })}
       </div>

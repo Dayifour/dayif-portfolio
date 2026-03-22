@@ -1,0 +1,37 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sekou Dayifourou KEITA portfolio banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F1215" />
+      <stop offset="1" stop-color="#171C21" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(280 90) rotate(38) scale(620 300)">
+      <stop offset="0" stop-color="#5FD394" stop-opacity="0.28" />
+      <stop offset="1" stop-color="#5FD394" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8CF2B8" />
+      <stop offset="1" stop-color="#2F9A5D" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <rect x="86" y="96" width="162" height="162" rx="36" fill="#121518" stroke="#2A3138" stroke-width="3" />
+  <path d="M121 141h44c29 0 47 18 47 42s-18 42-47 42h-15v-16h15c19 0 31-10 31-26s-12-26-31-26h-28v68h-16v-84z" fill="url(#mark)" />
+  <rect x="190" y="209" width="22" height="16" rx="4" fill="#7BE9A9" />
+
+  <text x="286" y="178" fill="#E5EAF0" font-family="Geist, Inter, Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="0.2">Sekou Dayifourou KEITA</text>
+  <text x="286" y="230" fill="#A8B2BE" font-family="Geist, Inter, Arial, sans-serif" font-size="28" font-weight="500" letter-spacing="0.2">Full-Stack Software Engineer</text>
+
+  <text x="86" y="332" fill="#C7CFD8" font-family="Geist, Inter, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="0.12">Type-safe systems. Reliable delivery. Product ownership.</text>
+
+  <rect x="86" y="378" width="252" height="46" rx="23" fill="#141A1F" stroke="#2E3944" />
+  <text x="212" y="409" text-anchor="middle" fill="#79E8A8" font-family="Geist, Inter, Arial, sans-serif" font-size="19" font-weight="600">Remote-ready collaboration</text>
+
+  <rect x="362" y="378" width="248" height="46" rx="23" fill="#141A1F" stroke="#2E3944" />
+  <text x="486" y="409" text-anchor="middle" fill="#79E8A8" font-family="Geist, Inter, Arial, sans-serif" font-size="19" font-weight="600">Architecture + execution</text>
+
+  <rect x="634" y="378" width="238" height="46" rx="23" fill="#141A1F" stroke="#2E3944" />
+  <text x="753" y="409" text-anchor="middle" fill="#79E8A8" font-family="Geist, Inter, Arial, sans-serif" font-size="19" font-weight="600">Async communication</text>
+</svg>

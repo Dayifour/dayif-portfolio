@@ -14,21 +14,17 @@ export const Hero = () => {
           Sekou Dayifourou KEITA
         </h1>
         <h2 className="mt-3 max-w-4xl text-xl leading-snug text-foreground/95 sm:text-2xl lg:text-3xl">
-          Full-Stack Software Engineer specializing in TypeScript, Next.js, and
-          Distributed Systems.
+          TypeScript Full-Stack Engineer for high-performance product systems.
         </h2>
         <p className="mt-4 max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Software Engineer focusing on TypeScript systems and scalable
-          architectures. I build full-stack products where performance and
-          type-safety are non-negotiable. Recent work includes contributions to{" "}
-          <Code>Cloudflare vinext</Code> and architecture of multi-tenant
-          systems like <Code>SUGUBA</Code>.
+          I design and ship reliable full-stack architectures, with recent work
+          spanning <Code>Cloudflare vinext</Code> contributions and the
+          multi-tenant foundation of <Code>SUGUBA</Code>.
         </p>
         <div className="mt-5 flex flex-wrap gap-2.5">
-          <span className="chip">TypeScript-first</span>
-          <span className="chip">Event-Driven</span>
-          <span className="chip">Performance-focused</span>
-          <span className="chip">Cloud-native</span>
+          <span className="chip">Ownership and accountability</span>
+          <span className="chip">Clear async communication</span>
+          <span className="chip">Reliable delivery under pressure</span>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
@@ -56,8 +52,8 @@ export const Hero = () => {
           </Link>
         </div>
         <div className="mt-7">
-          <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-            Contributed Companies
+          <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted-foreground/90">
+            Selected Contributions
           </p>
           <ContributedLogos />
         </div>

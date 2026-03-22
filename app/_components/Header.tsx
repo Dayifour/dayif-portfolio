@@ -3,6 +3,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Section } from "./Section";
@@ -87,13 +88,25 @@ export const Header = () => {
       role="banner"
     >
       <Section className="!max-w-6xl flex items-center justify-between gap-3">
-        <div className="flex min-w-0 flex-col">
-          <p className="text-lg font-bold tracking-tight text-foreground">
-            Sekou Dayifourou KEITA
-          </p>
-          <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-            Full-Stack Software Engineer
-          </p>
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-card/80 p-1.5">
+            <Image
+              src="/logos/brand-mark.svg"
+              alt="Portfolio brand logo"
+              width={28}
+              height={28}
+              className="h-7 w-7"
+              priority
+            />
+          </span>
+          <div className="min-w-0">
+            <p className="truncate text-lg font-bold tracking-tight text-foreground">
+              Sekou Dayifourou KEITA
+            </p>
+            <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+              Full-Stack Software Engineer
+            </p>
+          </div>
         </div>
 
         <nav aria-label="Primary" className="hidden lg:block">
