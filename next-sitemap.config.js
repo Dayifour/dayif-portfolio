@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: "https://dayif-portfolio.vercel.app", // ton vrai domaine
+  siteUrl: "https://www.dayifour.dev",
   generateRobotsTxt: false, // génère robots.txt automatiquement
   sitemapSize: 5000,
   changefreq: "monthly", // ton portfolio ne change pas souvent

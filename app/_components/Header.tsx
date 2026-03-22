@@ -2,6 +2,8 @@
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Section } from "./Section";
@@ -9,67 +11,119 @@ import { Section } from "./Section";
 const navLinks = [
   { title: "About", href: "#about" },
   { title: "Open Source", href: "#open-source" },
+  { title: "GitHub Activity", href: "#github-activity" },
   { title: "Projects", href: "#projects" },
   { title: "Expertise", href: "#expertise" },
   { title: "Skills", href: "#skills" },
   { title: "Contact", href: "#contact" },
 ];
 
+const navSectionIds = navLinks.map((item) => item.href.slice(1));
+
 export const Header = () => {
-  const sectionIds = navLinks.map((item) => item.href.replace("#", ""));
-  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? "about");
+  const [activeSection, setActiveSection] = useState(
+    navSectionIds[0] ?? "about",
+  );
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    const getCurrentSection = () => {
+      const headerOffset = 120;
+      const scrollY = window.scrollY;
 
-        if (visible[0]?.target.id) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-45% 0px -45% 0px",
-        threshold: [0.2, 0.4, 0.6],
+      let current = navSectionIds[0] ?? "about";
+
+      if (
+        window.innerHeight + Math.ceil(scrollY) >=
+        document.documentElement.scrollHeight
+      ) {
+        return navSectionIds[navSectionIds.length - 1] ?? current;
       }
-    );
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+      for (const id of navSectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.offsetTop - headerOffset <= scrollY) {
+          current = id;
+        }
+      }
 
-    return () => observer.disconnect();
-  }, [sectionIds]);
+      return current;
+    };
+
+    let ticking = false;
+    const syncWithScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const next = getCurrentSection();
+        setActiveSection((prev) => (prev === next ? prev : next));
+        ticking = false;
+      });
+    };
+
+    const syncWithHash = () => {
+      const hashId = window.location.hash.replace("#", "");
+      if (hashId && navSectionIds.includes(hashId)) {
+        setActiveSection(hashId);
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    syncWithScroll();
+    syncWithHash();
+
+    window.addEventListener("scroll", syncWithScroll, { passive: true });
+    window.addEventListener("hashchange", syncWithHash);
+
+    return () => {
+      window.removeEventListener("scroll", syncWithScroll);
+      window.removeEventListener("hashchange", syncWithHash);
+    };
+  }, []);
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-border/40 bg-background/70 py-3 backdrop-blur-md"
+      className="sticky top-0 z-50 border-b border-border/50 bg-background/82 py-3 backdrop-blur-xl"
       role="banner"
     >
-      <Section className="flex flex-wrap items-center gap-3">
-        <div className="flex flex-col">
-          <p className="text-lg font-bold text-primary">
-            Sekou Dayifourou KEITA
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Full-Stack Software Engineer
-          </p>
+      <Section className="!max-w-6xl flex items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-card/80 p-1.5">
+            <Image
+              src="/logos/brand-mark.svg"
+              alt="Portfolio brand logo"
+              width={28}
+              height={28}
+              className="h-7 w-7"
+              priority
+            />
+          </span>
+          <div className="min-w-0">
+            <p className="truncate text-lg font-bold tracking-tight text-foreground">
+              Sekou Dayifourou KEITA
+            </p>
+            <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+              Full-Stack Software Engineer
+            </p>
+          </div>
         </div>
-        <nav aria-label="Primary" className="mr-auto ml-2">
-          <ul className="flex flex-wrap items-center gap-1.5">
+
+        <nav aria-label="Primary" className="hidden lg:block">
+          <ul className="flex items-center gap-1.5 pr-1">
             {navLinks.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  aria-current={activeSection === item.href.slice(1) ? "page" : undefined}
+                  onClick={() => setActiveSection(item.href.slice(1))}
+                  aria-current={
+                    activeSection === item.href.slice(1) ? "page" : undefined
+                  }
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "sm" }),
-                    "text-xs text-muted-foreground hover:text-primary",
+                    "whitespace-nowrap rounded-md text-xs text-muted-foreground hover:text-primary",
                     activeSection === item.href.slice(1) &&
-                      "bg-accent/40 text-primary"
+                      "bg-primary/15 text-primary",
                   )}
                 >
                   {item.title}
@@ -78,13 +132,77 @@ export const Header = () => {
             ))}
           </ul>
         </nav>
-        <Link
-          href="#contact"
-          className={cn(buttonVariants({ variant: "default", size: "sm" }))}
+
+        <div className="hidden items-center gap-2 lg:flex">
+          <Link
+            href="https://github.com/Dayifour"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonVariants({ variant: "default", size: "sm" }))}
+          >
+            Explore Code
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          className={cn(
+            buttonVariants({ variant: "ghost", size: "icon" }),
+            "lg:hidden",
+          )}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         >
-          Let&apos;s talk
-        </Link>
+          {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+        </button>
       </Section>
+
+      {isMobileMenuOpen ? (
+        <nav
+          aria-label="Primary"
+          className="border-t border-border/50 bg-background/95 px-4 py-3 lg:hidden"
+        >
+          <ul className="m-auto flex w-full max-w-6xl flex-col gap-2">
+            {navLinks.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  onClick={() => {
+                    setActiveSection(item.href.slice(1));
+                    setIsMobileMenuOpen(false);
+                  }}
+                  aria-current={
+                    activeSection === item.href.slice(1) ? "page" : undefined
+                  }
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "sm" }),
+                    "w-full justify-start rounded-md text-sm text-muted-foreground hover:text-primary",
+                    activeSection === item.href.slice(1) &&
+                      "bg-primary/15 text-primary",
+                  )}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+            <li className="pt-1">
+              <Link
+                href="https://github.com/Dayifour"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: "default", size: "sm" }),
+                  "w-full",
+                )}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Explore Code
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      ) : null}
     </header>
   );
 };

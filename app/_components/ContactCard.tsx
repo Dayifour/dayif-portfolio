@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 type ContactCardProps = {
-  image: string;
   mediumImage: string;
+  mediumBadgeClassName?: string;
   name: string;
   description: string;
+  hint: string;
   url: string;
   className?: string;
 };
@@ -23,35 +24,45 @@ export const ContactCard = (props: ContactCardProps) => {
       aria-label={`Contact via ${props.name}`}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={cn("w-full h-full", props.className)}
+      className={cn("h-full w-full", props.className)}
     >
-      <Card className="group flex h-full min-h-32 items-center gap-3 border-border/60 bg-card/50 p-3 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
-        <div className="relative w-10 h-10 shrink-0">
-          <Image
-            src={props.image}
-            alt={`Profile image of ${props.name}`}
-            width={40}
-            height={40}
-            className="w-full h-full rounded-full object-cover"
-          />
-          <Image
-            src={props.mediumImage}
-            alt={`${props.name} platform icon`}
-            width={16}
-            height={16}
-            className="w-4 h-4 absolute -bottom-1 -right-1 rounded-full object-contain"
-          />
-        </div>
-        <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <p className="text-base font-semibold">{props.name}</p>
+      <Card className="surface-card motion-lift group relative flex h-full min-h-44 flex-col overflow-hidden border-border/70 bg-card/70 p-0">
+        <div className="h-px w-full bg-primary/35" />
+        <div className="flex h-full flex-col gap-4 p-5">
+          <div className="flex items-center justify-between">
+            <div
+              className={cn(
+                "inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/70 bg-primary/12",
+                props.mediumBadgeClassName,
+              )}
+            >
+              <Image
+                src={props.mediumImage}
+                alt={`${props.name} platform icon`}
+                width={22}
+                height={22}
+                className="h-[22px] w-[22px] object-contain"
+              />
+            </div>
+            <ArrowUpRight
+              size={16}
+              className="shrink-0 text-muted-foreground transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+            />
           </div>
-          <p className="text-xs leading-relaxed text-muted-foreground">{props.description}</p>
+
+          <div>
+            <p className="text-lg font-semibold tracking-tight text-foreground">
+              {props.name}
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              {props.description}
+            </p>
+          </div>
+
+          <p className="mt-auto border-t border-border/50 pt-3 text-xs uppercase tracking-[0.12em] text-foreground/70">
+            {props.hint}
+          </p>
         </div>
-        <ArrowUpRight
-          size={16}
-          className="mr-1 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-        />
       </Card>
     </Link>
   );

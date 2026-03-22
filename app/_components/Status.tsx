@@ -1,21 +1,148 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Layers3, LucideIcon, ShieldCheck, Video } from "lucide-react";
+import {
+  ArrowUpRight,
+  Layers3,
+  LucideIcon,
+  ShieldCheck,
+  Video,
+} from "lucide-react";
 import Link from "next/link";
+import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
+const PROJECT_ACCENT = {
+  icon: "border-border/60 bg-primary/12 text-foreground/95",
+  chip: "border-border/60 bg-primary/10 text-foreground/90",
+  impact: "border-border/60 bg-primary/8",
+  details: "border-border/60 bg-primary/6",
+  link: "hover:text-primary",
+} as const;
+
 export const Status = () => {
+  const [featuredProject, ...otherProjects] = SIDE_PROJECTS;
+  const featuredAccent = PROJECT_ACCENT;
+
   return (
     <Section id="projects" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Projects</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        High-impact product engineering
-      </h2>
-      <div className="grid w-full gap-4 md:grid-cols-2">
-        {SIDE_PROJECTS.map((project) => (
-          <Card key={project.title} className="h-full border-border/60 bg-card/50 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
-            <SideProject {...project} />
+      <h2 className="section-title">Selected product work</h2>
+      <p className="section-lead">
+        A concise selection of products with clear architecture choices and
+        practical outcomes.
+      </p>
+
+      {featuredProject && (
+        <Reveal>
+          <Card className="surface-card motion-lift relative w-full overflow-hidden border-border/70 bg-card/70 p-0">
+            <div className="h-px w-full bg-primary/35" />
+            <div className="grid lg:grid-cols-[1.3fr_0.9fr]">
+              <div className="space-y-5 p-6 sm:p-8">
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`rounded-lg border bg-background/35 p-2.5 ${featuredAccent.icon}`}
+                  >
+                    <featuredProject.Logo size={16} />
+                  </span>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/70">
+                    Featured project
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-[1.75rem]">
+                    {featuredProject.title}
+                  </h3>
+                  <p className="text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
+                    {featuredProject.role}
+                  </p>
+                </div>
+
+                <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  {featuredProject.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {featuredProject.stack.split(",").map((tech) => (
+                    <span
+                      key={tech}
+                      className={`rounded-full border bg-background/25 px-2.5 py-1 text-xs font-medium ${featuredAccent.chip}`}
+                    >
+                      {tech.trim()}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={featuredProject.url}
+                  aria-label={`View project ${featuredProject.title}`}
+                  target={
+                    featuredProject.url.startsWith("http") ? "_blank" : undefined
+                  }
+                  rel={
+                    featuredProject.url.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${featuredAccent.link}`}
+                >
+                  Open project repository
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+
+              <div className="border-t border-border/60 bg-background/20 p-6 sm:p-8 lg:border-l lg:border-t-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/75">
+                  Impact
+                </p>
+                <p
+                  className={`mt-2 rounded-lg border-l-2 px-3 py-2 text-sm leading-relaxed text-foreground/92 ${featuredAccent.impact}`}
+                >
+                  {featuredProject.impact}
+                </p>
+
+                <details
+                  className={`mt-5 rounded-xl border px-4 py-3 text-sm ${featuredAccent.details}`}
+                >
+                  <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
+                    View case study
+                  </summary>
+                  <div className="mt-3 space-y-2.5 text-muted-foreground">
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Challenge:
+                      </span>{" "}
+                      {featuredProject.caseStudy.challenge}
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Architecture:
+                      </span>{" "}
+                      {featuredProject.caseStudy.architecture}
+                    </p>
+                    <p>
+                      <span className="font-medium text-foreground">Result:</span>{" "}
+                      {featuredProject.caseStudy.result}
+                    </p>
+                  </div>
+                </details>
+              </div>
+            </div>
           </Card>
+        </Reveal>
+      )}
+
+      <div className="section-grid md:grid-cols-2">
+        {otherProjects.map((project, index) => (
+          <Reveal key={project.title} delayMs={index * 70}>
+            <Card className="surface-card motion-lift h-full border-border/70 p-6">
+              <SideProject
+                accent={PROJECT_ACCENT}
+                index={index + 2}
+                {...project}
+              />
+            </Card>
+          </Reveal>
         ))}
       </div>
     </Section>
@@ -26,10 +153,13 @@ const SIDE_PROJECTS: SideProjectProps[] = [
   {
     Logo: Layers3,
     title: "SUGUBA Marketplace",
+    role: "Lead Full-Stack Engineer",
+    stack: "Next.js, NestJS, PostgreSQL, Redis, Docker",
     description:
-      "A high-concurrency multi-tenant marketplace built with Next.js, NestJS microservices, PostgreSQL, Redis, and Docker.",
+      "Multi-tenant marketplace currently in active development with Next.js, NestJS, PostgreSQL, Redis, and Docker.",
     impact:
-      "Designed a scalable database schema to handle thousands of concurrent product listings.",
+      "Scaled product listing workloads with tenant-safe data design and caching.",
+    visibility: "private",
     caseStudy: {
       challenge:
         "Support high write/read traffic across tenant-isolated product catalogs without latency spikes.",
@@ -38,15 +168,17 @@ const SIDE_PROJECTS: SideProjectProps[] = [
       result:
         "Improved catalog responsiveness under concurrent load and reduced query pressure on core tables.",
     },
-    url: "https://github.com/Dayifour",
+    url: "#",
   },
   {
     Logo: Video,
     title: "Video_downloader",
+    role: "Backend/Platform Engineer",
+    stack: "Node.js, yt-dlp, Stream Processing",
     description:
-      "Performance-oriented download tooling using yt-dlp integration, stream handling, and resilient error flows.",
+      "Download service built around yt-dlp, stream processing, and resilient fallback flows.",
     impact:
-      "Improved download reliability and response consistency across multiple video quality paths.",
+      "Improved reliability and consistency across multiple media quality paths.",
     caseStudy: {
       challenge:
         "Handle unstable upstream media responses while keeping UX simple and resilient.",
@@ -59,11 +191,13 @@ const SIDE_PROJECTS: SideProjectProps[] = [
   },
   {
     Logo: ShieldCheck,
-    title: "ITAK Management Platform",
+    title: "Smart School",
+    role: "Application Architect",
+    stack: "RBAC, Analytics, Workflow Automation",
     description:
-      "Resource management platform with analytics dashboards, secure authentication, and operational workflows.",
+      "Operational platform with analytics dashboards, authentication, and workflow orchestration.",
     impact:
-      "Reduced manual tracking overhead through centralized visibility and role-based access flows.",
+      "Reduced manual overhead through centralized visibility and RBAC workflows.",
     caseStudy: {
       challenge:
         "Unify fragmented operations and enforce secure access for different user roles.",
@@ -72,15 +206,18 @@ const SIDE_PROJECTS: SideProjectProps[] = [
       result:
         "Lowered operational friction and improved decision-making through centralized analytics visibility.",
     },
-    url: "https://github.com/Dayifour",
+    url: "https://github.com/Dayifour/smartSchool",
   },
 ];
 
 type SideProjectProps = {
   Logo: LucideIcon;
   title: string;
+  role: string;
+  stack: string;
   description: string;
   impact: string;
+  visibility?: "public" | "private";
   caseStudy: {
     challenge: string;
     architecture: string;
@@ -89,31 +226,93 @@ type SideProjectProps = {
   url: string;
 };
 
-const SideProject = (props: SideProjectProps) => {
+const SideProject = ({
+  accent,
+  index,
+  ...props
+}: SideProjectProps & {
+  index: number;
+  accent: typeof PROJECT_ACCENT;
+}) => {
   return (
-    <div className="inline-flex flex-col items-start gap-3 rounded-md p-1">
-      <Link
-        href={props.url}
-        aria-label={`Voir le projet ${props.title}`}
-        target={props.url.startsWith("http") ? "_blank" : undefined}
-        rel={props.url.startsWith("http") ? "noopener noreferrer" : undefined}
-        className="inline-flex items-start gap-4 rounded-md transition-colors hover:bg-accent/20"
-      >
-      <span className="bg-accent text-accent-foreground p-3 rounded-sm">
-        <props.Logo size={16} />
-      </span>
-      <div>
-        <p className="text-lg font-semibold">{props.title}</p>
-        <p className="text-sm text-muted-foreground">{props.description}</p>
-        <p className="mt-2 text-xs text-primary/90">Impact: {props.impact}</p>
+    <div className="flex h-full w-full flex-col gap-4">
+      <div className="h-px w-full bg-primary/35" />
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Project {index.toString().padStart(2, "0")}
+          </p>
+          <h3 className="mt-1 text-xl font-semibold tracking-tight text-foreground">
+            {props.title}
+          </h3>
+          <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-foreground/65">
+            {props.role}
+          </p>
+        </div>
+        <span
+          className={`rounded-lg border bg-background/30 p-2.5 ${accent.icon}`}
+        >
+          <props.Logo size={15} />
+        </span>
       </div>
-      </Link>
 
-      <details className="w-full rounded-md border border-border/60 bg-background/40 p-3 text-sm">
-        <summary className="cursor-pointer select-none font-medium text-primary">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        {props.description}
+      </p>
+
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          Stack
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {props.stack.split(",").map((tech) => (
+            <span
+              key={tech}
+              className={`rounded-full border bg-background/25 px-2.5 py-1 text-xs font-medium ${accent.chip}`}
+            >
+              {tech.trim()}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className={`rounded-lg border p-4 ${accent.impact}`}>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          Impact
+        </p>
+        <p className="mt-1.5 border-l border-primary/40 pl-3 text-sm leading-relaxed text-foreground/88">
+          {props.impact}
+        </p>
+      </div>
+
+      <div className="mt-auto flex items-center justify-between gap-3 border-t border-border/50 pt-4">
+        {props.visibility === "private" ? (
+          <p className="text-sm font-medium text-muted-foreground">
+            Repository private - public link coming soon
+          </p>
+        ) : (
+          <Link
+            href={props.url}
+            aria-label={`View project ${props.title}`}
+            target={props.url.startsWith("http") ? "_blank" : undefined}
+            rel={
+              props.url.startsWith("http") ? "noopener noreferrer" : undefined
+            }
+            className={`inline-flex items-center gap-1.5 text-sm font-medium text-foreground/90 underline-offset-4 transition-colors hover:underline ${accent.link}`}
+          >
+            Open project repository
+            <ArrowUpRight size={14} />
+          </Link>
+        )}
+      </div>
+
+      <details
+        className={`w-full rounded-xl border px-4 py-3 text-sm ${accent.details}`}
+      >
+        <summary className="cursor-pointer select-none font-medium text-foreground/90 transition-colors hover:text-foreground">
           View case study
         </summary>
-        <div className="mt-3 space-y-2 text-muted-foreground">
+        <div className="mt-3 space-y-2.5 text-muted-foreground">
           <p>
             <span className="font-medium text-foreground">Challenge:</span>{" "}
             {props.caseStudy.challenge}

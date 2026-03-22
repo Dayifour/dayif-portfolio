@@ -1,5 +1,7 @@
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { ContactCard } from "./ContactCard";
+import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
 export const Contact = () => {
@@ -9,60 +11,59 @@ export const Contact = () => {
       url: "mailto:sekoudayifourouk@gmail.com",
       name: "Email",
       description: "sekoudayifourouk@gmail.com",
-      image: "/dayif.png",
-      mediumImage: "https://cdn-icons-png.flaticon.com/128/5968/5968534.png",
-    },
-    {
-      className: "h-full",
-      url: "https://wa.me/22379994640?text=Salut!",
-      name: "WhatsApp",
-      description: "Fast responses for project discussions",
-      image: "/dayif.png",
-      mediumImage: "https://cdn-icons-png.flaticon.com/128/15713/15713434.png",
-    },
-    {
-      className: "h-full",
-      url: "https://telegram.me/managerdayif?text=Salut!",
-      name: "Telegram",
-      description: "@managerdayif",
-      image: "/dayif.png",
-      mediumImage: "https://cdn-icons-png.flaticon.com/128/5968/5968804.png",
+      hint: "Preferred for direct opportunities",
+      mediumImage: "/logos/email.svg",
+      mediumBadgeClassName: "bg-primary/18",
     },
     {
       className: "h-full",
       url: "https://linkedin.com/in/dayifour",
       name: "LinkedIn",
       description: "Professional profile and experience",
-      image: "/dayif.png",
-      mediumImage: "https://cdn-icons-png.flaticon.com/128/3536/3536505.png",
-    },
-    {
-      className: "h-full",
-      url: "https://github.com/Dayifour",
-      name: "GitHub",
-      description: "Code, open-source work, and experiments",
-      image: "/dayif.png",
-      mediumImage: "/logos/github.svg",
-    },
-    {
-      className: "h-full",
-      url: "https://twitter.com/dayifour",
-      name: "X / Twitter",
-      description: "Technical insights and updates",
-      image: "/dayif.png",
-      mediumImage: "/logos/x.svg",
+      hint: "Best for networking and profile details",
+      mediumImage: "/logos/linkedin.svg",
+      mediumBadgeClassName: "bg-primary/18",
     },
   ];
 
   return (
     <Section id="contact" className="flex flex-col items-start gap-4">
       <Badge variant="outline">Contact</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        Let&apos;s build your next product milestone
-      </h2>
-      <div className="grid w-full gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+      <h2 className="section-title">Let&apos;s build something serious</h2>
+      <p className="section-lead">
+        Open to full-time engineering roles and high-impact product challenges.
+      </p>
+
+      <Reveal>
+        <Card className="surface-card motion-lift relative w-full overflow-hidden border-border/70 bg-card/70 p-0">
+          <div className="h-px w-full bg-primary/35" />
+          <div className="grid gap-5 p-6 sm:grid-cols-2 sm:p-8 lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="space-y-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-muted-foreground">
+                Collaboration
+              </p>
+              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                I partner with teams that value robust architecture, clean
+                delivery, and long-term product quality.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border/60 bg-primary/10 px-4 py-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
+                Availability
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-foreground/92">
+                Open to full-time roles and selective freelance missions.
+              </p>
+            </div>
+          </div>
+        </Card>
+      </Reveal>
+
+      <div className="grid w-full grid-cols-1 items-stretch gap-4 sm:grid-cols-2">
         {contactCardDetails.map((props, idx) => (
-          <ContactCard key={idx} {...props} />
+          <Reveal key={props.name} delayMs={idx * 80}>
+            <ContactCard {...props} />
+          </Reveal>
         ))}
       </div>
     </Section>

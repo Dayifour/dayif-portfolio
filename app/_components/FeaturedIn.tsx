@@ -31,7 +31,10 @@ export const FeaturedIn = () => {
       </h2>
       <div className="grid w-full gap-4 md:grid-cols-3">
         {ITEMS.map((item) => (
-          <Card key={item.name} className="surface-card motion-lift group p-5 animate-enter">
+          <Card
+            key={item.name}
+            className="surface-card motion-lift group p-5 animate-enter"
+          >
             <Link
               href={item.href}
               target="_blank"

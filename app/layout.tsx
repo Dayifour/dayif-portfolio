@@ -3,13 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
-import { Anek_Telugu } from "next/font/google";
 import "./globals.css";
-
-const AnekTelugu = Anek_Telugu({
-  subsets: ["latin"],
-  variable: "--font-caption",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -36,7 +30,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Sekou Dayifourou KEITA",
-      url: "https://dayif-portfolio.vercel.app",
+      url: "https://www.dayifour.dev",
     },
   ],
   creator: "Sekou Dayifourou KEITA",
@@ -44,14 +38,14 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://dayif-portfolio.vercel.app",
+    url: "https://www.dayifour.dev",
     title: "Sekou Dayifourou KEITA | Software Engineer Portfolio",
     description:
       "Portfolio of a Full-Stack Software Engineer specializing in TypeScript, Next.js, and distributed systems.",
     siteName: "Sekou Dayifourou KEITA Portfolio",
     images: [
       {
-        url: "https://dayif-portfolio.vercel.app/dayif.png",
+        url: "https://www.dayifour.dev/og-banner.svg",
         width: 1200,
         height: 630,
         alt: "Sekou Dayifourou KEITA Portfolio",
@@ -67,17 +61,18 @@ export const metadata: Metadata = {
     title: "Sekou Dayifourou KEITA | Software Engineer Portfolio",
     description:
       "Contributor to Cloudflare, npmx, and iii-hq. Building type-safe, high-performance software architectures.",
-    images: ["https://dayif-portfolio.vercel.app/dayif.png"],
+    images: ["https://www.dayifour.dev/og-banner.svg"],
   },
 
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [{ url: "/logos/brand-mark.svg", type: "image/svg+xml" }],
+    shortcut: "/logos/brand-mark.svg",
+    apple: [{ url: "/logos/brand-mark.svg" }],
   },
 
-  metadataBase: new URL("https://dayif-portfolio.vercel.app"),
+  metadataBase: new URL("https://www.dayifour.dev"),
   alternates: {
-    canonical: "https://dayif-portfolio.vercel.app",
+    canonical: "https://www.dayifour.dev",
   },
   robots: {
     index: true,
@@ -107,8 +102,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Sekou Dayifourou KEITA",
-    url: "https://dayif-portfolio.vercel.app",
-    image: "https://dayif-portfolio.vercel.app/dayif.png",
+    url: "https://www.dayifour.dev",
+    image: "https://www.dayifour.dev/logos/brand-mark.svg",
     jobTitle: "Software Engineer",
     knowsAbout: [
       "TypeScript",
@@ -142,12 +137,11 @@ export default function RootLayout({
         className={cn(
           GeistSans.variable,
           GeistMono.variable,
-          AnekTelugu.variable,
-          "font-sans h-full bg-background text-foreground",
+          "h-full bg-background font-sans text-foreground [--font-caption:var(--font-geist-sans)]",
         )}
       >
         {children}
-        <Analytics />
+        {process.env.NODE_ENV === "production" ? <Analytics /> : null}
       </body>
     </html>
   );

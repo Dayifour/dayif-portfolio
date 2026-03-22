@@ -5,4 +5,4 @@ Allow: /
 
 
 # Sitemaps
-Sitemap: https://dayif-portfolio.vercel.app/sitemap.xml
+Sitemap: https://www.dayifour.dev/sitemap.xml
