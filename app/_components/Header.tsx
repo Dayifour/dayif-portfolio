@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Icons } from "./icons/Icons";
 import { Section } from "./Section";
 
 const navLinks = [
@@ -135,6 +136,16 @@ export const Header = () => {
 
         <div className="hidden items-center gap-2 lg:flex">
           <Link
+            href="https://wa.me/22379994640"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+            aria-label="Contact Sekou Dayifourou KEITA on WhatsApp"
+          >
+            <Icons.WhatsAppIcon size={16} aria-hidden="true" />
+            WhatsApp
+          </Link>
+          <Link
             href="https://github.com/Dayifour"
             target="_blank"
             rel="noopener noreferrer"
@@ -187,6 +198,21 @@ export const Header = () => {
               </li>
             ))}
             <li className="pt-1">
+              <Link
+                href="https://wa.me/22379994640"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "sm" }),
+                  "w-full",
+                )}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Icons.WhatsAppIcon size={16} aria-hidden="true" />
+                WhatsApp
+              </Link>
+            </li>
+            <li>
               <Link
                 href="https://github.com/Dayifour"
                 target="_blank"
