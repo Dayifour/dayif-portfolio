@@ -1,3 +1,5 @@
+import { getTranslations } from "@/lib/i18n";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,11 +21,12 @@ const companies = [
   },
 ];
 
-export const ContributedLogos = () => {
+export const ContributedLogos = async () => {
+  const t = await getTranslations();
   return (
     <ul
       className="flex flex-wrap items-center gap-3"
-      aria-label="Contributed companies"
+      aria-label={t("Contributed companies")}
     >
       {companies.map((company) => (
         <li key={company.name}>
@@ -38,7 +41,7 @@ export const ContributedLogos = () => {
               alt={`${company.name} logo`}
               width={18}
               height={18}
-              className="h-[18px] w-[18px] rounded-sm grayscale"
+              className={`h-[18px] w-[18px] rounded-sm ${company.logo === "/logos/iii.svg" ? "invert dark:invert-0" : ""}`}
             />
             <span>{company.name}</span>
           </Link>
