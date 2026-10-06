@@ -1,63 +1,57 @@
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { Code } from "./Code";
-import { ContributedLogos } from "./ContributedLogos";
-import { Section } from "./Section";
+import { ArrowDown, ArrowDownRight, ArrowUpRight, Globe2 } from "lucide-react";
+import Image from "next/image";
+import { contact } from "@/lib/contact";
+import { T } from "./TranslatedText";
+import { Icons } from "./icons/Icons";
 
-export const Hero = () => {
+export function Hero() {
   return (
-    <Section id="about" className="flex flex-col items-start gap-6">
-      <div className="hero-surface w-full p-6 sm:p-8 lg:p-10">
-        <p className="section-kicker">Software Engineering</p>
-        <h1 className="mt-3 font-caption text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-          Sekou Dayifourou KEITA
-        </h1>
-        <h2 className="mt-3 max-w-4xl text-xl leading-snug text-foreground/95 sm:text-2xl lg:text-3xl">
-          TypeScript Full-Stack Engineer for high-performance product systems.
-        </h2>
-        <p className="mt-4 max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          I design and ship reliable full-stack architectures, with recent work
-          spanning <Code>Cloudflare vinext</Code> contributions and the
-          multi-tenant foundation of <Code>SUGUBA</Code>.
-        </p>
-        <div className="mt-5 flex flex-wrap gap-2.5">
-          <span className="chip">Ownership and accountability</span>
-          <span className="chip">Clear async communication</span>
-          <span className="chip">Reliable delivery under pressure</span>
+    <section id="top" className="hero-stage">
+      <div className="hero-topline section-shell">
+        <span><span className="status-dot" /><T>Open for good collaborations</T></span>
+        <span className="hero-location"><Globe2 size={14} /><T>Based in Mali. Building everywhere.</T></span>
+      </div>
+      <div className="hero-composition section-shell">
+        <div className="hero-copy">
+          <p className="hero-name">Sekou Dayifourou Keita <span>© 2026</span></p>
+          <h1 className="hero-title">
+            <span className="hero-line"><span><T>Your ideas.</T></span></span>
+            <span className="hero-line hero-line-accent"><span><T>Brought to life.</T></span></span>
+          </h1>
+          <div className="hero-intro">
+            <span className="hero-intro-arrow" aria-hidden="true"><ArrowDownRight /></span>
+            <div>
+              <p className="hero-role"><T>Full-stack engineer. Your product partner.</T></p>
+              <p className="hero-description"><T>I turn ambitious ideas into products people actually use. From the first sketch to going live.</T></p>
+            </div>
+          </div>
+          <div className="hero-actions">
+            <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="button button-ink" data-magnetic>
+              <span className="button-label"><T>{"Let's build together"}</T></span>
+              <Icons.WhatsAppIcon size={21} viewBox="0 0 256 258" aria-hidden="true" />
+            </a>
+            <a href="#work" className="text-link"><T>Explore my work</T><ArrowDown size={17} /></a>
+          </div>
         </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link
-            href="https://github.com/Dayifour"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(buttonVariants({ variant: "default" }), "h-10 px-5")}
-          >
-            Explore Code
-          </Link>
-          <Link
-            href="https://linkedin.com/in/dayifour"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(buttonVariants({ variant: "outline" }), "h-10 px-5")}
-          >
-            LinkedIn
-          </Link>
-          <Link
-            href="mailto:sekoudayifourouk@gmail.com"
-            className="self-center text-sm text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
-          >
-            Email
-          </Link>
-        </div>
-        <div className="mt-7">
-          <p className="mb-2 text-xs uppercase tracking-[0.16em] text-muted-foreground/90">
-            Selected Contributions
-          </p>
-          <ContributedLogos />
+        <div className="hero-art" data-portrait>
+          <span className="hero-art-word" aria-hidden="true">create.</span>
+          <div className="portrait-halo" aria-hidden="true" />
+          <div className="hero-portrait-card">
+            <Image src="/images/dayif-portrait-cobalt.webp" alt="Sekou Dayifourou Keita" width={1024} height={1536} priority sizes="(max-width: 767px) 85vw, 40vw" className="hero-portrait" />
+            <div className="portrait-caption"><span>Dayifour</span><span><T>Engineer & maker</T><ArrowUpRight size={16} /></span></div>
+          </div>
+          <div className="hero-seal" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><defs><path id="seal-circle" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" /></defs><text><textPath href="#seal-circle" textLength="268">IDEAS INTO REALITY · IDEAS INTO REALITY · </textPath></text></svg>
+            <span>✳</span>
+          </div>
+          <div className="portrait-note"><span className="status-dot" /><T>A person behind every pixel.</T></div>
         </div>
       </div>
-    </Section>
+      <div className="hero-bottom section-shell">
+        <a href="#work" className="hero-scroll"><span className="scroll-circle"><ArrowDown size={18} /></span><span><T>Scroll to discover</T></span></a>
+        <div className="hero-proof"><strong>04</strong><span><T>real products.</T><br /><T>Already out in the world.</T></span></div>
+        <div className="hero-disciplines">WEB <span>✳</span> BACKEND <span>✳</span> OPEN SOURCE</div>
+      </div>
+    </section>
   );
-};
+}

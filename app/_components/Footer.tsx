@@ -1,87 +1,17 @@
 import Link from "next/link";
-import { Section } from "./Section";
+import { T } from "./TranslatedText";
 
-export const Footer = () => {
-  const year = new Date().getFullYear();
-
-  const quickLinks = [
-    { label: "Open Source", href: "#open-source" },
-    { label: "Projects", href: "#projects" },
-    { label: "Expertise", href: "#expertise" },
-    { label: "Skills", href: "#skills" },
-  ];
-
-  const socialLinks = [
-    { label: "GitHub", href: "https://github.com/Dayifour" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/dayifour" },
-    { label: "Email", href: "mailto:sekoudayifourouk@gmail.com" },
-  ];
-
+export function Footer() {
   return (
-    <footer
-      className="relative mt-10 overflow-hidden border-t border-border/60 bg-card/60"
-      role="contentinfo"
-    >
-      <div className="h-px w-full bg-primary/35" />
-
-      <Section className="grid w-full gap-8 py-12 md:grid-cols-3">
-        <div className="space-y-3">
-          <p className="text-xl font-semibold tracking-tight text-foreground">
-            Sekou Dayifourou KEITA
-          </p>
-          <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Full-Stack Software Engineer building high-performance, type-safe
-            systems for product startups.
-          </p>
-          <p className="text-xs uppercase tracking-[0.12em] text-foreground/70">
-            Remote-friendly | UTC
-          </p>
+    <footer className="site-footer section-shell">
+      <div className="flex flex-col gap-6 border-t border-ink/10 pt-8 text-sm text-muted-foreground dark:border-white/10 sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Sekou Dayifourou Keita. <T>Built with care.</T></p>
+        <div className="flex items-center gap-5 font-bold text-foreground">
+          <Link href="https://github.com/Dayifour" target="_blank" rel="noopener noreferrer">GitHub</Link>
+          <Link href="https://linkedin.com/in/dayifour" target="_blank" rel="noopener noreferrer">LinkedIn</Link>
+          <Link href="#top"><T>Back to top</T> ↑</Link>
         </div>
-
-        <div className="space-y-2">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-foreground/75">
-            Navigate
-          </p>
-          <ul className="space-y-1.5">
-            {quickLinks.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-flex rounded-md border border-transparent px-2 py-1 text-sm text-muted-foreground transition-colors hover:border-border/60 hover:bg-background/20 hover:text-primary"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="space-y-2">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-foreground/75">
-            Connect
-          </p>
-          <ul className="space-y-1.5">
-            {socialLinks.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex rounded-md border border-transparent px-2 py-1 text-sm text-muted-foreground transition-colors hover:border-border/60 hover:bg-background/20 hover:text-primary"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="md:col-span-3 border-t border-border/70 pt-5">
-          <p className="text-sm text-muted-foreground" aria-label="Copyright">
-            &copy; {year} Sekou Dayifourou KEITA. All rights reserved.
-          </p>
-        </div>
-      </Section>
+      </div>
     </footer>
   );
-};
+}

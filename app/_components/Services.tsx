@@ -1,129 +1,52 @@
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { CloudCog, Rocket, Waypoints } from "lucide-react";
+import { getTranslations } from "@/lib/i18n";
+import { Boxes, Cloud, Sparkles } from "lucide-react";
+import Image from "next/image";
 import { Reveal } from "./Reveal";
-import { Section } from "./Section";
+import { T } from "./TranslatedText";
 
-const EXPERTISE_ACCENT = {
-  icon: "border-border/60 bg-primary/12 text-foreground/95",
-  marker: "bg-primary/70",
-  outcome: "border-border/60 bg-primary/8",
-} as const;
-
-const SERVICES = [
-  {
-    domain: "Architecture",
-    Icon: Waypoints,
-    title: "Systems Architecture",
-    description:
-      "Event-driven microservices, resilient API contracts, and database optimization for scale.",
-    outcome:
-      "Reliable foundations for high-throughput, multi-service products.",
-    points: [
-      "NestJS microservices",
-      "REST/GraphQL APIs",
-      "Indexing and caching strategy",
-    ],
-  },
-  {
-    domain: "Product",
-    Icon: Rocket,
-    title: "Product Engineering",
-    description:
-      "Building 0-to-1 products with Next.js and TypeScript, focused on performance and SEO outcomes.",
-    outcome:
-      "Faster iteration cycles with measurable web performance improvements.",
-    points: [
-      "Next.js App Router",
-      "Core Web Vitals (Lighthouse 95+)",
-      "Type-safe architecture",
-    ],
-  },
-  {
-    domain: "Cloud",
-    Icon: CloudCog,
-    title: "Cloud and DevOps",
-    description:
-      "Production pipelines, serverless execution, and infrastructure reliability.",
-    outcome:
-      "Stable delivery flow from code to production with fewer release risks.",
-    points: [
-      "Docker and Linux VPS",
-      "GitHub Actions CI/CD",
-      "AWS Lambda and SST",
-    ],
-  },
+const strengths = [
+  { icon: Sparkles, title: "Product thinking", text: "I simplify the hard parts and keep the experience human.", color: "bg-coral" },
+  { icon: Boxes, title: "Solid architecture", text: "Clear systems that stay fast and maintainable as they grow.", color: "bg-primary text-white" },
+  { icon: Cloud, title: "From idea to production", text: "One partner across interface, backend, cloud and delivery.", color: "bg-mint" },
 ];
 
-export const Expertise = () => {
+export async function Expertise() {
+  const t = await getTranslations();
+
   return (
-    <Section id="expertise" className="flex flex-col items-start gap-4">
-      <Badge variant="outline">Expertise</Badge>
-      <h2 className="section-title">Engineering systems that scale</h2>
-      <p className="section-lead">
-        End-to-end ownership from architecture choices to production delivery.
-      </p>
+    <section id="about" className="about-section section-shell">
+      <div className="grid items-center gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-20">
+        <Reveal>
+          <div className="about-photo-wrap">
+            <div className="about-photo">
+              <Image src="/images/dayif-at-work.webp" alt={t("Sekou Dayifourou Keita working on a laptop")} width={1200} height={1600} sizes="(max-width: 1024px) 90vw, 42vw" className="h-full w-full object-cover object-[center_18%]" />
+            </div>
+            <div className="about-sticker" aria-hidden="true">✳</div>
+            <div className="about-caption"><T>Curious mind. Hands-on builder.</T></div>
+          </div>
+        </Reveal>
 
-      <div className="section-grid md:grid-cols-2 xl:grid-cols-3">
-        {SERVICES.map((service, index) => {
-          const accent = EXPERTISE_ACCENT;
+        <div>
+          <p className="section-tag"><span>03 /</span> <T>How I work</T></p>
+          <h2 className="display-title max-w-3xl"><T>Meet your</T><br /><em><T>next teammate.</T></em></h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground"><T>I’m Dayifour. I connect the dots between what your users need and what your technology can do.</T></p>
 
-          return (
-            <Reveal key={service.title} delayMs={index * 70}>
-              <Card className="surface-card motion-lift relative h-full overflow-hidden border-border/70 bg-card/70 p-0">
-                <div className="h-px w-full bg-primary/35" />
-                <div className="flex h-full flex-col gap-5 p-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-muted-foreground">
-                        Expertise {index + 1}
-                      </p>
-                      <h3 className="mt-1 text-xl font-semibold tracking-tight text-foreground">
-                        {service.title}
-                      </h3>
-                      <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-foreground/70">
-                        {service.domain}
-                      </p>
-                    </div>
-                    <span className={`rounded-lg border p-2.5 ${accent.icon}`}>
-                      <service.Icon size={15} />
-                    </span>
+          <div className="mt-10 space-y-3">
+            {strengths.map((strength, index) => (
+              <Reveal key={strength.title} delayMs={index * 70}>
+                <article className="strength-row group">
+                  <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-ink ${strength.color}`}><strength.icon size={21} /></span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg font-black tracking-tight">{t(strength.title)}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{t(strength.text)}</p>
                   </div>
-
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {service.description}
-                  </p>
-
-                  <ul className="space-y-2">
-                    {service.points.map((point) => (
-                      <li
-                        key={point}
-                        className="flex items-start gap-2.5 text-sm text-foreground/90"
-                      >
-                        <span
-                          className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full ${accent.marker}`}
-                        />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div
-                    className={`mt-auto rounded-lg border px-4 py-3 ${accent.outcome}`}
-                  >
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
-                      Typical outcome
-                    </p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">
-                      {service.outcome}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </Reveal>
-          );
-        })}
+                  <span className="text-3xl font-black text-ink/10 transition-colors group-hover:text-primary/30 dark:text-white/10">0{index + 1}</span>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
-    </Section>
+    </section>
   );
-};
+}

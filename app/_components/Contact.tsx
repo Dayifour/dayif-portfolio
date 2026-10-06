@@ -1,71 +1,25 @@
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { ContactCard } from "./ContactCard";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { contact } from "@/lib/contact";
+import { Icons } from "./icons/Icons";
 import { Reveal } from "./Reveal";
-import { Section } from "./Section";
+import { T } from "./TranslatedText";
 
-export const Contact = () => {
-  const contactCardDetails = [
-    {
-      className: "h-full",
-      url: "mailto:sekoudayifourouk@gmail.com",
-      name: "Email",
-      description: "sekoudayifourouk@gmail.com",
-      hint: "Preferred for direct opportunities",
-      mediumImage: "/logos/email.svg",
-      mediumBadgeClassName: "bg-primary/18",
-    },
-    {
-      className: "h-full",
-      url: "https://linkedin.com/in/dayifour",
-      name: "LinkedIn",
-      description: "Professional profile and experience",
-      hint: "Best for networking and profile details",
-      mediumImage: "/logos/linkedin.svg",
-      mediumBadgeClassName: "bg-primary/18",
-    },
-  ];
-
+export function Contact() {
   return (
-    <Section id="contact" className="flex flex-col items-start gap-4">
-      <Badge variant="outline">Contact</Badge>
-      <h2 className="section-title">Let&apos;s build something serious</h2>
-      <p className="section-lead">
-        Open to full-time engineering roles and high-impact product challenges.
-      </p>
-
-      <Reveal>
-        <Card className="surface-card motion-lift relative w-full overflow-hidden border-border/70 bg-card/70 p-0">
-          <div className="h-px w-full bg-primary/35" />
-          <div className="grid gap-5 p-6 sm:grid-cols-2 sm:p-8 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="space-y-3">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-muted-foreground">
-                Collaboration
-              </p>
-              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                I partner with teams that value robust architecture, clean
-                delivery, and long-term product quality.
-              </p>
-            </div>
-            <div className="rounded-lg border border-border/60 bg-primary/10 px-4 py-3">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
-                Availability
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-foreground/92">
-                Open to full-time roles and selective freelance missions.
-              </p>
-            </div>
+    <section id="contact" className="contact-section">
+      <div className="contact-grid" aria-hidden="true" />
+      <div className="section-shell">
+        <Reveal>
+          <div className="contact-eyebrow"><Image src="/images/dayif-portrait-cobalt.webp" alt="" width={60} height={60} /><span><T>A good collaboration starts with a hello.</T></span><span className="contact-asterisk" aria-hidden="true">✳</span></div>
+          <h2 className="contact-title"><T>Something in mind?</T><br /><em><T>{"Let's make it happen."}</T></em></h2>
+          <div className="contact-actions">
+            <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="button button-coral" data-magnetic><Icons.WhatsAppIcon size={24} viewBox="0 0 256 258" aria-hidden="true" /><T>Tell me about your project</T><ArrowUpRight size={20} /></a>
+            <a href={contact.email} className="contact-email"><T>Or write me an email</T><ArrowUpRight size={18} /></a>
           </div>
-        </Card>
-      </Reveal>
-
-      <div className="grid w-full grid-cols-1 items-stretch gap-4 sm:grid-cols-2">
-        {contactCardDetails.map((props, idx) => (
-          <Reveal key={props.name} delayMs={idx * 80}>
-            <ContactCard {...props} />
-          </Reveal>
-        ))}
+          <div className="contact-bottom"><span className="status-dot" /><T>Open for good collaborations</T><span><T>Mali · Working worldwide</T></span></div>
+        </Reveal>
       </div>
-    </Section>
+    </section>
   );
-};
+}

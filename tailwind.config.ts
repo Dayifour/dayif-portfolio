@@ -58,6 +58,12 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        ink: "hsl(var(--ink))",
+        coral: "hsl(var(--coral))",
+        mint: "hsl(var(--mint))",
+        "mint-dark": "hsl(var(--mint-dark))",
+        sun: "hsl(var(--sun))",
+        "partner-cloudflare": "hsl(var(--partner-cloudflare))",
       },
       borderRadius: {
         lg: "var(--radius)",

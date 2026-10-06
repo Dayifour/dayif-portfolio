@@ -1,234 +1,70 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { contact } from "@/lib/contact";
 import { Icons } from "./icons/Icons";
-import { Section } from "./Section";
+import { PreferenceControls, usePreferences } from "./Preferences";
 
-const navLinks = [
-  { title: "About", href: "#about" },
+const links = [
+  { title: "Work", href: "#work" },
   { title: "Open Source", href: "#open-source" },
-  { title: "GitHub Activity", href: "#github-activity" },
-  { title: "Projects", href: "#projects" },
-  { title: "Expertise", href: "#expertise" },
-  { title: "Skills", href: "#skills" },
+  { title: "About", href: "#about" },
   { title: "Contact", href: "#contact" },
 ];
 
-const navSectionIds = navLinks.map((item) => item.href.slice(1));
-
-export const Header = () => {
-  const [activeSection, setActiveSection] = useState(
-    navSectionIds[0] ?? "about",
-  );
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export function Header() {
+  const { t } = usePreferences();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const getCurrentSection = () => {
-      const headerOffset = 120;
-      const scrollY = window.scrollY;
-
-      let current = navSectionIds[0] ?? "about";
-
-      if (
-        window.innerHeight + Math.ceil(scrollY) >=
-        document.documentElement.scrollHeight
-      ) {
-        return navSectionIds[navSectionIds.length - 1] ?? current;
-      }
-
-      for (const id of navSectionIds) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        if (el.offsetTop - headerOffset <= scrollY) {
-          current = id;
-        }
-      }
-
-      return current;
+    const sync = () => setScrolled(window.scrollY > 30);
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setOpen(false); menuButton.current?.focus(); }
     };
-
-    let ticking = false;
-    const syncWithScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        const next = getCurrentSection();
-        setActiveSection((prev) => (prev === next ? prev : next));
-        ticking = false;
-      });
-    };
-
-    const syncWithHash = () => {
-      const hashId = window.location.hash.replace("#", "");
-      if (hashId && navSectionIds.includes(hashId)) {
-        setActiveSection(hashId);
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    syncWithScroll();
-    syncWithHash();
-
-    window.addEventListener("scroll", syncWithScroll, { passive: true });
-    window.addEventListener("hashchange", syncWithHash);
-
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("keydown", escape);
     return () => {
-      window.removeEventListener("scroll", syncWithScroll);
-      window.removeEventListener("hashchange", syncWithHash);
+      window.removeEventListener("scroll", sync);
+      window.removeEventListener("keydown", escape);
     };
   }, []);
 
   return (
-    <header
-      className="sticky top-0 z-50 border-b border-border/50 bg-background/82 py-3 backdrop-blur-xl"
-      role="banner"
-    >
-      <Section className="!max-w-6xl flex items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-3">
-          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-card/80 p-1.5">
-            <Image
-              src="/logos/brand-mark.svg"
-              alt="Portfolio brand logo"
-              width={28}
-              height={28}
-              className="h-7 w-7"
-              priority
-            />
-          </span>
-          <div className="min-w-0">
-            <p className="truncate text-lg font-bold tracking-tight text-foreground">
-              Sekou Dayifourou KEITA
-            </p>
-            <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-              Full-Stack Software Engineer
-            </p>
-          </div>
-        </div>
-
-        <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-1.5 pr-1">
-            {navLinks.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setActiveSection(item.href.slice(1))}
-                  aria-current={
-                    activeSection === item.href.slice(1) ? "page" : undefined
-                  }
-                  className={cn(
-                    buttonVariants({ variant: "ghost", size: "sm" }),
-                    "whitespace-nowrap rounded-md text-xs text-muted-foreground hover:text-primary",
-                    activeSection === item.href.slice(1) &&
-                      "bg-primary/15 text-primary",
-                  )}
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <div className="header-inner">
+        <Link href="#top" className="wordmark" aria-label="Sekou Dayifourou Keita" onClick={() => setOpen(false)}>
+          dayifour<span aria-hidden="true">.</span>
+        </Link>
+        <nav className="desktop-nav" aria-label={t("Primary")}>
+          {links.map(link => <Link key={link.href} href={link.href} className="nav-link"><span>{t(link.title)}</span></Link>)}
         </nav>
-
-        <div className="hidden items-center gap-2 lg:flex">
-          <Link
-            href="https://wa.me/22379994640"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
-            aria-label="Contact Sekou Dayifourou KEITA on WhatsApp"
-          >
-            <Icons.WhatsAppIcon size={16} aria-hidden="true" />
-            WhatsApp
-          </Link>
-          <Link
-            href="https://github.com/Dayifour"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(buttonVariants({ variant: "default", size: "sm" }))}
-          >
-            Explore Code
-          </Link>
+        <div className="header-actions">
+          <PreferenceControls />
+          <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="header-whatsapp" aria-label={t("Contact Sekou Dayifourou KEITA on WhatsApp")} data-magnetic>
+            <Icons.WhatsAppIcon size={21} viewBox="0 0 256 258" aria-hidden="true" />
+            <span>{t("Let's talk")}</span>
+            <ArrowUpRight size={16} className="whatsapp-arrow" aria-hidden="true" />
+          </a>
+          <button ref={menuButton} type="button" className="mobile-menu-toggle" aria-label={open ? t("Close menu") : t("Open menu")} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
-
-        <button
-          type="button"
-          className={cn(
-            buttonVariants({ variant: "ghost", size: "icon" }),
-            "lg:hidden",
-          )}
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMobileMenuOpen}
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        >
-          {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
-      </Section>
-
-      {isMobileMenuOpen ? (
-        <nav
-          aria-label="Primary"
-          className="border-t border-border/50 bg-background/95 px-4 py-3 lg:hidden"
-        >
-          <ul className="m-auto flex w-full max-w-6xl flex-col gap-2">
-            {navLinks.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => {
-                    setActiveSection(item.href.slice(1));
-                    setIsMobileMenuOpen(false);
-                  }}
-                  aria-current={
-                    activeSection === item.href.slice(1) ? "page" : undefined
-                  }
-                  className={cn(
-                    buttonVariants({ variant: "ghost", size: "sm" }),
-                    "w-full justify-start rounded-md text-sm text-muted-foreground hover:text-primary",
-                    activeSection === item.href.slice(1) &&
-                      "bg-primary/15 text-primary",
-                  )}
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-            <li className="pt-1">
-              <Link
-                href="https://wa.me/22379994640"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "ghost", size: "sm" }),
-                  "w-full",
-                )}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Icons.WhatsAppIcon size={16} aria-hidden="true" />
-                WhatsApp
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://github.com/Dayifour"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "default", size: "sm" }),
-                  "w-full",
-                )}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Explore Code
-              </Link>
-            </li>
-          </ul>
+      </div>
+      {open && (
+        <nav id="mobile-navigation" className="mobile-nav" aria-label={t("Primary")}>
+          {links.map((link, index) => (
+            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+              <span className="mobile-nav-number">0{index + 1}</span>{t(link.title)}<ArrowUpRight size={24} />
+            </Link>
+          ))}
         </nav>
-      ) : null}
+      )}
+      <div className="reading-progress" aria-hidden="true" />
     </header>
   );
-};
+}
