@@ -1,3 +1,5 @@
+import { getTranslations } from "@/lib/i18n";
+
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
@@ -14,14 +16,15 @@ type ContactCardProps = {
   className?: string;
 };
 
-export const ContactCard = (props: ContactCardProps) => {
+export const ContactCard = async (props: ContactCardProps) => {
+  const t = await getTranslations();
   const isExternal =
     props.url.startsWith("http") || props.url.startsWith("mailto:");
 
   return (
     <Link
       href={props.url}
-      aria-label={`Contact via ${props.name}`}
+      aria-label={`${t("Contact via")} ${t(props.name)}`}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
       className={cn("h-full w-full", props.className)}
@@ -38,7 +41,7 @@ export const ContactCard = (props: ContactCardProps) => {
             >
               <Image
                 src={props.mediumImage}
-                alt={`${props.name} platform icon`}
+                alt={`${t(props.name)} platform icon`}
                 width={22}
                 height={22}
                 className="h-[22px] w-[22px] object-contain"
@@ -52,15 +55,15 @@ export const ContactCard = (props: ContactCardProps) => {
 
           <div>
             <p className="text-lg font-semibold tracking-tight text-foreground">
-              {props.name}
+              {t(props.name)}
             </p>
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              {props.description}
+              {t(props.description)}
             </p>
           </div>
 
           <p className="mt-auto border-t border-border/50 pt-3 text-xs uppercase tracking-[0.12em] text-foreground/70">
-            {props.hint}
+            {t(props.hint)}
           </p>
         </div>
       </Card>

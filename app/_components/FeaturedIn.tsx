@@ -1,3 +1,4 @@
+import { T } from "./TranslatedText";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -25,10 +26,8 @@ const ITEMS = [
 export const FeaturedIn = () => {
   return (
     <Section id="featured" className="flex flex-col items-start gap-4">
-      <Badge variant="outline">Code Shipped To</Badge>
-      <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        Open Source Contributions
-      </h2>
+      <Badge variant="outline"><T>Code Shipped To</T></Badge>
+      <h2 className="pb-2 text-3xl font-semibold tracking-tight first:mt-0"><T>Open Source Contributions</T></h2>
       <div className="grid w-full gap-4 md:grid-cols-3">
         {ITEMS.map((item) => (
           <Card
@@ -46,7 +45,7 @@ export const FeaturedIn = () => {
                 alt={`${item.name} logo`}
                 width={42}
                 height={42}
-                className="h-10 w-10 grayscale brightness-125"
+                className={`h-10 w-10 ${item.logo === "/logos/iii.svg" ? "invert dark:invert-0" : ""}`}
               />
               <span className="text-sm font-semibold">{item.name}</span>
             </Link>

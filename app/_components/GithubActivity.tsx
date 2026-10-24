@@ -1,6 +1,9 @@
 "use client";
 
+import { T, usePreferences } from "./Preferences";
+
 import { Badge } from "@/components/ui/badge";
+import { contributionCalendarColors } from "@/lib/design-tokens";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -17,6 +20,7 @@ const GitHubCalendar = dynamic(
 );
 
 export const GithubActivity = () => {
+  const { t, language, theme } = usePreferences();
   const calendarViewportRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [shouldRenderCalendar, setShouldRenderCalendar] = useState(false);
@@ -117,11 +121,9 @@ export const GithubActivity = () => {
 
   return (
     <Section id="github-activity" className="flex flex-col items-start gap-4">
-      <Badge variant="outline">GitHub Activity</Badge>
-      <h2 className="section-title">Daily contribution signal</h2>
-      <p className="section-lead">
-        Real contribution history, styled to match the product visual language.
-      </p>
+      <Badge variant="outline"><T>GitHub Activity</T></Badge>
+      <h2 className="section-title"><T>Daily contribution signal</T></h2>
+      <p className="section-lead"><T>Real contribution history, styled to match the product visual language.</T></p>
 
       <div className="w-full animate-enter">
         <div className="surface-card motion-lift mx-auto w-full max-w-5xl overflow-hidden rounded-2xl">
@@ -136,6 +138,7 @@ export const GithubActivity = () => {
                   <GitHubCalendar
                     className="github-calendar"
                     username="Dayifour"
+                    errorMessage={language === "fr" ? "Les contributions sont temporairement indisponibles. Consultez mon profil GitHub ci-dessous." : "Contributions are temporarily unavailable. Visit my GitHub profile below."}
                     showColorLegend={false}
                     showMonthLabels
                     showTotalCount={false}
@@ -144,18 +147,12 @@ export const GithubActivity = () => {
                     blockMargin={calendarConfig.blockMargin}
                     blockRadius={3}
                     fontSize={calendarConfig.fontSize}
-                    colorScheme="dark"
-                    theme={{
-                      dark: [
-                        "#0A0F0B",
-                        "#0E2A18",
-                        "#1C5A36",
-                        "#2F9A5D",
-                        "#74E59F",
-                      ],
-                    }}
+                    colorScheme={theme}
+                    theme={contributionCalendarColors}
                     labels={{
-                      totalCount: "{{count}} contributions in the last year",
+                      totalCount: t("{{count}} contributions in the last year"),
+                      months: language === "fr" ? ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"] : undefined,
+                      weekdays: language === "fr" ? ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"] : undefined,
                     }}
                   />
                 ) : (
@@ -165,17 +162,13 @@ export const GithubActivity = () => {
             </div>
           </div>
         </div>
-        <p className="mt-3 text-sm text-muted-foreground">
-          Contribution heatmap customized to be native to this portfolio.
-        </p>
+        <p className="mt-3 text-sm text-muted-foreground"><T>Contribution heatmap customized to be native to this portfolio.</T></p>
         <Link
           href="https://github.com/Dayifour"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-2 inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
-        >
-          View full GitHub profile
-        </Link>
+        ><T>View full GitHub profile</T></Link>
       </div>
     </Section>
   );
