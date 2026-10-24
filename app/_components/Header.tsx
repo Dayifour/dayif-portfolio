@@ -9,7 +9,7 @@ import { PreferenceControls, usePreferences } from "./Preferences";
 
 const links = [
   { title: "Work", href: "#work" },
-  { title: "Open Source", href: "#open-source" },
+  { title: "Expertise", href: "#expertise" },
   { title: "About", href: "#about" },
   { title: "Contact", href: "#contact" },
 ];

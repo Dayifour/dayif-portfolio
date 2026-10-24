@@ -3,7 +3,8 @@ import { Footer } from "./_components/Footer";
 import { Header } from "./_components/Header";
 import { Hero } from "./_components/Hero";
 import { OpenSourceImpact } from "./_components/OpenSourceImpact";
-import { Expertise } from "./_components/Services";
+import { About } from "./_components/Services";
+import { Engineering } from "./_components/Engineering";
 import { Skills } from "./_components/Skills";
 import { Status } from "./_components/Status";
 import { T } from "./_components/TranslatedText";
@@ -20,8 +21,9 @@ export default function Home() {
       <main id="content" className="overflow-hidden">
         <Hero />
         <Status />
+        <Engineering />
         <OpenSourceImpact />
-        <Expertise />
+        <About />
         <Skills />
         <Contact />
       </main>

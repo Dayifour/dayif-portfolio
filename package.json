@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "icons": "node scripts/generate-icons.mjs",
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",

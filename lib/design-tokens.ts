@@ -1,4 +1,10 @@
+export const brandColors = {
+  ink: "#152645",
+  paper: "#F4F7FF",
+  blue: "#2C5BEA",
+} as const;
+
 export const contributionCalendarColors = {
-  light: ["#e1ebe5", "#a7e5be", "#60c794", "#249766", "#08764d"],
-  dark: ["#0A0F0B", "#0E2A18", "#1C5A36", "#2F9A5D", "#74E59F"],
+  light: ["#e0e8fb", "#b5c9ff", "#779cff", "#2c5bea", "#2149c6"],
+  dark: ["#1d2f50", "#294c86", "#386ada", "#6f98fa", "#9dbaff"],
 };

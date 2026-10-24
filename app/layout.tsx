@@ -14,13 +14,15 @@ export async function generateMetadata(): Promise<Metadata> {
     ? "Sekou Dayifourou Keita | Ingénieur logiciel full-stack"
     : "Sekou Dayifourou Keita | Full-Stack Software Engineer";
   const description = french
-    ? "Je conçois des produits numériques rapides, fiables et simples, de l’interface au cloud. Contributeur à Cloudflare, npmx et iii-hq."
-    : "I build fast, reliable and beautifully simple digital products, from interface to cloud. Contributor to Cloudflare, npmx and iii-hq.";
+    ? "Ingénieur logiciel full-stack basé au Mali. Applications web, API et cloud. Projets : SUGUBA, Bestrans, SmartSchool et Doumini Douman."
+    : "Full-stack software engineer based in Mali. Web applications, APIs and cloud. Projects: SUGUBA, Bestrans, SmartSchool and Doumini Douman.";
 
   return {
     metadataBase: new URL("https://www.dayifour.dev"),
     title: { default: title, template: "%s | Sekou Dayifourou Keita" },
     description,
+    applicationName: "Dayifour",
+    manifest: "/manifest.webmanifest",
     keywords: [
       "Sekou Dayifourou Keita", "Software Engineer", "Full-Stack Engineer",
       "TypeScript", "Next.js", "Node.js", "NestJS", "Cloudflare",
@@ -36,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       siteName: "Sekou Dayifourou Keita",
       locale: french ? "fr_FR" : "en_US",
-      images: [{ url: "/og-banner.png", width: 1200, height: 630, alt: title }],
+      images: [{ url: "/og-banner-professional.jpg", width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
@@ -44,12 +46,17 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@dayifour",
       title,
       description,
-      images: ["/og-banner.png"],
+      images: [{ url: "/og-banner-professional.jpg", alt: title }],
     },
     icons: {
-      icon: [{ url: "/logos/brand-mark.svg", type: "image/svg+xml" }],
-      shortcut: "/logos/brand-mark.svg",
-      apple: [{ url: "/logos/brand-mark.svg" }],
+      icon: [
+        { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+        { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
+        { url: "/icons/favicon-48.png", sizes: "48x48", type: "image/png" },
+        { url: "/logos/brand-mark.svg?v=4", sizes: "any", type: "image/svg+xml" },
+      ],
+      shortcut: "/favicon.ico",
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
     },
     alternates: { canonical: "https://www.dayifour.dev" },
     robots: {
@@ -81,7 +88,7 @@ export default async function RootLayout({
     "@type": "Person",
     name: "Sekou Dayifourou KEITA",
     url: "https://www.dayifour.dev",
-    image: "https://www.dayifour.dev/images/dayif-portrait-cobalt.webp",
+    image: "https://www.dayifour.dev/images/dayif-portrait-professional.webp",
     jobTitle: "Software Engineer",
     knowsAbout: [
       "TypeScript",
