@@ -12,7 +12,7 @@ export function Contact() {
       <Contour className="contact-contour" />
       <div className="section-shell">
         <Reveal>
-          <div className="contact-eyebrow"><Image src="/images/dayif-portrait-professional.webp" alt="" width={60} height={60} sizes="47px" quality={90} /><span>Sekou Dayifourou Keita</span></div>
+          <div className="contact-eyebrow"><span className="contact-avatar"><Image src="/images/dayif-contact-portrait.webp" alt="" width={96} height={96} sizes="96px" quality={90} /></span><span>Sekou Dayifourou Keita</span></div>
           <h2 className="contact-title"><T>Have a project?</T><br /><em><T>{"Let's talk."}</T></em></h2>
           <div className="contact-actions">
             <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="button button-accent" data-magnetic><Icons.WhatsAppIcon size={24} viewBox="0 0 256 258" aria-hidden="true" />WhatsApp<ArrowUpRight size={20} /></a>

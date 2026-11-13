@@ -1,6 +1,6 @@
 export const brandColors = {
   ink: "#152645",
-  paper: "#F4F7FF",
+  paper: "#F6F3ED",
   blue: "#2C5BEA",
 } as const;
 

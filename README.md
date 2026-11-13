@@ -8,7 +8,7 @@ Production: https://www.dayifour.dev/
 
 ## Highlights
 
-- Editorial portfolio using one vivid blue accent and cool neutral surfaces
+- Editorial portfolio using one vivid blue accent, warm ivory surfaces and real photographs
 - Four live products: Doumini Douman, SUGUBA, Bestrans and SmartSchool
 - Optimized real product screenshots and an illustrated Bestrans backend story,
   with direct website, Google Play and App Store links
@@ -37,9 +37,9 @@ Production: https://www.dayifour.dev/
 | --- | --- | --- |
 | Blue | `#2C5BEA` | Primary actions, links, display accents and branding |
 | Deep blue | `#152645` | Main text and dark surfaces |
-| Cool white | `#F4F7FF` | Reading surfaces and text on dark backgrounds |
+| Ivory | `#F6F3ED` | Reading surfaces and text on dark backgrounds |
 
-Use blue tints for large light surfaces and `#9DBAFF` for accents on dark
+Use warm neutral tints for large light surfaces and `#9DBAFF` for accents on dark
 surfaces. Dark mode preserves the same blue family. No copper, green or purple
 accents are added to the interface. Project screenshots and third-party logos
 retain their original colours.
@@ -59,6 +59,18 @@ Keep photographs upright and avoid coloured card collections, simulated browser
 toolbars, stickers, or a different background colour for each section. Motion
 supports entrances, links and the artwork, with reduced-motion preferences respected.
 
+## Photography
+
+The active photographs come from the supplied `for_portfolio.zip` collection.
+`assets/photography/selection.json` records the original files and their uses.
+They are encoded as WebP without generating or retouching the face, clothing or
+background. The hero preserves the 4:5 portrait and the about section keeps the
+full 16:9 office photograph. The contact portrait uses the supplied square crop.
+
+Social cards use the same real hero portrait and have separate French and
+English versions. Run `npm run social` to regenerate them from the current
+WebP photograph. Metadata and structured data point to the real photographs.
+
 ## Local Development
 
 ```sh
@@ -75,6 +87,7 @@ Open http://localhost:3000.
 - `npm run start` - run production build locally
 - `npm run lint` - run ESLint
 - `npm run typecheck` - run TypeScript checks
+- `npm run social` - generate both localized social cards from the real portrait
 
 ## Project Structure
 

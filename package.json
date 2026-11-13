@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "icons": "node scripts/generate-icons.mjs",
+    "social": "node scripts/generate-social-cards.mjs",
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",

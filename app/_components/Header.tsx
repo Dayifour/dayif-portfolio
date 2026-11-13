@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { contact } from "@/lib/contact";
 import { Icons } from "./icons/Icons";
@@ -37,11 +36,11 @@ export function Header() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="header-inner">
-        <Link href="#top" className="wordmark" aria-label="Sekou Dayifourou Keita" onClick={() => setOpen(false)}>
+        <a href="#top" className="wordmark" aria-label="Sekou Dayifourou Keita" onClick={() => setOpen(false)}>
           dayifour<span aria-hidden="true">.</span>
-        </Link>
+        </a>
         <nav className="desktop-nav" aria-label={t("Primary")}>
-          {links.map(link => <Link key={link.href} href={link.href} className="nav-link"><span>{t(link.title)}</span></Link>)}
+          {links.map(link => <a key={link.href} href={link.href} className="nav-link"><span>{t(link.title)}</span></a>)}
         </nav>
         <div className="header-actions">
           <PreferenceControls />
@@ -58,9 +57,9 @@ export function Header() {
       {open && (
         <nav id="mobile-navigation" className="mobile-nav" aria-label={t("Primary")}>
           {links.map((link, index) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               <span className="mobile-nav-number">0{index + 1}</span>{t(link.title)}<ArrowUpRight size={24} />
-            </Link>
+            </a>
           ))}
         </nav>
       )}
