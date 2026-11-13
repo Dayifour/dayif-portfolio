@@ -10,7 +10,7 @@ const contributions = [
     name: "Cloudflare",
     project: "vinext",
     note: "Next.js-compatible routing at the edge.",
-    logo: "/logos/cloudflare.svg",
+    logo: "/logos/cloudflare.svg?v=2",
     href: "https://github.com/search?q=org%3Acloudflare+author%3ADayifour+is%3Apr&type=pullrequests",
   },
   {
@@ -49,7 +49,7 @@ export async function OpenSourceImpact() {
             <Reveal key={item.project} delayMs={index * 80}>
               <Link href={item.href} target="_blank" rel="noopener noreferrer" className="oss-card group">
                 <div className="oss-logo">
-                  <Image src={item.logo} alt="" width={28} height={28} className={`h-7 w-7 object-contain ${item.name === "iii-hq" ? "invert" : ""}`} />
+                  <Image src={item.logo} alt="" width={item.name === "Cloudflare" ? 34 : 28} height={28} className={`h-7 object-contain ${item.name === "Cloudflare" ? "w-[34px]" : "w-7"} ${item.name === "iii-hq" ? "invert" : ""}`} />
                 </div>
                 <h3>{item.project}<span>{item.name}</span></h3>
                 <p className="oss-note">{t(item.note)}</p>

@@ -2,6 +2,7 @@ import "server-only";
 
 /** English is the source language; product names and technology names stay unchanged. */
 export const french: Record<string, string> = {
+  'Sekou Dayifourou Keita at his desk, smiling behind his laptop': 'Sekou Dayifourou Keita à son bureau, souriant derrière son ordinateur',
   'Software': 'Ingénieur',
   'engineer.': 'full-stack.',
   'I develop web applications and APIs, from the interface to deployment.': 'Je développe des applications web et des API, de l’interface au déploiement.',

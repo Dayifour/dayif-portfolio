@@ -9,7 +9,7 @@ const ITEMS = [
   {
     name: "Cloudflare",
     href: "https://github.com/search?q=org%3Acloudflare+author%3ADayifour+is%3Apr&type=pullrequests",
-    logo: "/logos/cloudflare.svg",
+    logo: "/logos/cloudflare.svg?v=2",
   },
   {
     name: "npmx.dev",

@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       siteName: "Sekou Dayifourou Keita",
       locale: french ? "fr_FR" : "en_US",
-      images: [{ url: "/og-banner-professional.jpg", width: 1200, height: 630, alt: title }],
+      images: [{ url: `/og-portrait-${language}.jpg`, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@dayifour",
       title,
       description,
-      images: [{ url: "/og-banner-professional.jpg", alt: title }],
+      images: [{ url: `/og-portrait-${language}.jpg`, alt: title }],
     },
     icons: {
       icon: [
@@ -88,7 +88,7 @@ export default async function RootLayout({
     "@type": "Person",
     name: "Sekou Dayifourou KEITA",
     url: "https://www.dayifour.dev",
-    image: "https://www.dayifour.dev/images/dayif-portrait-professional.webp",
+    image: "https://www.dayifour.dev/images/dayif-portrait-real.webp",
     jobTitle: "Software Engineer",
     knowsAbout: [
       "TypeScript",

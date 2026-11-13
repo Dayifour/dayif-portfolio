@@ -41,7 +41,7 @@ export function Hero() {
             </g>
           </svg>
           <div className="hero-portrait-card">
-            <Image src="/images/dayif-portrait-professional.webp" alt="Sekou Dayifourou Keita" width={1122} height={1402} quality={90} priority sizes="(max-width: 640px) 77vw, (max-width: 1000px) 40vw, 400px" className="hero-portrait" />
+            <Image src="/images/dayif-portrait-real.webp" alt="Sekou Dayifourou Keita" width={1080} height={1350} quality={90} priority sizes="(max-width: 640px) 85vw, (max-width: 1000px) 42vw, 440px" className="hero-portrait" />
           </div>
           <svg className="hero-flourish" viewBox="0 0 120 100" fill="none" aria-hidden="true">
             <path d="M12 61C36 22 92 9 105 29C120 53 49 87 31 72C17 58 54 33 90 40" pathLength="1" />

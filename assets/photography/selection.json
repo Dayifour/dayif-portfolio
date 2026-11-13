@@ -1,0 +1,24 @@
+{
+  "sourceArchive": "for_portfolio.zip",
+  "processing": "Orientation and WebP encoding only. The supplied photographs are preserved without generation or retouching.",
+  "photos": [
+    {
+      "source": "03_mise_en_situation/Portrait_4x5_sourire_IMG2026.jpg",
+      "output": "public/images/dayif-portrait-real.webp",
+      "usage": "Hero, social cards and structured data",
+      "size": [1080, 1350]
+    },
+    {
+      "source": "03_mise_en_situation/Tech_ambiance_IMG2005.jpg",
+      "output": "public/images/dayif-at-work-real.webp",
+      "usage": "About section, preserving the full landscape composition",
+      "size": [1600, 900]
+    },
+    {
+      "source": "02_profils/Facebook_photo_profil_IMG2026.jpg",
+      "output": "public/images/dayif-contact-portrait.webp",
+      "usage": "Contact portrait, with a CSS close-up inside the circular frame",
+      "size": [480, 480]
+    }
+  ]
+}
